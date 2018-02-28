@@ -1,0 +1,48 @@
+﻿<Window x:Class="bestsixapp.CheckoutWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:bestsixapp"
+        mc:Ignorable="d"
+        Title="Checkout" Height="300" Width="400">
+    <Grid >
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="20" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="20" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="20"/>
+        </Grid.RowDefinitions>
+        
+        <!--Col 1-->
+        <Label   Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="1" Content="Room Number:" HorizontalAlignment="Left"  VerticalAlignment="Center" />
+        <Label   Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="2" Content="First Name:" HorizontalAlignment="Left"  VerticalAlignment="Center"/>
+        <Label   Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="3" Content="Last Name:" HorizontalAlignment="Left"  VerticalAlignment="Center"/>
+        <Label   Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="4" Content="Check-in Date:" HorizontalAlignment="Left"  VerticalAlignment="Center"/>
+        <Label   Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="5" Content="Check-out Date" HorizontalAlignment="Left"  VerticalAlignment="Center" />
+        <Button Name="BTEditCheckin" Grid.Column="1" Grid.Row="6" Content ="Edit Checkout" HorizontalAlignment="Center" Margin="5" VerticalAlignment="Top" Width="auto" Click="ButtonEdit_Click" FontSize="16"/>
+
+        <!-- COl 2-->
+        <TextBox Grid.Column="3" Grid.Row="1" x:Name="TextBoxRoomNo" HorizontalAlignment="Center"  VerticalAlignment="Center" Height="25" Width="100" Margin="5" />
+        <TextBox Grid.Column="3" Grid.Row="2" x:Name="TextBoxBedType" HorizontalAlignment="Center"  VerticalAlignment="Center" Height="25" Width="100"  Margin="5"/>
+        <TextBox Grid.Column="3" Grid.Row="3" x:Name="TextBoxNoOfBeds" HorizontalAlignment="Center"  VerticalAlignment="Center" Height="25" Width="100" Margin="5"/>
+        <TextBox Grid.Column="3" Grid.Row="4" x:Name="TextBoxPrice" HorizontalAlignment="Center"  VerticalAlignment="Center" Height="25" Width="100" Margin="5"/>
+        <TextBox Grid.Column="3" Grid.Row="5" x:Name="TextBoxSmoking" HorizontalAlignment="Center"  VerticalAlignment="Center" Height="25" Width="100" Margin="5"/>
+        <Button Grid.Column="2" Grid.Row="6"  Name ="BTRefund" Content ="Refund" HorizontalAlignment="Center" Margin="5" VerticalAlignment="Top" Width="75"  FontSize="16" Click="ButtonRefund_Click"/>
+
+        <!-- Col 3-->
+        <Button Name ="BTCheckout" Grid.Column="3" Grid.Row="6" Content ="Checkout" HorizontalAlignment="Center" Margin="5" VerticalAlignment="Top" Width="75"  FontSize="16" Click="ButtonCheckout_Click"/>
+
+    </Grid>
+</Window>
