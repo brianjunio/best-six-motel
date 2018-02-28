@@ -277,9 +277,15 @@ namespace bestsixapp
         private void MoveRoomButton_Click(object sender, RoutedEventArgs e)
         {
             if (!moveButton)
+            {
                 moveButton = true;
+                MoveRoomButton.Background = new SolidColorBrush(Color.FromArgb(255, 57, 255, 20));
+            }
             else
+            {
                 moveButton = false;
+                MoveRoomButton.ClearValue(Button.BackgroundProperty);
+            }
 
         }
     }
