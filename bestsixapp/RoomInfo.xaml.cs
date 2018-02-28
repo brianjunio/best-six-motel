@@ -103,7 +103,12 @@ namespace bestsixapp
                         NoOfBeds = Int32.Parse(TextBoxNoOfBeds.Text), Price = Double.Parse(TextBoxPrice.Text), Smoking = ComboBoxSmoking.Text, Left = room.Left, Top = room.Top  });
                     }else
                     {
+                        tempRoom.BedType = room.BedType;
+                        tempRoom.NoOfBeds = room.NoOfBeds;
+                        tempRoom.Price = room.Price;
+                        tempRoom.Smoking = room.Smoking;
                         dbContext.Update<Room>(tempRoom); //update database
+                    
                     }
                     dbContext.SaveChanges();        //save changes
                 }
