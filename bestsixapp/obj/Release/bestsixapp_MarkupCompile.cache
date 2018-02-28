@@ -4,16 +4,16 @@
 winexe
 C#
 .cs
-C:\Users\akakeo\Source\Repos\best-six-motel\bestsixapp\obj\Debug\
+C:\Users\akakeo\Source\Repos\best-six-motel\bestsixapp\obj\Release\
 bestsixapp
 none
 false
-DEBUG;TRACE
+TRACE
 C:\Users\akakeo\Source\Repos\best-six-motel\bestsixapp\App.xaml
 62118992426
 
 11-2084072139
-19-1909762622
+19-1415097013
 MainWindow.xaml;Check.xaml;CheckinPage.xaml;RoomInfo.xaml;RoomMake.xaml;CheckoutWindow.xaml;
 
 True
