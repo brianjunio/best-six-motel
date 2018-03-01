@@ -76,7 +76,7 @@ namespace bestsixapp
                 room.Smoking = ComboBoxSmoking.Text;
                 
                
-                //create updated entity
+                //create new entity
                 var modifiedRoom = new Room()
                 {
                     RoomNo = room.RoomNo,
@@ -99,14 +99,18 @@ namespace bestsixapp
                                               .FirstOrDefault();
                     if(tempRoom == null)
                     {
+                        //no room in db
+                        //create new room then add to db
                         dbContext.Rooms.Add(new Room { RoomNo = Int32.Parse(TextBoxRoomNo.Text), BedType = TextBoxBedType.Text,
                         NoOfBeds = Int32.Parse(TextBoxNoOfBeds.Text), Price = Double.Parse(TextBoxPrice.Text), Smoking = ComboBoxSmoking.Text, Left = room.Left, Top = room.Top  });
                     }else
                     {
+                        //grab all data that could be updated through ui
                         tempRoom.BedType = room.BedType;
                         tempRoom.NoOfBeds = room.NoOfBeds;
                         tempRoom.Price = room.Price;
                         tempRoom.Smoking = room.Smoking;
+                            
                         dbContext.Update<Room>(tempRoom); //update database
                     
                     }
