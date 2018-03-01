@@ -50,7 +50,7 @@ namespace bestsixapp
         }
         private void rect_MouseLeftButtonDown(object sender, MouseEventArgs e)
         {
-  
+            //capture click of mouseleft butotn
             if (isEdit)
             {
                 rect = (Button)sender; //grabs object selected by mouse and declare it rect
@@ -62,8 +62,7 @@ namespace bestsixapp
 
         private void rect_MouseLeftButtonUp(object sender, MouseEventArgs e)
         {
-          
-
+            //capture release of mouseleft button
             if (isEdit)
             {
                 rect = (Button)sender;
@@ -207,6 +206,7 @@ namespace bestsixapp
         }
 
         private void FillList()
+            //grab data from db and add to local list
         {
             using (DatabaseContext dbContext = new DatabaseContext())
             {
@@ -235,6 +235,7 @@ namespace bestsixapp
         
         void CheckButton_Click(object sender, RoutedEventArgs e)
         {
+            //checking in customer window
             rect = (Button)sender;
 
             if (!isEdit)
@@ -255,6 +256,7 @@ namespace bestsixapp
 
         private void DrawAllRoom()
         {
+            //draw all rooms
             foreach(var obj in roomList)
             {
                 //cast object
@@ -276,10 +278,17 @@ namespace bestsixapp
 
         private void MoveRoomButton_Click(object sender, RoutedEventArgs e)
         {
+            //moving rooms
             if (!moveButton)
+            {
                 moveButton = true;
+                MoveRoomButton.Background = new SolidColorBrush(Color.FromArgb(255, 57, 255, 20));
+            }
             else
+            {
                 moveButton = false;
+                MoveRoomButton.ClearValue(Button.BackgroundProperty);
+            }
 
         }
     }
