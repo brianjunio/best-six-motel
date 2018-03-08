@@ -23,12 +23,15 @@ namespace bestsixapp
     public partial class Check : Window
     {
         int roomNum;
-        Room query = new Room();
+        int localID;
+        private bool checkedIn;
+        Room roomQuery = new Room();
+        Customer customerQuery = new Customer();
 
         public Check()
         {
             InitializeComponent();
-            UpdateLabels();
+            
             // RefreshList();  Update Room Page with Customer Information when seleceted
         }
 
@@ -37,6 +40,7 @@ namespace bestsixapp
             this.roomNum = roomNum;
             InitializeComponent();
             UpdateLabels();
+            checkedIn = false;
         }
 
         private void ButtonRegister_Click(object sender, RoutedEventArgs e)
@@ -57,7 +61,8 @@ namespace bestsixapp
                     RoomNo = roomNum
                 });
                 dbContext.SaveChanges();
-
+                swapFlag();
+                localID = Int32.Parse(TBID.Text);
                 Close();
                 // RefreshList();  Update Room Page with Customer Information when seleceted
 
@@ -71,16 +76,47 @@ namespace bestsixapp
             using(DatabaseContext dbContext = new DatabaseContext())
             {
 
-                query = dbContext.Rooms.Find(roomNum);
-                roomValue.Content = query.RoomNo.ToString();
-                bedValue.Content = query.BedType;
-                smokingValue.Content = query.Smoking;
-                priceValue.Content = query.Price;
+                roomQuery = dbContext.Rooms.Find(roomNum);
+                roomValue.Content = roomQuery.RoomNo.ToString();
+                bedValue.Content = roomQuery.BedType;
+                smokingValue.Content = roomQuery.Smoking;
+                priceValue.Content = roomQuery.Price;
                // System.Diagnostics.Debug.Write(roomEntry.ToString());
                // roomValue.Content = roomEntry.ToString();
             }
         }
+
+        public void populateTextBoxes()
+        {
+            using (DatabaseContext dbContext = new DatabaseContext())
+            {
+                customerQuery = dbContext.Customers.Find(localID);
+                TBID.Text = customerQuery.ID;
+                TBFName.Text = customerQuery.FirstName;
+                TBLName.Text = customerQuery.LastName;
+                TBPhone.Text = customerQuery.PhoneNo;
+                TBStreet.Text = customerQuery.Street;
+                TBCity.Text = customerQuery.City;
+                TBState.Text = customerQuery.State;
+                TBZip.Text = customerQuery.Zip;
+                TBPayment.Text = customerQuery.PaymentInfo;
+
+
+            }
+        }
+
+        public bool getFlag()
+        {
+            return checkedIn;
+        }
     
+        public void swapFlag()
+        {
+            if (checkedIn == false)
+                checkedIn = true;
+            else
+                checkedIn = false;
+        }
 
     }
 

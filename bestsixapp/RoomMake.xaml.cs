@@ -248,7 +248,14 @@ namespace bestsixapp
                 } //this loop is to find the room object that is attached to rect
                 Check checkWindow = new Check(room.RoomNo);
               //  checkWindow.TextBofRoom.Text = Convert.ToString(room.RoomNo);
-                checkWindow.ShowDialog();
+                if(checkWindow.getFlag() == false)
+                    checkWindow.ShowDialog();
+                else
+                {
+                    //new method goes here
+                    checkWindow.ShowDialog();
+                }
+                
             }
             
         }
