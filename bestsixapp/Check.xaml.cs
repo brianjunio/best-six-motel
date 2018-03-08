@@ -25,6 +25,7 @@ namespace bestsixapp
         int roomNum;
         string smoking;
         string bedType;
+        double price;
 
         public Check()
         {
@@ -33,11 +34,12 @@ namespace bestsixapp
             // RefreshList();  Update Room Page with Customer Information when seleceted
         }
 
-        public Check(int roomNum, string smoking, string bedType)
+        public Check(int roomNum, string smoking, string bedType, double price)
         {
             this.roomNum = roomNum;
             this.smoking = smoking;
             this.bedType = bedType;
+            this.price = price;
             InitializeComponent();
             UpdateLabels();
         }
@@ -78,6 +80,7 @@ namespace bestsixapp
                 roomValue.Content = roomNum;
                 bedValue.Content = bedType;
                 smokingValue.Content = smoking;
+                priceValue.Content = price;
                // System.Diagnostics.Debug.Write(roomEntry.ToString());
                // roomValue.Content = roomEntry.ToString();
             }

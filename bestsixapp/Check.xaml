@@ -72,14 +72,14 @@
             <Label Grid.Column ="5" Grid.Row="2" Content="Room #:" />
             <Label Grid.Column ="5" Grid.Row="3" Content="Bed Type:" />
             <Label Grid.Column ="5" Grid.Row="4" Content="Smoking:" />
-            <Label Grid.Column ="5" Grid.Row="5" Content="Payment Type:" />
+            <Label Grid.Column ="5" Grid.Row="5" Content="Price:" />
 
 
             <!--COL 6 -->
             <Label Grid.Column ="6" Grid.Row="2" x:Name="roomValue"  />
             <Label Grid.Column ="6" Grid.Row="3" x:Name="bedValue"  />
             <Label Grid.Column ="6" Grid.Row="4" x:Name="smokingValue" />
-            <Label Grid.Column ="6" Grid.Row="5" x:Name="paymentValue"  />
+            <Label Grid.Column ="6" Grid.Row="5" x:Name="priceValue"  />
 
 
         </Grid>
