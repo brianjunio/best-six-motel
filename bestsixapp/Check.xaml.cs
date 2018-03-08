@@ -22,11 +22,24 @@ namespace bestsixapp
     /// </summary>
     public partial class Check : Window
     {
+        int roomNum;
+        string smoking;
+        string bedType;
+
         public Check()
         {
             InitializeComponent();
             UpdateLabels();
             // RefreshList();  Update Room Page with Customer Information when seleceted
+        }
+
+        public Check(int roomNum, string smoking, string bedType)
+        {
+            this.roomNum = roomNum;
+            this.smoking = smoking;
+            this.bedType = bedType;
+            InitializeComponent();
+            UpdateLabels();
         }
 
         private void ButtonRegister_Click(object sender, RoutedEventArgs e)
@@ -59,7 +72,14 @@ namespace bestsixapp
         {
             using(DatabaseContext dbContext = new DatabaseContext())
             {
-               roomValue.Content = dbContext.Rooms.Select(rm => rm.RoomNo.ToString());
+                /* var roomEntry = from r in dbContext.Rooms
+                                 where r.RoomNo.Equals(1)
+                                 select r;*/
+                roomValue.Content = roomNum;
+                bedValue.Content = bedType;
+                smokingValue.Content = smoking;
+               // System.Diagnostics.Debug.Write(roomEntry.ToString());
+               // roomValue.Content = roomEntry.ToString();
             }
         }
     
