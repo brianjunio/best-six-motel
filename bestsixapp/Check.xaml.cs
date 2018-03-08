@@ -22,21 +22,44 @@ namespace bestsixapp
     /// </summary>
     public partial class Check : Window
     {
+        int roomNum;
+        string smoking;
+        string bedType;
+        double price;
+
         public Check()
         {
             InitializeComponent();
-
+            UpdateLabels();
             // RefreshList();  Update Room Page with Customer Information when seleceted
         }
+
+        public Check(int roomNum, string smoking, string bedType, double price)
+        {
+            this.roomNum = roomNum;
+            this.smoking = smoking;
+            this.bedType = bedType;
+            this.price = price;
+            InitializeComponent();
+            UpdateLabels();
+        }
+
         private void ButtonRegister_Click(object sender, RoutedEventArgs e)
         {
             using (DatabaseContext dbContext = new DatabaseContext())
             {
                 dbContext.Customers.Add(new Customer
                 {   // Add Customer info into customer table
-                    FirstName = TBFName.Text, LastName = TBLName.Text, ID = Int32.Parse(TBID.Text),
-                    PhoneNo = TBPhone.Text,   Street = TBStreet.Text, City = TBCity.Text,
-                    State = TBState.Text, Zip = TBZip.Text, PaymentInfo = TBPayment.Text }); 
+                    FirstName = TBFName.Text,
+                    LastName = TBLName.Text,
+                    ID = TBID.Text,
+                    PhoneNo = TBPhone.Text,
+                    Street = TBStreet.Text,
+                    City = TBCity.Text,
+                    State = TBState.Text,
+                    Zip = TBZip.Text,
+                    PaymentInfo = TBPayment.Text
+                });
                 dbContext.SaveChanges();
 
                 Close();
@@ -46,16 +69,38 @@ namespace bestsixapp
         }
         //method for cancel
         public void ButtonCancel_Click(object sender, RoutedEventArgs e) { this.Close(); }
-        
-        //private void RefreshList()
-        //{
-        //    using (DatabaseContext dbContext = new DatabaseContext())
-        //    {
-        //        ListViewNames.ItemsSource = dbContext.Customers
-        //            .OrderBy(m => m.FirstName)
-        //            .Select(m => m.FirstName)
-        //            .ToList();
-        //    }
-        //}
+
+        private void UpdateLabels()
+        {
+            using(DatabaseContext dbContext = new DatabaseContext())
+            {
+                /* var roomEntry = from r in dbContext.Rooms
+                                 where r.RoomNo.Equals(1)
+                                 select r;*/
+                roomValue.Content = roomNum;
+                bedValue.Content = bedType;
+                smokingValue.Content = smoking;
+                priceValue.Content = price;
+               // System.Diagnostics.Debug.Write(roomEntry.ToString());
+               // roomValue.Content = roomEntry.ToString();
+            }
+        }
+    
+
     }
+
+
+
+    //private void RefreshList()
+    //{
+    //    using (DatabaseContext dbContext = new DatabaseContext())
+    //    {
+    //        ListViewNames.ItemsSource = dbContext.Customers
+    //            .OrderBy(m => m.FirstName)
+    //            .Select(m => m.FirstName)
+    //            .ToList();
+    //    }
+    //}
 }
+    
+

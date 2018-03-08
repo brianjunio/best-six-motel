@@ -246,7 +246,7 @@ namespace bestsixapp
                     if (rect == e1.RoomButton)
                         room = e1; // grabs room object if the rect is selected
                 } //this loop is to find the room object that is attached to rect
-                Check checkWindow = new Check();
+                Check checkWindow = new Check(room.RoomNo, room.Smoking, room.BedType, room.Price);
               //  checkWindow.TextBofRoom.Text = Convert.ToString(room.RoomNo);
                 checkWindow.ShowDialog();
             }

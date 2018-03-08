@@ -38,7 +38,7 @@ namespace bestsixapp
 
                         FirstName = TBFName.Text,
                         LastName = TBLName.Text,
-                        ID = Int32.Parse(TBID.Text),
+                        ID = TBID.Text,
                         PhoneNo = TBPhone.Text,
                         Street = TBStreet.Text,
                         City = TBCity.Text,
