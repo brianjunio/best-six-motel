@@ -77,10 +77,12 @@ namespace bestsixapp
                 /* var roomEntry = from r in dbContext.Rooms
                                  where r.RoomNo.Equals(1)
                                  select r;*/
-                roomValue.Content = roomNum;
-                bedValue.Content = bedType;
-                smokingValue.Content = smoking;
-                priceValue.Content = price;
+                Room query = new Room();
+                query = dbContext.Rooms.Find(roomNum);
+                roomValue.Content = query.RoomNo.ToString();
+                bedValue.Content = query.BedType;
+                smokingValue.Content = query.Smoking;
+                priceValue.Content = query.Price;
                // System.Diagnostics.Debug.Write(roomEntry.ToString());
                // roomValue.Content = roomEntry.ToString();
             }
