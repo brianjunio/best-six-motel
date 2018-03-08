@@ -13,13 +13,13 @@
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="20"  />
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
                 <ColumnDefinition Width="auto"/>
                 <ColumnDefinition Width="auto"/>
-                <ColumnDefinition Width="auto"/>
-                <ColumnDefinition Width="*"  />
-                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="180"/>
+                <ColumnDefinition Width="Auto"  />
+                <ColumnDefinition/>
                 <ColumnDefinition Width="20"/>
             </Grid.ColumnDefinitions>
 
@@ -76,11 +76,11 @@
                      x:Name="BTCancel"  Click="ButtonCancel_Click"/>
 
             <!--COL 5-->
-            <Label   Grid.Column="2" Grid.Row="1" Content="Room #-retrieve from db"       HorizontalAlignment="Center" VerticalAlignment="Center" Height="25" Width="auto"/>
-            <Label   Grid.Column="3" Grid.Row="1" Content="Bed type-retrieve from db"     HorizontalAlignment="Center" VerticalAlignment="Center" Height="25" Width="auto"/>
-            <Label   Grid.Column="4" Grid.Row="1" Content="Smoking-retrieve from db"      HorizontalAlignment="Center" VerticalAlignment="Center" Height="25" Width="auto"/>
-            <Label   Grid.Column="5" Grid.Row="1" Content="Payment Type-retrieve from db" HorizontalAlignment="Center" VerticalAlignment="Center" Height="25" Width="auto"/>
-            <Label   Grid.Column="6" Grid.Row="1" Content="ETC...-Retrive from db"        HorizontalAlignment="Center" VerticalAlignment="Center" Height="25" Width="auto"/>
+            <Label   Grid.Column="2" Grid.Row="1" Content="Room #:"       HorizontalAlignment="Center" VerticalAlignment="Center" Height="25" Width="auto"/>
+            <Label   Grid.Column="3" Grid.Row="1" Content="Bed type:"     HorizontalAlignment="Center" VerticalAlignment="Center" Height="25" Width="auto"/>
+            <Label   Grid.Column="4" Grid.Row="1" Content="Smoking:"      HorizontalAlignment="Center" VerticalAlignment="Center" Height="25" Width="auto"/>
+            <Label   Grid.Column="5" Grid.Row="1" Content="Payment Type:" HorizontalAlignment="Center" VerticalAlignment="Center" Height="25" Width="auto"/>
+            <Label   Grid.Column="6" Grid.Row="1" Content="ETC?"        HorizontalAlignment="Center" VerticalAlignment="Center" Height="25" Width="auto"/>
 
 
 

@@ -35,7 +35,7 @@ namespace bestsixapp
             {
                 dbContext.Customers.Add(new Customer
                 {   // Add Customer info into customer table
-                    FirstName = TBFName.Text, LastName = TBLName.Text, ID = Int32.Parse(TBID.Text),
+                    FirstName = TBFName.Text, LastName = TBLName.Text, ID = TBID.Text,
                     PhoneNo = TBPhone.Text,   Street = TBStreet.Text, City = TBCity.Text,
                     State = TBState.Text, Zip = TBZip.Text, PaymentInfo = TBPayment.Text }); 
                 dbContext.SaveChanges();
