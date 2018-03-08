@@ -252,7 +252,7 @@ namespace bestsixapp
                     checkWindow.ShowDialog();
                 else
                 {
-                    //new method goes here
+                    checkWindow.populateTextBoxes();
                     checkWindow.ShowDialog();
                 }
                 
