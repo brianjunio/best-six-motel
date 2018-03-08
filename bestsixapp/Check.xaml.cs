@@ -25,9 +25,10 @@ namespace bestsixapp
         public Check()
         {
             InitializeComponent();
-
+            
             // RefreshList();  Update Room Page with Customer Information when seleceted
         }
+
         private void ButtonRegister_Click(object sender, RoutedEventArgs e)
         {
             using (DatabaseContext dbContext = new DatabaseContext())
@@ -45,7 +46,7 @@ namespace bestsixapp
             }
         }
         //method for cancel
-        public void ButtonCancel_Click(object sender, RoutedEventArgs e) { this.Close(); }
+        public void ButtonCancel_Click(object sender, RoutedEventArgs e) { this.Close(); }}
         
         //private void RefreshList()
         //{
@@ -58,4 +59,4 @@ namespace bestsixapp
         //    }
         //}
     }
-}
+
