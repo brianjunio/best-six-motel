@@ -23,9 +23,7 @@ namespace bestsixapp
     public partial class Check : Window
     {
         int roomNum;
-        string smoking;
-        string bedType;
-        double price;
+        Room query = new Room();
 
         public Check()
         {
@@ -34,12 +32,9 @@ namespace bestsixapp
             // RefreshList();  Update Room Page with Customer Information when seleceted
         }
 
-        public Check(int roomNum, string smoking, string bedType, double price)
+        public Check(int roomNum)
         {
             this.roomNum = roomNum;
-            this.smoking = smoking;
-            this.bedType = bedType;
-            this.price = price;
             InitializeComponent();
             UpdateLabels();
         }
@@ -58,7 +53,8 @@ namespace bestsixapp
                     City = TBCity.Text,
                     State = TBState.Text,
                     Zip = TBZip.Text,
-                    PaymentInfo = TBPayment.Text
+                    PaymentInfo = TBPayment.Text,
+                    RoomNo = roomNum
                 });
                 dbContext.SaveChanges();
 
@@ -74,10 +70,7 @@ namespace bestsixapp
         {
             using(DatabaseContext dbContext = new DatabaseContext())
             {
-                /* var roomEntry = from r in dbContext.Rooms
-                                 where r.RoomNo.Equals(1)
-                                 select r;*/
-                Room query = new Room();
+
                 query = dbContext.Rooms.Find(roomNum);
                 roomValue.Content = query.RoomNo.ToString();
                 bedValue.Content = query.BedType;
