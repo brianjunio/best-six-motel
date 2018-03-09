@@ -69,7 +69,6 @@ namespace bestsixapp
                 dbContext.SaveChanges();
                 localID = TBID.Text;
                 Close();
-                // RefreshList();  Update Room Page with Customer Information when seleceted
 
             }
         }
@@ -95,7 +94,7 @@ namespace bestsixapp
         {
             using (DatabaseContext dbContext = new DatabaseContext())
             {
-                customerQuery = dbContext.Customers.Find(localID);
+                customerQuery = dbContext.Customers.SingleOrDefault(c => c.RoomNo == roomNum);
                 TBID.Text = customerQuery.ID;
                 TBFName.Text = customerQuery.FirstName;
                 TBLName.Text = customerQuery.LastName;
