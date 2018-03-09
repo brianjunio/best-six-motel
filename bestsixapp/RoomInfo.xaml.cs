@@ -84,8 +84,8 @@ namespace bestsixapp
                     Top = room.Top,
                     NoOfBeds = room.NoOfBeds,
                     BedType = room.BedType,
-                    Checkin = room.Checkin,
-                    Checkout = room.Checkout,
+                  //  Checkin = room.Checkin,
+                  //  Checkout = room.Checkout,
                     Legend = room.Legend,
                     Price = room.Price,
                     Smoking = room.Smoking

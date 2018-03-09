@@ -23,8 +23,7 @@ namespace bestsixapp
     public partial class Check : Window
     {
         int roomNum;
-        int localID;
-        private bool checkedIn;
+        string localID;
         Room roomQuery = new Room();
         Customer customerQuery = new Customer();
 
@@ -40,7 +39,6 @@ namespace bestsixapp
             this.roomNum = roomNum;
             InitializeComponent();
             UpdateLabels();
-            checkedIn = false;
         }
 
         private void ButtonRegister_Click(object sender, RoutedEventArgs e)
@@ -60,9 +58,16 @@ namespace bestsixapp
                     PaymentInfo = TBPayment.Text,
                     RoomNo = roomNum
                 });
+
+                roomQuery = dbContext.Rooms.SingleOrDefault(rm => rm.RoomNo == roomNum);
+                if(roomQuery != null)
+                {
+                    roomQuery.Checkin = DateTime.Today;
+                }
+                
+                
                 dbContext.SaveChanges();
-                swapFlag();
-                localID = Int32.Parse(TBID.Text);
+                localID = TBID.Text;
                 Close();
                 // RefreshList();  Update Room Page with Customer Information when seleceted
 
@@ -103,19 +108,6 @@ namespace bestsixapp
 
 
             }
-        }
-
-        public bool getFlag()
-        {
-            return checkedIn;
-        }
-    
-        public void swapFlag()
-        {
-            if (checkedIn == false)
-                checkedIn = true;
-            else
-                checkedIn = false;
         }
 
     }
