@@ -90,7 +90,7 @@ namespace bestsixapp
             }
         }
 
-        public void populateTextBoxes()
+        public void PopulateTextBoxes()
         {
             using (DatabaseContext dbContext = new DatabaseContext())
             {

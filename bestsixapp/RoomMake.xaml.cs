@@ -51,7 +51,7 @@ namespace bestsixapp
 
             }
         }
-        private void rect_MouseLeftButtonDown(object sender, MouseEventArgs e)
+        private void Rect_MouseLeftButtonDown(object sender, MouseEventArgs e)
         {
   
             if (isEdit)
@@ -63,7 +63,7 @@ namespace bestsixapp
         }
 
 
-        private void rect_MouseLeftButtonUp(object sender, MouseEventArgs e)
+        private void Rect_MouseLeftButtonUp(object sender, MouseEventArgs e)
         {
           
 
@@ -73,7 +73,7 @@ namespace bestsixapp
                 rect.ReleaseMouseCapture();
             }
         }
-        private void rect_MouseMove(object sender, MouseEventArgs e)
+        private void Rect_MouseMove(object sender, MouseEventArgs e)
         {
 
             rect = (Button)sender;
@@ -189,12 +189,12 @@ namespace bestsixapp
             if (isEdit)
             {
                 //cast object
-                rect = (Button)room.drawRoom();
+                rect = (Button)room.DrawRoom();
                 //tract mouse events
-                rect.PreviewMouseLeftButtonDown += rect_MouseLeftButtonDown;
-                rect.PreviewMouseLeftButtonUp += rect_MouseLeftButtonUp;
+                rect.PreviewMouseLeftButtonDown += Rect_MouseLeftButtonDown;
+                rect.PreviewMouseLeftButtonUp += Rect_MouseLeftButtonUp;
   
-                rect.PreviewMouseMove += rect_MouseMove;
+                rect.PreviewMouseMove += Rect_MouseMove;
                 rect.Click += CheckButton_Click;
                 //add room object to room list
                 Canvas.SetLeft(rect, 0);
@@ -258,7 +258,7 @@ namespace bestsixapp
                         checkWindow.ShowDialog();
                     else
                     {
-                        checkWindow.populateTextBoxes();
+                        checkWindow.PopulateTextBoxes();
                         checkWindow.ShowDialog();
                     }
                 }
@@ -274,12 +274,12 @@ namespace bestsixapp
             foreach(var obj in roomList)
             {
                 //cast object
-                rect = (Button)obj.drawRoom();
+                rect = (Button)obj.DrawRoom();
                 //tract mouse events
-                rect.PreviewMouseLeftButtonDown += rect_MouseLeftButtonDown;
-                rect.PreviewMouseLeftButtonUp += rect_MouseLeftButtonUp;
+                rect.PreviewMouseLeftButtonDown += Rect_MouseLeftButtonDown;
+                rect.PreviewMouseLeftButtonUp += Rect_MouseLeftButtonUp;
 
-                rect.PreviewMouseMove += rect_MouseMove;
+                rect.PreviewMouseMove += Rect_MouseMove;
                 rect.Click += CheckButton_Click;
                 //add room object to room list
                 Canvas.SetLeft(rect, obj.Left);
