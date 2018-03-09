@@ -21,11 +21,14 @@ namespace bestsixapp
     public partial class RoomMake : Window
     {
         List<RoomData> roomList = new List<RoomData>();
+        Room roomQuery = new Room();
         RoomData room;
         RoomInfo newRoomInfo;
         Button rect;
+        DateTime defaultTime = DateTime.Parse("0001-01-01 00:00:00");
         private bool moveButton = false;
         private bool isEdit = false;
+
         public RoomMake()
         {
             InitializeComponent();
@@ -111,8 +114,8 @@ namespace bestsixapp
                         Top = room.Top,
                         NoOfBeds = room.NoOfBeds,
                         BedType = room.BedType,
-                        Checkin = room.Checkin,
-                        Checkout = room.Checkout,
+                    //  Checkin = room.Checkin,
+                    //  Checkout = room.Checkout,
                         Legend = room.Legend,
                         Price = room.Price,
                         Smoking = room.Smoking
@@ -216,8 +219,8 @@ namespace bestsixapp
                                             roomNo = rm.RoomNo,
                                             bedType = rm.BedType,
                                             noOfBed = rm.NoOfBeds,
-                                            checkIn = rm.Checkin,
-                                            checkOut = rm.Checkout,
+                                         // checkIn = DateTime.Today,
+                                         // checkOut = rm.Checkout,
                                             left = rm.Left,
                                             top = rm.Top,
                                             price = rm.Price,
@@ -246,9 +249,22 @@ namespace bestsixapp
                     if (rect == e1.RoomButton)
                         room = e1; // grabs room object if the rect is selected
                 } //this loop is to find the room object that is attached to rect
-                Check checkWindow = new Check(room.RoomNo, room.Smoking, room.BedType, room.Price);
+                Check checkWindow = new Check(room.RoomNo);
               //  checkWindow.TextBofRoom.Text = Convert.ToString(room.RoomNo);
-                checkWindow.ShowDialog();
+              using(DatabaseContext dbContext = new DatabaseContext())
+                {
+                    roomQuery = dbContext.Rooms.Find(room.RoomNo);
+                    if (roomQuery.Checkin == defaultTime)
+                        checkWindow.ShowDialog();
+                    else
+                    {
+                        checkWindow.populateTextBoxes();
+                        checkWindow.ShowDialog();
+                    }
+                }
+                
+                
+                
             }
             
         }

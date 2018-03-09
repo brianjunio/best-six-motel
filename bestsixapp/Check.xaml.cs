@@ -23,23 +23,20 @@ namespace bestsixapp
     public partial class Check : Window
     {
         int roomNum;
-        string smoking;
-        string bedType;
-        double price;
+        string localID;
+        Room roomQuery = new Room();
+        Customer customerQuery = new Customer();
 
         public Check()
         {
             InitializeComponent();
-            UpdateLabels();
+            
             // RefreshList();  Update Room Page with Customer Information when seleceted
         }
 
-        public Check(int roomNum, string smoking, string bedType, double price)
+        public Check(int roomNum)
         {
             this.roomNum = roomNum;
-            this.smoking = smoking;
-            this.bedType = bedType;
-            this.price = price;
             InitializeComponent();
             UpdateLabels();
         }
@@ -58,12 +55,20 @@ namespace bestsixapp
                     City = TBCity.Text,
                     State = TBState.Text,
                     Zip = TBZip.Text,
-                    PaymentInfo = TBPayment.Text
+                    PaymentInfo = TBPayment.Text,
+                    RoomNo = roomNum
                 });
-                dbContext.SaveChanges();
 
+                roomQuery = dbContext.Rooms.SingleOrDefault(rm => rm.RoomNo == roomNum);
+                if(roomQuery != null)
+                {
+                    roomQuery.Checkin = DateTime.Today;
+                }
+                
+                
+                dbContext.SaveChanges();
+                localID = TBID.Text;
                 Close();
-                // RefreshList();  Update Room Page with Customer Information when seleceted
 
             }
         }
@@ -74,18 +79,35 @@ namespace bestsixapp
         {
             using(DatabaseContext dbContext = new DatabaseContext())
             {
-                /* var roomEntry = from r in dbContext.Rooms
-                                 where r.RoomNo.Equals(1)
-                                 select r;*/
-                roomValue.Content = roomNum;
-                bedValue.Content = bedType;
-                smokingValue.Content = smoking;
-                priceValue.Content = price;
+
+                roomQuery = dbContext.Rooms.Find(roomNum);
+                roomValue.Content = roomQuery.RoomNo.ToString();
+                bedValue.Content = roomQuery.BedType;
+                smokingValue.Content = roomQuery.Smoking;
+                priceValue.Content = roomQuery.Price;
                // System.Diagnostics.Debug.Write(roomEntry.ToString());
                // roomValue.Content = roomEntry.ToString();
             }
         }
-    
+
+        public void populateTextBoxes()
+        {
+            using (DatabaseContext dbContext = new DatabaseContext())
+            {
+                customerQuery = dbContext.Customers.SingleOrDefault(c => c.RoomNo == roomNum);
+                TBID.Text = customerQuery.ID;
+                TBFName.Text = customerQuery.FirstName;
+                TBLName.Text = customerQuery.LastName;
+                TBPhone.Text = customerQuery.PhoneNo;
+                TBStreet.Text = customerQuery.Street;
+                TBCity.Text = customerQuery.City;
+                TBState.Text = customerQuery.State;
+                TBZip.Text = customerQuery.Zip;
+                TBPayment.Text = customerQuery.PaymentInfo;
+
+
+            }
+        }
 
     }
 
