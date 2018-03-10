@@ -129,6 +129,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Transactions.cs" />
     <Compile Include="Customer.cs" />
     <Compile Include="DatabaseContext.cs" />
     <Compile Include="Employee.cs" />

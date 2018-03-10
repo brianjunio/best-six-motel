@@ -17,7 +17,7 @@ namespace Database.Migrations
 
             modelBuilder.Entity("Database.Customer", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<string>("ID")
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("City");
