@@ -26,6 +26,7 @@ namespace bestsixapp
         Button rect;
         private bool moveButton = false;
         private bool isEdit = false;
+        private bool deleteButton = false;
         public RoomMake()
         {
             InitializeComponent();
@@ -33,6 +34,7 @@ namespace bestsixapp
             DrawAllRoom();
             AddRoomButton.IsEnabled = false;
             MoveRoomButton.IsEnabled = false;
+            DeleteRoomButton.IsEnabled = false;
         }
 
         private void CreateRoomClick(object sender, RoutedEventArgs e)
@@ -127,7 +129,7 @@ namespace bestsixapp
                
             }
             else
-            {   if (isEdit)
+            {   if (isEdit && !deleteButton) //edit room info
                 {
                     foreach (var e1 in roomList)
                     {
@@ -147,6 +149,44 @@ namespace bestsixapp
                     editRoom.ComboBoxSmoking.SelectedItem = room.Smoking;
                     editRoom.ShowDialog();
                 }
+                else if(deleteButton)
+                {
+                    //Room delete dailog
+                    string sMessageBoxText = "Do you want to delete this room?";
+                    string sCaption = "Delete Room";
+                    MessageBoxButton btnMessageBox = MessageBoxButton.YesNo;
+                    MessageBoxImage icnMessageBox = MessageBoxImage.Warning;
+
+                    MessageBoxResult rsltMessageBox = MessageBox.Show(sMessageBoxText, sCaption, btnMessageBox, icnMessageBox);
+
+                    switch (rsltMessageBox)
+                    {
+                        case MessageBoxResult.Yes:
+                            foreach (var e1 in roomList)
+                            {
+                                //check room list to see if object selected is any of the room
+                                if (rect == e1.RoomButton)
+                                    room = e1;
+                            } //this loop is to find the room object that is attached to rect
+                            roomList.Remove(room);
+                            RoomCanvas.Children.Remove(rect);
+                            var deletedRoom = new Room()
+                            {
+                                RoomNo = room.RoomNo
+                            };
+                            using (var context = new DatabaseContext())
+                            {
+                                context.Remove<Room>(deletedRoom);
+                                context.SaveChanges();
+                            }
+                            InvalidateVisual();
+                            break;
+
+                        case MessageBoxResult.No:
+                            /* ... */
+                            break;
+                    }
+                }
             }
 
         }
@@ -163,6 +203,7 @@ namespace bestsixapp
                 isEdit = true;
                 AddRoomButton.IsEnabled = true;
                 MoveRoomButton.IsEnabled = true;
+                DeleteRoomButton.IsEnabled = true;
 
             }
             else
@@ -173,6 +214,7 @@ namespace bestsixapp
                 isEdit = false;
                 AddRoomButton.IsEnabled = false;
                 MoveRoomButton.IsEnabled = false;
+                DeleteRoomButton.IsEnabled = false;
 
             }
         }
@@ -270,7 +312,6 @@ namespace bestsixapp
                 //add room object to room list
                 Canvas.SetLeft(rect, obj.Left);
                 Canvas.SetTop(rect, obj.Top);
-
                 //add object to canvas
                 RoomCanvas.Children.Add(rect);
             }
@@ -291,6 +332,22 @@ namespace bestsixapp
             }
 
         }
+
+        private void DeleteRoomButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (!deleteButton)
+            {
+                deleteButton = true;
+                DeleteRoomButton.Background = new SolidColorBrush(Color.FromArgb(255, 57, 255, 20));
+            }
+
+            else
+            {
+                deleteButton = false;
+                DeleteRoomButton.ClearValue(Button.BackgroundProperty); 
+            }
+        }
+        
     }
 }
 

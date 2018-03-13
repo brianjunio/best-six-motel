@@ -27,6 +27,8 @@
         <Button Name="EditRoomButton" Grid.Row ="5" Grid.Column="1"  Content ="Edit Rooms" Margin="5,5,10,5" Click="EditRoomClick" Padding="2"/>
         <Button Name="AddRoomButton" Grid.Row ="5" Grid.Column="2"  Content ="Add Rooms" Margin="5,5,10,5" Click="CreateRoomClick" Padding="2"/>
         <Button Name="MoveRoomButton" Grid.Row ="5" Grid.Column="3"  Content ="Move Rooms" Margin="5,5,10,5" Click="MoveRoomButton_Click" Padding="2"/>
+        <Button Name="DeleteRoomButton" Grid.Row ="5" Grid.Column="4"  Content ="Delete Rooms" Margin="5,5,10,5" Click="DeleteRoomButton_Click" Padding="2"/>
+
         <Border Name="CanvasBorder" Grid.ColumnSpan="7" Grid.Row="0" BorderThickness="2"  BorderBrush="Black">
 
             <Canvas Name="RoomCanvas" Background="AliceBlue" ClipToBounds="True"  >
