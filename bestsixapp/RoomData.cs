@@ -70,7 +70,7 @@ namespace bestsixapp
             height = 65; //height of rect
         }
         //create rectangle to display room
-        public object makeRoom()
+        public object MakeRoom()
         {
             rect = new Rectangle
             {
@@ -84,7 +84,7 @@ namespace bestsixapp
             return Rect;
         }
 
-        public object drawRoom()
+        public object DrawRoom()
         {
             myRoom = new Button();
             myRoom.Background = new SolidColorBrush(Color.FromArgb(255, 50, 245, 88));
@@ -104,7 +104,7 @@ namespace bestsixapp
             rect.Fill = new SolidColorBrush(Colors.LightGreen);
         }
         
-        public void needCleaning()
+        public void NeedCleaning()
         {
             rect.Fill = new SolidColorBrush(Colors.Yellow);
         }

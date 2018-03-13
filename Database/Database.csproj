@@ -129,6 +129,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Migrations\20180310043542_Transactions.cs.cs" />
+    <Compile Include="Migrations\20180310043542_Transactions.cs.designer.cs">
+      <DependentUpon>20180310043542_Transactions.cs.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Transactions.cs" />
     <Compile Include="Customer.cs" />
     <Compile Include="DatabaseContext.cs" />
     <Compile Include="Employee.cs" />

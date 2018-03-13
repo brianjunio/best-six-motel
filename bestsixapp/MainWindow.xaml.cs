@@ -65,6 +65,11 @@ namespace bestsixapp
             CheckoutWindow cw = new CheckoutWindow();
             cw.ShowDialog();
         }
+
+        private void Main_Navigated(object sender, NavigationEventArgs e)
+        {
+
+        }
     }
 
 }

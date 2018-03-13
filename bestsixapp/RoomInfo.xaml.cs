@@ -40,7 +40,7 @@ namespace bestsixapp
         public RoomInfo(ref RoomData room)
         {
             InitializeComponent();
-            fillCombo();
+            FillCombo();
             this.room = room;
         }
 
@@ -84,8 +84,8 @@ namespace bestsixapp
                     Top = room.Top,
                     NoOfBeds = room.NoOfBeds,
                     BedType = room.BedType,
-                    Checkin = room.Checkin,
-                    Checkout = room.Checkout,
+                  //  Checkin = room.Checkin,
+                  //  Checkout = room.Checkout,
                     Legend = room.Legend,
                     Price = room.Price,
                     Smoking = room.Smoking
@@ -123,7 +123,7 @@ namespace bestsixapp
            // }
             this.SaveRoom(this, new EventArgs()); //Raise Event, which trigger all events subscribed to it.
         }
-        private void fillCombo()
+        private void FillCombo()
         {
             ComboBoxSmoking.Items.Add("Yes");
             ComboBoxSmoking.Items.Add("No");   

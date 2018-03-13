@@ -24,7 +24,7 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="20"/>
         </Grid.RowDefinitions>
-        
+
         <!--Col 1-->
         <Label   Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="1" Content="Room Number:" HorizontalAlignment="Left"  VerticalAlignment="Center" />
         <Label   Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="2" Content="First Name:" HorizontalAlignment="Left"  VerticalAlignment="Center"/>
@@ -34,14 +34,22 @@
         <Button Name="BTEditCheckin" Grid.Column="1" Grid.Row="6" Content ="Edit Checkout" HorizontalAlignment="Center" Margin="5" VerticalAlignment="Top" Width="auto" Click="ButtonEdit_Click" FontSize="16"/>
 
         <!-- COl 2-->
-        <TextBox Grid.Column="3" Grid.Row="1" x:Name="TextBoxRoomNo" HorizontalAlignment="Center"  VerticalAlignment="Center" Height="25" Width="100" Margin="5" />
-        <TextBox Grid.Column="3" Grid.Row="2" x:Name="TextBoxBedType" HorizontalAlignment="Center"  VerticalAlignment="Center" Height="25" Width="100"  Margin="5"/>
-        <TextBox Grid.Column="3" Grid.Row="3" x:Name="TextBoxNoOfBeds" HorizontalAlignment="Center"  VerticalAlignment="Center" Height="25" Width="100" Margin="5"/>
-        <TextBox Grid.Column="3" Grid.Row="4" x:Name="TextBoxPrice" HorizontalAlignment="Center"  VerticalAlignment="Center" Height="25" Width="100" Margin="5"/>
-        <TextBox Grid.Column="3" Grid.Row="5" x:Name="TextBoxSmoking" HorizontalAlignment="Center"  VerticalAlignment="Center" Height="25" Width="100" Margin="5"/>
         <Button Grid.Column="2" Grid.Row="6"  Name ="BTRefund" Content ="Refund" HorizontalAlignment="Center" Margin="5" VerticalAlignment="Top" Width="75"  FontSize="16" Click="ButtonRefund_Click"/>
 
         <!-- Col 3-->
+        <TextBox Grid.Column="3" Grid.Row="1" x:Name="TextBoxRoomNo" HorizontalAlignment="Center"  VerticalAlignment="Center" Height="25" Width="100" Margin="5" />
+        <TextBox Grid.Column="3" Grid.Row="2" x:Name="TextBoxBedType" HorizontalAlignment="Center"  VerticalAlignment="Center" Height="25" Width="100"  Margin="5"/>
+        <TextBox Grid.Column="3" Grid.Row="3" x:Name="TextBoxNoOfBeds" HorizontalAlignment="Center"  VerticalAlignment="Center" Height="25" Width="100" Margin="5"/>
+        <TextBox Grid.Column="3" Grid.Row="4" x:Name="CheckinMonth" HorizontalAlignment="Center"  VerticalAlignment="Center" Height="24" Width="28" Margin="7.667,5.333,79.333,5.333"/>
+        <TextBox Grid.Column="3" Grid.Row="4" x:Name="CheckinDay" HorizontalAlignment="Center"  VerticalAlignment="Center" Height="24" Width="28" Margin="43.667,5.333,43.333,5.333"/>
+        <TextBox Grid.Column="3" Grid.Row="4" x:Name="CheckinYear" HorizontalAlignment="Center"  VerticalAlignment="Center" Height="24" Width="28" Margin="79.667,5.333,7.333,5.333"/>
+        <TextBox Grid.Column="3" Grid.Row="5" x:Name="CheckoutMonth" HorizontalAlignment="Center"  VerticalAlignment="Center" Height="24" Width="28" Margin="7.667,5.333,79.333,5.333"/>
+        <TextBox Grid.Column="3" Grid.Row="5" x:Name="CheckoutDay" HorizontalAlignment="Center"  VerticalAlignment="Center" Height="24" Width="28" Margin="43.667,5.333,43.333,5.333"/>
+        <TextBox Grid.Column="3" Grid.Row="5" x:Name="CheckoutYear" HorizontalAlignment="Center"  VerticalAlignment="Center" Height="24" Width="28" Margin="79.667,5.333,7.333,5.333"/>
+
+
+
+
         <Button Name ="BTCheckout" Grid.Column="3" Grid.Row="6" Content ="Checkout" HorizontalAlignment="Center" Margin="5" VerticalAlignment="Top" Width="75"  FontSize="16" Click="ButtonCheckout_Click"/>
 
     </Grid>

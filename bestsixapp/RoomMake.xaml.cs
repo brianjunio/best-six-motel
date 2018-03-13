@@ -21,9 +21,11 @@ namespace bestsixapp
     public partial class RoomMake : Window
     {
         List<RoomData> roomList = new List<RoomData>();
+        Room roomQuery = new Room();
         RoomData room;
         RoomInfo newRoomInfo;
         Button rect;
+        DateTime defaultTime = DateTime.Parse("0001-01-01 00:00:00");
         private bool moveButton = false;
         private bool isEdit = false;
         private bool deleteButton = false;
@@ -50,7 +52,7 @@ namespace bestsixapp
 
             }
         }
-        private void rect_MouseLeftButtonDown(object sender, MouseEventArgs e)
+        private void Rect_MouseLeftButtonDown(object sender, MouseEventArgs e)
         {
             //capture click of mouseleft butotn
             if (isEdit)
@@ -62,7 +64,7 @@ namespace bestsixapp
         }
 
 
-        private void rect_MouseLeftButtonUp(object sender, MouseEventArgs e)
+        private void Rect_MouseLeftButtonUp(object sender, MouseEventArgs e)
         {
             //capture release of mouseleft button
             if (isEdit)
@@ -71,7 +73,7 @@ namespace bestsixapp
                 rect.ReleaseMouseCapture();
             }
         }
-        private void rect_MouseMove(object sender, MouseEventArgs e)
+        private void Rect_MouseMove(object sender, MouseEventArgs e)
         {
 
             rect = (Button)sender;
@@ -112,8 +114,8 @@ namespace bestsixapp
                         Top = room.Top,
                         NoOfBeds = room.NoOfBeds,
                         BedType = room.BedType,
-                        Checkin = room.Checkin,
-                        Checkout = room.Checkout,
+                    //  Checkin = room.Checkin,
+                    //  Checkout = room.Checkout,
                         Legend = room.Legend,
                         Price = room.Price,
                         Smoking = room.Smoking
@@ -227,12 +229,12 @@ namespace bestsixapp
             if (isEdit)
             {
                 //cast object
-                rect = (Button)room.drawRoom();
+                rect = (Button)room.DrawRoom();
                 //tract mouse events
-                rect.PreviewMouseLeftButtonDown += rect_MouseLeftButtonDown;
-                rect.PreviewMouseLeftButtonUp += rect_MouseLeftButtonUp;
+                rect.PreviewMouseLeftButtonDown += Rect_MouseLeftButtonDown;
+                rect.PreviewMouseLeftButtonUp += Rect_MouseLeftButtonUp;
   
-                rect.PreviewMouseMove += rect_MouseMove;
+                rect.PreviewMouseMove += Rect_MouseMove;
                 rect.Click += CheckButton_Click;
                 //add room object to room list
                 Canvas.SetLeft(rect, 0);
@@ -258,8 +260,8 @@ namespace bestsixapp
                                             roomNo = rm.RoomNo,
                                             bedType = rm.BedType,
                                             noOfBed = rm.NoOfBeds,
-                                            checkIn = rm.Checkin,
-                                            checkOut = rm.Checkout,
+                                         // checkIn = DateTime.Today,
+                                         // checkOut = rm.Checkout,
                                             left = rm.Left,
                                             top = rm.Top,
                                             price = rm.Price,
@@ -289,9 +291,22 @@ namespace bestsixapp
                     if (rect == e1.RoomButton)
                         room = e1; // grabs room object if the rect is selected
                 } //this loop is to find the room object that is attached to rect
-                Check checkWindow = new Check();
+                Check checkWindow = new Check(room.RoomNo);
               //  checkWindow.TextBofRoom.Text = Convert.ToString(room.RoomNo);
-                checkWindow.ShowDialog();
+              using(DatabaseContext dbContext = new DatabaseContext())
+                {
+                    roomQuery = dbContext.Rooms.Find(room.RoomNo);
+                    if (roomQuery.Checkin == defaultTime)
+                        checkWindow.ShowDialog();
+                    else
+                    {
+                        checkWindow.PopulateTextBoxes();
+                        checkWindow.ShowDialog();
+                    }
+                }
+                
+                
+                
             }
             
         }
@@ -302,12 +317,12 @@ namespace bestsixapp
             foreach(var obj in roomList)
             {
                 //cast object
-                rect = (Button)obj.drawRoom();
+                rect = (Button)obj.DrawRoom();
                 //tract mouse events
-                rect.PreviewMouseLeftButtonDown += rect_MouseLeftButtonDown;
-                rect.PreviewMouseLeftButtonUp += rect_MouseLeftButtonUp;
+                rect.PreviewMouseLeftButtonDown += Rect_MouseLeftButtonDown;
+                rect.PreviewMouseLeftButtonUp += Rect_MouseLeftButtonUp;
 
-                rect.PreviewMouseMove += rect_MouseMove;
+                rect.PreviewMouseMove += Rect_MouseMove;
                 rect.Click += CheckButton_Click;
                 //add room object to room list
                 Canvas.SetLeft(rect, obj.Left);

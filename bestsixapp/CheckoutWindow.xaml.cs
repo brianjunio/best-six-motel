@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Database;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -24,13 +25,28 @@ namespace bestsixapp
             InitializeComponent();
         }
 
-        public void ButtonCheckout_Click(object sender, RoutedEventArgs e) { }
+        public void ButtonCheckout_Click(object sender, RoutedEventArgs e)
+        {
+            using (DatabaseContext dbContext = new DatabaseContext())
+            {
+                dbContext.Rooms.Add(new Room
+                {
+                    Checkout = DateTime.Parse(CheckoutYear.Text + "-" + CheckoutMonth.Text + "-" + CheckoutDay.Text),
+                    Checkin = DateTime.Parse(CheckinYear.Text + "-" + CheckinMonth.Text + "-" + CheckinDay.Text)
+                });
+            }
+        }
 
         private void ButtonRefund_Click(object sender, RoutedEventArgs e)
         {
 
         }
         private void ButtonEdit_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void PopulateLabels()
         {
 
         }
