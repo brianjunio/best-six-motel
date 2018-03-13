@@ -15,6 +15,7 @@ namespace Database.Migrations
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.1.5");
 
+            // Customer Model
             modelBuilder.Entity("Database.Customer", b =>
                 {
                     b.Property<string>("ID")
@@ -48,6 +49,7 @@ namespace Database.Migrations
                     b.ToTable("Customers");
                 });
 
+            // Employee Model
             modelBuilder.Entity("Database.Employee", b =>
                 {
                     b.Property<int>("EmployeeID")
@@ -68,6 +70,7 @@ namespace Database.Migrations
                     b.ToTable("Employees");
                 });
 
+            // Room Model
             modelBuilder.Entity("Database.Room", b =>
                 {
                     b.Property<int>("RoomNo")
@@ -95,6 +98,31 @@ namespace Database.Migrations
 
                     b.ToTable("Rooms");
                 });
+
+            // Transactions Model
+            modelBuilder.Entity("Database.Transactions", b =>
+            {   
+                // Auto generate a transaction number.
+                b.Property<int>("TrNumber")
+                    .ValueGeneratedOnAdd();
+
+                b.Property<string>("ID");
+
+                b.Property<int>("RoomNo");
+            
+                b.Property<DateTime>("Checkin");
+
+                b.Property<DateTime>("Checkout");
+
+                b.Property<DateTime>("DateModified");
+
+                // Transaction number for table key.
+                b.HasKey("TrNumber");
+
+                // Table to save to - Transactions.
+                b.ToTable("Transactions");
+                
+            });
 
             modelBuilder.Entity("Database.Customer", b =>
                 {

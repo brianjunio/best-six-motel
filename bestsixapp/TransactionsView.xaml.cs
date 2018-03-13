@@ -16,6 +16,7 @@ namespace bestsixapp
 {
     /// <summary>
     /// Interaction logic for TransactionsView.xaml
+    /// 
     /// </summary>
     public partial class TransactionsView : Window
     {
@@ -24,5 +25,7 @@ namespace bestsixapp
             InitializeComponent();
             
         }
+
+
     }
 }

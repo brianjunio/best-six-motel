@@ -12,9 +12,11 @@ namespace Database
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Room> Rooms { get; set; }
         public DbSet<Employee> Employees { get; set; }
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-    {
-        optionsBuilder.UseSqlite("Data Source=MyDatabase.sqlite");
+        public DbSet<Transactions> Transactions { get; set; }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.UseSqlite("Data Source=MyDatabase.sqlite");
+        }
     }
-}
 }
