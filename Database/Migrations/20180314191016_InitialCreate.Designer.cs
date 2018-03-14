@@ -8,8 +8,8 @@ using Database;
 namespace Database.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    [Migration("20180208200046_IntialCreate")]
-    partial class IntialCreate
+    [Migration("20180314191016_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -18,7 +18,7 @@ namespace Database.Migrations
 
             modelBuilder.Entity("Database.Customer", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<string>("ID")
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("City");
@@ -97,11 +97,47 @@ namespace Database.Migrations
                     b.ToTable("Rooms");
                 });
 
+            modelBuilder.Entity("Database.Transactions", b =>
+                {
+                    b.Property<int>("TrNumber")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<DateTime>("Checkin");
+
+                    b.Property<DateTime>("Checkout");
+
+                    b.Property<DateTime>("DateModified");
+
+                    b.Property<string>("ID");
+
+                    b.Property<int>("RoomNo");
+
+                    b.HasKey("TrNumber");
+
+                    b.HasIndex("ID");
+
+                    b.HasIndex("RoomNo");
+
+                    b.ToTable("Transactions");
+                });
+
             modelBuilder.Entity("Database.Customer", b =>
                 {
                     b.HasOne("Database.Room", "Room")
                         .WithOne("Customer")
                         .HasForeignKey("Database.Customer", "RoomNo")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("Database.Transactions", b =>
+                {
+                    b.HasOne("Database.Customer", "Customer")
+                        .WithMany()
+                        .HasForeignKey("ID");
+
+                    b.HasOne("Database.Room", "Room")
+                        .WithMany()
+                        .HasForeignKey("RoomNo")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
         }

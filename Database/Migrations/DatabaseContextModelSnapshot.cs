@@ -15,7 +15,6 @@ namespace Database.Migrations
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.1.5");
 
-            // Customer Model
             modelBuilder.Entity("Database.Customer", b =>
                 {
                     b.Property<string>("ID")
@@ -49,7 +48,6 @@ namespace Database.Migrations
                     b.ToTable("Customers");
                 });
 
-            // Employee Model
             modelBuilder.Entity("Database.Employee", b =>
                 {
                     b.Property<int>("EmployeeID")
@@ -70,7 +68,6 @@ namespace Database.Migrations
                     b.ToTable("Employees");
                 });
 
-            // Room Model
             modelBuilder.Entity("Database.Room", b =>
                 {
                     b.Property<int>("RoomNo")
@@ -99,36 +96,47 @@ namespace Database.Migrations
                     b.ToTable("Rooms");
                 });
 
-            // Transactions Model
             modelBuilder.Entity("Database.Transactions", b =>
-            {   
-                // Auto generate a transaction number.
-                b.Property<int>("TrNumber")
-                    .ValueGeneratedOnAdd();
+                {
+                    b.Property<int>("TrNumber")
+                        .ValueGeneratedOnAdd();
 
-                b.Property<string>("ID");
+                    b.Property<DateTime>("Checkin");
 
-                b.Property<int>("RoomNo");
-            
-                b.Property<DateTime>("Checkin");
+                    b.Property<DateTime>("Checkout");
 
-                b.Property<DateTime>("Checkout");
+                    b.Property<DateTime>("DateModified");
 
-                b.Property<DateTime>("DateModified");
+                    b.Property<string>("ID");
 
-                // Transaction number for table key.
-                b.HasKey("TrNumber");
+                    b.Property<int>("RoomNo");
 
-                // Table to save to - Transactions.
-                b.ToTable("Transactions");
-                
-            });
+                    b.HasKey("TrNumber");
+
+                    b.HasIndex("ID");
+
+                    b.HasIndex("RoomNo");
+
+                    b.ToTable("Transactions");
+                });
 
             modelBuilder.Entity("Database.Customer", b =>
                 {
                     b.HasOne("Database.Room", "Room")
                         .WithOne("Customer")
                         .HasForeignKey("Database.Customer", "RoomNo")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("Database.Transactions", b =>
+                {
+                    b.HasOne("Database.Customer", "Customer")
+                        .WithMany()
+                        .HasForeignKey("ID");
+
+                    b.HasOne("Database.Room", "Room")
+                        .WithMany()
+                        .HasForeignKey("RoomNo")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
         }

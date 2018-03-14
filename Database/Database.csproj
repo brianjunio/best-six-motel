@@ -129,23 +129,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Migrations\20180310043542_Transactions.cs.cs" />
-    <Compile Include="Migrations\20180310043542_Transactions.cs.designer.cs">
-      <DependentUpon>20180310043542_Transactions.cs.cs</DependentUpon>
+    <Compile Include="Migrations\20180314191016_InitialCreate.cs" />
+    <Compile Include="Migrations\20180314191016_InitialCreate.designer.cs">
+      <DependentUpon>20180314191016_InitialCreate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\DatabaseContextModelSnapshot.cs" />
     <Compile Include="Transactions.cs" />
     <Compile Include="Customer.cs" />
     <Compile Include="DatabaseContext.cs" />
     <Compile Include="Employee.cs" />
-    <Compile Include="Migrations\20180208200046_IntialCreate.cs" />
-    <Compile Include="Migrations\20180208200046_IntialCreate.designer.cs">
-      <DependentUpon>20180208200046_IntialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\20180221180016_FirstUpdate.cs" />
-    <Compile Include="Migrations\20180221180016_FirstUpdate.designer.cs">
-      <DependentUpon>20180221180016_FirstUpdate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\DatabaseContextModelSnapshot.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Room.cs" />
   </ItemGroup>
@@ -153,6 +145,7 @@
     <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

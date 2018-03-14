@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Database.Migrations
 {
-    public partial class IntialCreate : Migration
+    public partial class InitialCreate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -50,8 +50,7 @@ namespace Database.Migrations
                 name: "Customers",
                 columns: table => new
                 {
-                    ID = table.Column<int>(nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
+                    ID = table.Column<string>(nullable: false),
                     City = table.Column<string>(nullable: true),
                     FirstName = table.Column<string>(nullable: true),
                     LastEdit = table.Column<string>(nullable: true),
@@ -74,20 +73,62 @@ namespace Database.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "Transactions",
+                columns: table => new
+                {
+                    TrNumber = table.Column<int>(nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Checkin = table.Column<DateTime>(nullable: false),
+                    Checkout = table.Column<DateTime>(nullable: false),
+                    DateModified = table.Column<DateTime>(nullable: false),
+                    ID = table.Column<string>(nullable: true),
+                    RoomNo = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Transactions", x => x.TrNumber);
+                    table.ForeignKey(
+                        name: "FK_Transactions_Customers_ID",
+                        column: x => x.ID,
+                        principalTable: "Customers",
+                        principalColumn: "ID",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Transactions_Rooms_RoomNo",
+                        column: x => x.RoomNo,
+                        principalTable: "Rooms",
+                        principalColumn: "RoomNo",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_Customers_RoomNo",
                 table: "Customers",
                 column: "RoomNo",
                 unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Transactions_ID",
+                table: "Transactions",
+                column: "ID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Transactions_RoomNo",
+                table: "Transactions",
+                column: "RoomNo");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Customers");
+                name: "Employees");
 
             migrationBuilder.DropTable(
-                name: "Employees");
+                name: "Transactions");
+
+            migrationBuilder.DropTable(
+                name: "Customers");
 
             migrationBuilder.DropTable(
                 name: "Rooms");
