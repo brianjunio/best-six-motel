@@ -90,6 +90,7 @@ namespace bestsixapp
                 }
 
                 roomQuery = dbContext.Rooms.Find(roomNum);
+                roomQuery.Checkout = DateTime.Today;
                 roomQuery.Legend = "Vacant";
                 dbContext.SaveChanges();
                 Close();
