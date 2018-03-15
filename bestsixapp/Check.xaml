@@ -52,8 +52,7 @@
             <Label   Grid.Column="1" Grid.Row="8" Content="State"       HorizontalAlignment="Center" VerticalAlignment="Center" Height="24" Width="100" Margin="23.667,1,8.333,0.333"/>
             <Label   Grid.Column="1" Grid.Row="9" Content="Zip"         HorizontalAlignment="Center" VerticalAlignment="Center" Height="24" Width="100" Margin="23.667,1.667,8.333,24.667" Grid.RowSpan="2"/>
             <Label  Grid.Column="1" Grid.Row="10" Content="Payment Type" HorizontalAlignment="Center" VerticalAlignment="Center" Height="26" Width="100" Margin="23.667,0.333,8.333,23.667" Grid.RowSpan="2"/>
-            <Button Grid.Column="1" Grid.Row="12" Content="Register"    HorizontalAlignment="Center"  VerticalAlignment="Center" Height="24" Width="76" 
-                    x:Name="BTRegister" Click="ButtonRegister_Click" Margin="35.667,0.333,20.333,1"/>
+            <Button Grid.Column="1" Grid.Row="12" Content="Check Out" HorizontalAlignment="Center" VerticalAlignment="Center" Height="24" Width="76" x:Name="BTCheckout" Click="ButtonCheckout_Click" Margin="24.667,1.333,34,0" />
 
             <!--COL 2-->
             <TextBox Grid.Column="2" Grid.Row="1" x:Name="TBFName"  HorizontalAlignment="Center" VerticalAlignment="Center" Height="25" Width="200" Margin="15.667,0,16.333,0.333" />
@@ -66,7 +65,9 @@
             <TextBox Grid.Column="2" Grid.Row="9" x:Name="TBZip"    HorizontalAlignment="Center" VerticalAlignment="Center" Height="25" Width="200" Margin="15.667,0.667,16.333,24.667" Grid.RowSpan="2" />
             <TextBox Grid.Column="2" Grid.Row="10" x:Name="TBPayment" HorizontalAlignment="Center" VerticalAlignment="Center" Height="25" Width="200" Margin="15.667,0.333,16.333,24.667" Grid.RowSpan="2" />
             <Button  Grid.Column="2" Grid.Row="12" Content="Cancel" HorizontalAlignment="Center" VerticalAlignment="Center" Height="24" Width="75" 
-                     x:Name="BTCancel"  Click="ButtonCancel_Click" Margin="78.667,0.333,78.333,1"/>
+                     x:Name="BTCancel"  Click="ButtonCancel_Click" Margin="143.667,1.333,18.667,0"/>
+            <Button Grid.Column="2" Grid.Row="12" Content="Register"    HorizontalAlignment="Center"  VerticalAlignment="Center" Height="24" Width="76" 
+                    x:Name="BTRegister" Click="ButtonRegister_Click" Margin="18.667,1.333,144,0"/>
 
             <!--COL 5-->
             <Label Grid.Column ="5" Grid.Row="2" Content="Room #:" />

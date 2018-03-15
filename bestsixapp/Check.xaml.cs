@@ -27,6 +27,7 @@ namespace bestsixapp
         Room roomQuery = new Room();
         Customer customerQuery = new Customer();
 
+
         public Check()
         {
             InitializeComponent();
@@ -56,13 +57,14 @@ namespace bestsixapp
                     State = TBState.Text,
                     Zip = TBZip.Text,
                     PaymentInfo = TBPayment.Text,
-                    RoomNo = roomNum
+                    RoomNo = roomNum,
                 });
 
                 roomQuery = dbContext.Rooms.SingleOrDefault(rm => rm.RoomNo == roomNum);
                 if(roomQuery != null)
                 {
                     roomQuery.Checkin = DateTime.Today;
+                    roomQuery.Legend = "Occupied";
                 }
                 
                 
@@ -72,8 +74,32 @@ namespace bestsixapp
 
             }
         }
+
+        /*
+         *  Selects entity based on ID, then removes from database.
+         *  Must add DataValidation.
+         */
+        public void ButtonCheckout_Click(object sender, RoutedEventArgs e)
+        {
+            using(DatabaseContext dbContext = new DatabaseContext())
+            {
+                customerQuery = dbContext.Customers.Find(TBID.Text);
+                if (customerQuery != null)
+                {
+                    dbContext.Remove(customerQuery);
+                }
+
+                roomQuery = dbContext.Rooms.Find(roomNum);
+                roomQuery.Legend = "Vacant";
+                dbContext.SaveChanges();
+                Close();
+            }
+        }
+
         //method for cancel
         public void ButtonCancel_Click(object sender, RoutedEventArgs e) { this.Close(); }
+
+
 
         private void UpdateLabels()
         {
@@ -107,6 +133,31 @@ namespace bestsixapp
 
 
             }
+        }
+
+        public void DisableTextBoxes()
+        {
+            TBID.IsEnabled = false;
+            TBFName.IsEnabled = false;
+            TBLName.IsEnabled = false;
+            TBPhone.IsEnabled = false;
+            TBStreet.IsEnabled = false;
+            TBCity.IsEnabled = false;
+            TBState.IsEnabled = false;
+            TBZip.IsEnabled = false;
+            TBPayment.IsEnabled = false;
+        }
+
+        public void CheckInEnable()
+        {
+            BTRegister.IsEnabled = true;
+            BTCheckout.IsEnabled = false;
+        }
+
+        public void CheckOutEnable()
+        {
+            BTRegister.IsEnabled = false;
+            BTCheckout.IsEnabled = true;
         }
 
     }
