@@ -149,6 +149,7 @@
     <Compile Include="CheckinPage.xaml.cs">
       <DependentUpon>CheckinPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="CustomerData.cs" />
     <Compile Include="RoomData.cs" />
     <Compile Include="RoomInfo.xaml.cs">
       <DependentUpon>RoomInfo.xaml</DependentUpon>

@@ -5,20 +5,19 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:bestsixapp"
       mc:Ignorable="d" 
-      d:DesignHeight="800" d:DesignWidth="1200"
+      d:DesignHeight="480" d:DesignWidth="720"
       
       Title="Best Six" Background="#FF6A6A6A">
     <StackPanel>
-        <Grid>
+        <Grid Height="461">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition MaxWidth="20"  />
-                <ColumnDefinition Width="auto"/>
-                <ColumnDefinition Width="auto"/>
-                <ColumnDefinition Width="100"/>
-                <ColumnDefinition Width="100"/>
-                <ColumnDefinition Width="100"/>
-                <ColumnDefinition Width="100"/>
-                <ColumnDefinition MaxWidth="20"  />
+                <ColumnDefinition MaxWidth="20"/>          <!-- Col 0 Border 20 Pixels -->
+                <ColumnDefinition Width="100"/>            <!-- Col 1 -->
+                <ColumnDefinition Width="150"/>            <!-- Col 2 -->
+                <ColumnDefinition Width="100"/>            <!-- Col 3 Space 100 Pixels -->
+                <ColumnDefinition Width="125"/>            <!-- Col 4 -->
+                <ColumnDefinition Width="200"/>            <!-- Col 5 -->
+                <ColumnDefinition MaxWidth="20"/>          <!-- Col 6 Border 20 Pixels -->
             </Grid.ColumnDefinitions>
 
             <Grid.RowDefinitions>
@@ -43,45 +42,48 @@
             </Grid.RowDefinitions>
 
             <!--COL 1-->
-            <Label   Grid.Column="1" Grid.Row="1" Content="First Name:" HorizontalAlignment="Center" VerticalAlignment="Center" Height="25" Width="100" Margin="23.667,0,8.333,0.333" />
-            <Label   Grid.Column="1" Grid.Row="2" Content="Last Name:"  HorizontalAlignment="Center" VerticalAlignment="Center" Height="24" Width="100" Margin="23.667,0.667,8.333,0.667" />
-            <Label   Grid.Column="1" Grid.Row="3" Content="License #"   HorizontalAlignment="Center" VerticalAlignment="Center" Height="25" Width="100" Margin="23.667,0.333,8.333,0" />
-            <Label   Grid.Column="1" Grid.Row="4" Content="Phone #"     HorizontalAlignment="Center" VerticalAlignment="Center" Height="25" Width="100" Margin="23.667,0,8.333,0.333" />
-            <Label   Grid.Column="1" Grid.Row="5" Content="Street"      HorizontalAlignment="Center" VerticalAlignment="Center" Height="26" Width="100" Margin="23.667,24.667,8.333,25" Grid.RowSpan="3"/>
-            <Label   Grid.Column="1" Grid.Row="7" Content="City"        HorizontalAlignment="Center" VerticalAlignment="Center" Height="25" Width="100" Margin="23.667,0.333,8.333,0"/>
-            <Label   Grid.Column="1" Grid.Row="8" Content="State"       HorizontalAlignment="Center" VerticalAlignment="Center" Height="24" Width="100" Margin="23.667,1,8.333,0.333"/>
-            <Label   Grid.Column="1" Grid.Row="9" Content="Zip"         HorizontalAlignment="Center" VerticalAlignment="Center" Height="24" Width="100" Margin="23.667,1.667,8.333,24.667" Grid.RowSpan="2"/>
-            <Label  Grid.Column="1" Grid.Row="10" Content="Payment Type" HorizontalAlignment="Center" VerticalAlignment="Center" Height="26" Width="100" Margin="23.667,0.333,8.333,23.667" Grid.RowSpan="2"/>
-            <Button Grid.Column="1" Grid.Row="12" Content="Check Out" HorizontalAlignment="Center" VerticalAlignment="Center" Height="24" Width="76" x:Name="BTCheckout" Click="ButtonCheckout_Click" Margin="24.667,1.333,34,0" />
+            <Label Grid.Column ="1" Grid.Row="2" Content="Room #:" />
+            <Label Grid.Column ="1" Grid.Row="3" Content="Bed Type:" />
+            <Label Grid.Column ="1" Grid.Row="4" Content="Smoking:" />
+            <Label Grid.Column ="1" Grid.Row="5" Content="Price:" />
+            <Label  Grid.Column="1" Grid.Row="9" Content="Check-In"  HorizontalAlignment="Center" VerticalAlignment="Center" Height="24" Width="100" Margin="0"/>
+            <Label  Grid.Column="1" Grid.Row="10" Content="Check-Out"  HorizontalAlignment="Center" VerticalAlignment="Center" Height="24" Width="100" Margin="0"/>
+            <Button  Grid.Column="1" Grid.Row="15" Content="Cancel" HorizontalAlignment="Left" VerticalAlignment="Center" Height="24" Width="75" x:Name="BTCancel"  Click="ButtonCancel_Click" />
 
-            <!--COL 2-->
-            <TextBox Grid.Column="2" Grid.Row="1" x:Name="TBFName"  HorizontalAlignment="Center" VerticalAlignment="Center" Height="25" Width="200" Margin="15.667,0,16.333,0.333" />
-            <TextBox Grid.Column="2" Grid.Row="1" x:Name="TBLName"  HorizontalAlignment="Center" VerticalAlignment="Center" Height="25" Width="200" Margin="15.667,25,16.333,0.667" Grid.RowSpan="2" />
-            <TextBox Grid.Column="2" Grid.Row="3" x:Name="TBID"     HorizontalAlignment="Center" VerticalAlignment="Center" Height="25" Width="200" Margin="15.667,0.333,16.333,0" />
-            <TextBox Grid.Column="2" Grid.Row="4" x:Name="TBPhone"  HorizontalAlignment="Center" VerticalAlignment="Center" Height="25" Width="200" Margin="15.667,0,16.333,0.333" />
-            <TextBox Grid.Column="2" Grid.Row="6" x:Name="TBStreet" HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Width="200" Margin="15.667,1.333,16.333,0.667" />
-            <TextBox Grid.Column="2" Grid.Row="7" x:Name="TBCity"   HorizontalAlignment="Center" VerticalAlignment="Center" Height="25" Width="200" Margin="15.667,0.333,16.333,0" />
-            <TextBox Grid.Column="2" Grid.Row="8" x:Name="TBState"  HorizontalAlignment="Center" VerticalAlignment="Center" Height="24" Width="200" Margin="15.667,1,16.333,0.333" />
-            <TextBox Grid.Column="2" Grid.Row="9" x:Name="TBZip"    HorizontalAlignment="Center" VerticalAlignment="Center" Height="25" Width="200" Margin="15.667,0.667,16.333,24.667" Grid.RowSpan="2" />
-            <TextBox Grid.Column="2" Grid.Row="10" x:Name="TBPayment" HorizontalAlignment="Center" VerticalAlignment="Center" Height="25" Width="200" Margin="15.667,0.333,16.333,24.667" Grid.RowSpan="2" />
-            <Button  Grid.Column="2" Grid.Row="12" Content="Cancel" HorizontalAlignment="Center" VerticalAlignment="Center" Height="24" Width="75" 
-                     x:Name="BTCancel"  Click="ButtonCancel_Click" Margin="143.667,1.333,18.667,0"/>
-            <Button Grid.Column="2" Grid.Row="12" Content="Register"    HorizontalAlignment="Center"  VerticalAlignment="Center" Height="24" Width="76" 
-                    x:Name="BTRegister" Click="ButtonRegister_Click" Margin="18.667,1.333,144,0"/>
+            <!--COL 2 -->
+            <Label Grid.Column ="2" Grid.Row="2" x:Name="roomValue"  />
+            <Label Grid.Column ="2" Grid.Row="3" x:Name="bedValue"  />
+            <Label Grid.Column ="2" Grid.Row="4" x:Name="smokingValue" />
+            <Label Grid.Column ="2" Grid.Row="5" x:Name="priceValue"  />
+            <DatePicker Grid.Column="2" Grid.Row="9" HorizontalAlignment="Center" VerticalAlignment="Center" Height="25" Width="125"/>
+            <DatePicker Grid.Column="2" Grid.Row="10" HorizontalAlignment="Center" VerticalAlignment="Center" Height="25" Width="125"/>
 
-            <!--COL 5-->
-            <Label Grid.Column ="5" Grid.Row="2" Content="Room #:" />
-            <Label Grid.Column ="5" Grid.Row="3" Content="Bed Type:" />
-            <Label Grid.Column ="5" Grid.Row="4" Content="Smoking:" />
-            <Label Grid.Column ="5" Grid.Row="5" Content="Price:" />
+            <!--COL 3-->
+            <Button Grid.Column="3" Grid.Row="15" Content="Check Out" HorizontalAlignment="Center" VerticalAlignment="Center" Height="24" Width="76" x:Name="BTCheckout" Click="ButtonCheckout_Click" Grid.ColumnSpan="2"/>
 
+            <!--COL 4-->
+            <Label  Grid.Column="4" Grid.Row="2" Content="First Name:" HorizontalAlignment="Center" VerticalAlignment="Center" Height="25" Width="100" Margin="23.667,0,8.333,0.333" />
+            <Label  Grid.Column="4" Grid.Row="3" Content="Last Name:"  HorizontalAlignment="Center" VerticalAlignment="Center" Height="24" Width="100" Margin="23.667,0.667,8.333,0.667" />
+            <Label  Grid.Column="4" Grid.Row="4" Content="License #"   HorizontalAlignment="Center" VerticalAlignment="Center" Height="25" Width="100" Margin="23.667,0.333,8.333,0" />
+            <Label  Grid.Column="4" Grid.Row="5" Content="Phone #"     HorizontalAlignment="Center" VerticalAlignment="Center" Height="25" Width="100" Margin="23.667,0,8.333,0.333" />
+            <Label  Grid.Column="4" Grid.Row="6" Content="Street"      HorizontalAlignment="Center" VerticalAlignment="Center" Height="26" Width="100" Margin="23.667,24.667,8.333,25" Grid.RowSpan="3"/>
+            <Label  Grid.Column="4" Grid.Row="8" Content="City"        HorizontalAlignment="Center" VerticalAlignment="Center" Height="25" Width="100" Margin="23.667,0.333,8.333,0"/>
+            <Label  Grid.Column="4" Grid.Row="9" Content="State"       HorizontalAlignment="Center" VerticalAlignment="Center" Height="24" Width="100" Margin="23.667,1,8.333,0.333"/>
+            <Label  Grid.Column="4" Grid.Row="10" Content="Zip"         HorizontalAlignment="Center" VerticalAlignment="Center" Height="24" Width="100" Margin="23.667,1.667,8.333,24.667" Grid.RowSpan="2"/>
+            <Label  Grid.Column="4" Grid.Row="11" Content="Payment Type" HorizontalAlignment="Center" VerticalAlignment="Center" Height="26" Width="100" Margin="23.667,0.333,8.333,23.667" Grid.RowSpan="2"/>
 
-            <!--COL 6 -->
-            <Label Grid.Column ="6" Grid.Row="2" x:Name="roomValue"  />
-            <Label Grid.Column ="6" Grid.Row="3" x:Name="bedValue"  />
-            <Label Grid.Column ="6" Grid.Row="4" x:Name="smokingValue" />
-            <Label Grid.Column ="6" Grid.Row="5" x:Name="priceValue"  />
-
+            <!--COL 5 -->
+            <TextBox Grid.Column="5" Grid.Row="2" x:Name="TBFName"  HorizontalAlignment="Center" VerticalAlignment="Center" Height="24" Width="200" />
+            <TextBox Grid.Column="5" Grid.Row="3" x:Name="TBLName"  HorizontalAlignment="Center" VerticalAlignment="Center" Height="24" Width="200" />
+            <TextBox Grid.Column="5" Grid.Row="4" x:Name="TBID"     HorizontalAlignment="Center" VerticalAlignment="Center" Height="24" Width="200" />
+            <TextBox Grid.Column="5" Grid.Row="5" x:Name="TBPhone"  HorizontalAlignment="Center" VerticalAlignment="Center" Height="24" Width="200" />
+            <TextBox Grid.Column="5" Grid.Row="7" x:Name="TBStreet" HorizontalAlignment="Center" VerticalAlignment="Center" Height="24" Width="200" />
+            <TextBox Grid.Column="5" Grid.Row="8" x:Name="TBCity"   HorizontalAlignment="Center" VerticalAlignment="Center" Height="24" Width="200" />
+            <TextBox Grid.Column="5" Grid.Row="9" x:Name="TBState"  HorizontalAlignment="Center" VerticalAlignment="Center" Height="24" Width="200" />
+            <TextBox Grid.Column="5" Grid.Row="10" x:Name="TBZip"    HorizontalAlignment="Center" VerticalAlignment="Center" Height="24" Width="200" />
+            <TextBox Grid.Column="5" Grid.Row="11" x:Name="TBPayment" HorizontalAlignment="Center" VerticalAlignment="Center" Height="24" Width="200"/>
+            <Button Grid.Column="5" Grid.Row="15" Content="Register"  HorizontalAlignment="Right"  VerticalAlignment="Center" Height="24" Width="76" 
+                    x:Name="BTRegister" Click="ButtonRegister_Click" Margin="0"/>
 
         </Grid>
     </StackPanel>

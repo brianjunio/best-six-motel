@@ -14,7 +14,6 @@ namespace bestsixapp
 {
     public class RoomData : IDataErrorInfo
     {
-       
     
         private double width, height;
         Rectangle rect;

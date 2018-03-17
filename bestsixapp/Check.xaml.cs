@@ -26,7 +26,7 @@ namespace bestsixapp
         string localID;
         Room roomQuery = new Room();
         Customer customerQuery = new Customer();
-
+        CustomerData custData;
 
         public Check()
         {
@@ -90,7 +90,6 @@ namespace bestsixapp
                 }
 
                 roomQuery = dbContext.Rooms.Find(roomNum);
-                roomQuery.Checkout = DateTime.Today;
                 roomQuery.Legend = "Vacant";
                 dbContext.SaveChanges();
                 Close();
@@ -131,8 +130,6 @@ namespace bestsixapp
                 TBState.Text = customerQuery.State;
                 TBZip.Text = customerQuery.Zip;
                 TBPayment.Text = customerQuery.PaymentInfo;
-
-
             }
         }
 
@@ -162,19 +159,6 @@ namespace bestsixapp
         }
 
     }
-
-
-
-    //private void RefreshList()
-    //{
-    //    using (DatabaseContext dbContext = new DatabaseContext())
-    //    {
-    //        ListViewNames.ItemsSource = dbContext.Customers
-    //            .OrderBy(m => m.FirstName)
-    //            .Select(m => m.FirstName)
-    //            .ToList();
-    //    }
-    //}
 }
     
 
