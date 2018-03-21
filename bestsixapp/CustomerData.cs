@@ -14,7 +14,7 @@ namespace bestsixapp
 {
     public class CustomerData : IDataErrorInfo
     {
-        private string FirstName, LastName, ID,PhoneNo, Street, City, State, Zip, PaymentInfo
+        private string FirstName, LastName, ID, PhoneNo, Street, City, State, Zip, PaymentInfo;
         private int RoomNo;
 
         public CustomerData(string FirstName, string LastName, string ID, String PhoneNo, string Street, string City, string State, string Zip, string PaymentInfo, int RoomNo)
