@@ -146,18 +146,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="CheckinPage.xaml.cs">
-      <DependentUpon>CheckinPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="RoomData.cs" />
     <Compile Include="RoomInfo.xaml.cs">
       <DependentUpon>RoomInfo.xaml</DependentUpon>
     </Compile>
     <Compile Include="RoomMake.xaml.cs">
       <DependentUpon>RoomMake.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="CheckoutWindow.xaml.cs">
-      <DependentUpon>CheckoutWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="TransactionsView.xaml.cs">
       <DependentUpon>TransactionsView.xaml</DependentUpon>
@@ -178,19 +172,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="CheckinPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="RoomInfo.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="RoomMake.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="CheckoutWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
