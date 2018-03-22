@@ -50,7 +50,7 @@ namespace bestsixapp
         // Goes to Customer Check in Page
         private void CheckinPageClick(object sender, RoutedEventArgs e) {
             //NavigationService.Navigate(new Uri("CheckinPage.xaml", UriKind.RelativeOrAbsolute));
-            CheckinPage cp = new CheckinPage();
+            Check cp = new Check(); // Changed from 'CheckinPage' -> Check
             Main.NavigationService.Navigate(new Uri("CheckinPage.xaml", UriKind.RelativeOrAbsolute));   
         }
 
@@ -62,7 +62,7 @@ namespace bestsixapp
         }
         private void CheckoutWindowClick(object sender, RoutedEventArgs e)
         {
-            CheckoutWindow cw = new CheckoutWindow();
+            Check cw = new Check();
             cw.ShowDialog();
         }
 
