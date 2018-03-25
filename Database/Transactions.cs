@@ -25,7 +25,7 @@ namespace Database
         [ForeignKey("Room")]
         public int RoomNo { get; set; }
         public virtual Room Room { get; set; }
-
+        
         public DateTime Checkin { get; set; }
         public DateTime Checkout { get; set; }
         public DateTime DateModified { get; set; }

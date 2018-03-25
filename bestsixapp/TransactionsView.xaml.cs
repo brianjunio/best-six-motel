@@ -29,6 +29,8 @@ namespace bestsixapp
         // This will be used for testing purposes.
         private void InsertTR_Click(object sender, RoutedEventArgs e)
         {
+            MessageBox.Show("Test button, ignore.");
+            /*
             using (DatabaseContext dbContext = new DatabaseContext())
             {
                 dbContext.Transactions.Add(new Transactions
@@ -36,16 +38,16 @@ namespace bestsixapp
                     ID = "343321",
                     Customer = null,
                     RoomNo = '5',
-                    Checkin = new DateTime(),
-                    Checkout = new DateTime(),
-                    DateModified = new DateTime(),
                 });
 
                 dbContext.SaveChanges();
                 Close();
+               
             }
+            */
         }
 
+        // Used to load the Transaction table data
         private void TransactionsView_Load(object sender, EventArgs e)
         {
 

@@ -54,6 +54,13 @@ namespace bestsixapp
             Main.NavigationService.Navigate(new Uri("CheckinPage.xaml", UriKind.RelativeOrAbsolute));   
         }
 
+        // Goes to Tranasactions table view
+        private void TransactionViewClick(object sender, RoutedEventArgs e)
+        {
+            TransactionsView Tr = new TransactionsView();
+            Tr.ShowDialog();
+        }
+
 
         // Closes the application
         protected void MainWindow_Closed(object sender, EventArgs args)

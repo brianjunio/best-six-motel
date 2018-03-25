@@ -15,6 +15,7 @@
             <Button Content="Check in Customer Window" Click="CustomerClick" />
             <Button Content="Check in Customer Page" Click="CheckinPageClick"/>
             <Button Content="Check Out Customer Page" Click="CheckoutWindowClick"/>
+            <Button Content="View Transactions" Click="TransactionViewClick"/>
         </StackPanel>
         <Frame x:Name="Main" Margin="0,35,0,0" NavigationUIVisibility="Hidden" />
 
