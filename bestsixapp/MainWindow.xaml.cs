@@ -48,11 +48,11 @@ namespace bestsixapp
         }
 
         // Goes to Customer Check in Page
-        private void CheckinPageClick(object sender, RoutedEventArgs e) {
+     /*   private void CheckinPageClick(object sender, RoutedEventArgs e) {
             //NavigationService.Navigate(new Uri("CheckinPage.xaml", UriKind.RelativeOrAbsolute));
             CheckinPage cp = new CheckinPage();
             Main.NavigationService.Navigate(new Uri("CheckinPage.xaml", UriKind.RelativeOrAbsolute));   
-        }
+        }*/
 
 
         // Closes the application
@@ -60,11 +60,11 @@ namespace bestsixapp
         {
             App.Current.Shutdown();
         }
-        private void CheckoutWindowClick(object sender, RoutedEventArgs e)
+    /*   private void CheckoutWindowClick(object sender, RoutedEventArgs e)
         {
             CheckoutWindow cw = new CheckoutWindow();
             cw.ShowDialog();
-        }
+        }*/
 
         private void Main_Navigated(object sender, NavigationEventArgs e)
         {
