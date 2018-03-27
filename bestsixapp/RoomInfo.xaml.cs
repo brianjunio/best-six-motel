@@ -107,11 +107,13 @@ namespace bestsixapp
                         NoOfBeds = Int32.Parse(TextBoxNoOfBeds.Text), Price = Double.Parse(TextBoxPrice.Text), Smoking = ComboBoxSmoking.Text, Left = room.Left, Top = room.Top, Legend = "Vacant"});
                     }else
                     {
+                        //If a tempRoom is generated, Legend defaults to "Vacant"
                         //grab all data that could be updated through ui
                         tempRoom.BedType = room.BedType;
                         tempRoom.NoOfBeds = room.NoOfBeds;
                         tempRoom.Price = room.Price;
                         tempRoom.Smoking = room.Smoking;
+                        tempRoom.Legend = "Vacant";
                             
                         dbContext.Update<Room>(tempRoom); //update database
                     
