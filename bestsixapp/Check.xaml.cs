@@ -26,6 +26,7 @@ namespace bestsixapp
         string localID;
         Room roomQuery = new Room();
         Customer customerQuery = new Customer();
+        Transactions transactionQuery = new Transactions();
 
 
         public Check()
@@ -66,7 +67,12 @@ namespace bestsixapp
                     roomQuery.Checkin = DateTime.Today;
                     roomQuery.Legend = "Occupied";
                 }
-                
+
+                dbContext.Transactions.Add(new Transactions
+                {
+                    TrNumber = 0,
+                    
+                });
                 
                 dbContext.SaveChanges();
                 localID = TBID.Text;
