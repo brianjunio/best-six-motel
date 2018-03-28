@@ -116,6 +116,7 @@ namespace bestsixapp
                 if(transactionQuery != null)
                 {
                     transactionQuery.Checkout = checkOut;
+                    transactionQuery.DateModified = checkOut;
                 }
 
                 dbContext.SaveChanges();
