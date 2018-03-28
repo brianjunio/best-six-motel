@@ -1,11 +1,8 @@
 ﻿using Database;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-// Tony says we dont need the un-highlighted ones
+
 // using System.Windows.Controls;
 // using System.Windows.Data;
 // using System.Windows.Documents;
@@ -27,7 +24,8 @@ namespace bestsixapp
         Room roomQuery = new Room();
         Customer customerQuery = new Customer();
         Transactions transactionQuery = new Transactions();
-
+        Random rand = new Random();
+        int randValue;
 
         public Check()
         {
@@ -64,15 +62,28 @@ namespace bestsixapp
                 roomQuery = dbContext.Rooms.SingleOrDefault(rm => rm.RoomNo == roomNum);
                 if(roomQuery != null)
                 {
-                    roomQuery.Checkin = DateTime.Today;
+                    roomQuery.Checkin = DateTime.Now;
                     roomQuery.Legend = "Occupied";
                 }
 
-                dbContext.Transactions.Add(new Transactions
+                do
                 {
-                    TrNumber = 0,
-                    
-                });
+                    randValue = rand.Next(10000000, 99999999);
+                    transactionQuery = dbContext.Transactions.SingleOrDefault(t => t.TrNumber == randValue);
+                    if (transactionQuery == null)
+                    {
+                        dbContext.Transactions.Add(new Transactions
+                        {
+                            TrNumber = randValue,
+                            Checkin = DateTime.Now,
+                            DateModified = DateTime.Now,
+                            ID = TBID.Text,
+                            RoomNo = roomNum
+                        });
+                    }
+                }
+                while (transactionQuery != null);
+                
                 
                 dbContext.SaveChanges();
                 localID = TBID.Text;
@@ -87,16 +98,26 @@ namespace bestsixapp
          */
         public void ButtonCheckout_Click(object sender, RoutedEventArgs e)
         {
+            var checkOut = DateTime.Now;
             using(DatabaseContext dbContext = new DatabaseContext())
             {
                 customerQuery = dbContext.Customers.Find(TBID.Text);
                 if (customerQuery != null)
                 {
+
                     dbContext.Remove(customerQuery);
                 }
 
                 roomQuery = dbContext.Rooms.Find(roomNum);
                 roomQuery.Legend = "Vacant";
+                roomQuery.Checkin = checkOut;
+
+                transactionQuery = dbContext.Transactions.SingleOrDefault(t => t.RoomNo == roomNum);
+                if(transactionQuery != null)
+                {
+                    transactionQuery.Checkout = checkOut;
+                }
+
                 dbContext.SaveChanges();
                 Close();
             }

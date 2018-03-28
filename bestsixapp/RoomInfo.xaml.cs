@@ -113,7 +113,6 @@ namespace bestsixapp
                         tempRoom.NoOfBeds = room.NoOfBeds;
                         tempRoom.Price = room.Price;
                         tempRoom.Smoking = room.Smoking;
-                        tempRoom.Legend = "Vacant";
                             
                         dbContext.Update<Room>(tempRoom); //update database
                     
