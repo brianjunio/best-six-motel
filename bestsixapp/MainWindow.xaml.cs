@@ -1,6 +1,7 @@
 ﻿using Database;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,16 +20,20 @@ namespace bestsixapp
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow : Window, INotifyPropertyChanged
     {
+        public event PropertyChangedEventHandler PropertyChanged;
         // Creates a Frame For Pages
         public object Frame { get; private set; }
         public static object NavigationService { get; internal set; }
+        private string _Name;
+
 
         public MainWindow()
         {
             InitializeComponent();
             this.Closed += new EventHandler(MainWindow_Closed);
+            Name = "Room Management System";
         }
 
 
@@ -69,6 +74,24 @@ namespace bestsixapp
         private void Main_Navigated(object sender, NavigationEventArgs e)
         {
 
+        }
+
+        public string Name
+        {
+            get { return _Name; }
+            set
+            {
+                _Name = Name;
+                OnPropertyChanged("Company");
+            }
+            
+        }
+        private void OnPropertyChanged(String property)
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(property));
+            }
         }
     }
 
