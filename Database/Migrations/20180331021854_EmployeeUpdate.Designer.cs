@@ -8,8 +8,8 @@ using Database;
 namespace Database.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    [Migration("20180314191016_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20180331021854_EmployeeUpdate")]
+    partial class EmployeeUpdate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -51,7 +51,7 @@ namespace Database.Migrations
 
             modelBuilder.Entity("Database.Employee", b =>
                 {
-                    b.Property<int>("EmployeeID")
+                    b.Property<string>("Username")
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("EmpType");
@@ -62,9 +62,7 @@ namespace Database.Migrations
 
                     b.Property<string>("Password");
 
-                    b.Property<string>("Username");
-
-                    b.HasKey("EmployeeID");
+                    b.HasKey("Username");
 
                     b.ToTable("Employees");
                 });

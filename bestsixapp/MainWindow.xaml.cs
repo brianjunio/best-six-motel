@@ -26,33 +26,34 @@ namespace bestsixapp
         // Creates a Frame For Pages
         public object Frame { get; private set; }
         public static object NavigationService { get; internal set; }
-        private string _Name;
-
+        private string _name;
+        private Employee employeeQuery;
 
         public MainWindow()
         {
+            CompanyName = "Room Management System";
             InitializeComponent();
             this.Closed += new EventHandler(MainWindow_Closed);
-            Name = "Room Management System";
+           
         }
 
 
         // Goes to Make Rooms Editor in NEW WINDOW
-        private void RoomClick(object sender, RoutedEventArgs e)
+       /* private void RoomClick(object sender, RoutedEventArgs e)
         {
             RoomMake roomWindow = new RoomMake();
             roomWindow.ShowDialog();
             roomWindow.Close();
-        }
+        }*/
         
-        // Goes to Customer Check in window
-        private void CustomerClick(object sender, RoutedEventArgs e)
+        // Goes to employee Check in window
+        private void employeeClick(object sender, RoutedEventArgs e)
         {
             Check checkWindow = new Check();
             checkWindow.ShowDialog();
         }
 
-        // Goes to Customer Check in Page
+        // Goes to employee Check in Page
      /*   private void CheckinPageClick(object sender, RoutedEventArgs e) {
             //NavigationService.Navigate(new Uri("CheckinPage.xaml", UriKind.RelativeOrAbsolute));
             Check cp = new Check(); // Changed from 'CheckinPage' -> Check
@@ -76,13 +77,13 @@ namespace bestsixapp
 
         }
 
-        public string Name
+        public string CompanyName
         {
-            get { return _Name; }
+            get { return _name; }
             set
             {
-                _Name = Name;
-                OnPropertyChanged("Company");
+                _name = value;
+                OnPropertyChanged("CompanyName");
             }
             
         }
@@ -93,7 +94,26 @@ namespace bestsixapp
                 PropertyChanged(this, new PropertyChangedEventArgs(property));
             }
         }
-    }
+
+        private void myLoginButton(object sender, RoutedEventArgs e)
+        {
+            using (DatabaseContext dbContext = new DatabaseContext())
+            {
+                if(String.IsNullOrEmpty(User.Text))
+                {
+                    MessageBox.Show("Please input field.");
+                }
+                else
+                {
+                    RoomMake roomWindow = new RoomMake();
+                    roomWindow.ShowDialog();
+                    roomWindow.Close();
+                }
+               
+                }
+            }
+        }
+    
 
 }
 
