@@ -7,17 +7,60 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="768" Width="1024"
          >
-
-    
     <Grid>
+       
+            <Grid.Background>
+            <ImageBrush Stretch="Fill" ImageSource="/bestsixapp;component\Images\background.jpg"
+                        
+                AlignmentY="Center" AlignmentX="Center"/>
+            </Grid.Background>
+   
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="20" />
+            <ColumnDefinition Width="auto" />
+            <ColumnDefinition Width="auto" />
+            <ColumnDefinition Width="auto" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="20" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="20"/>
+        </Grid.RowDefinitions>
+        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1" Grid.ColumnSpan="5" Text="{Binding Path=CompanyName,FallbackValue=Management System}" Name="Company" 
+      FontFamily="Resources/#Charlemagne Std" FontSize="40" >
+            
+        </TextBlock>
+                     <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="2" Grid.ColumnSpan="3" Text="Username" Name="User" 
+      FontFamily="Resources/#Charlemagne Std" FontSize="30" Margin="20,100,20,20">
+            
+        </TextBlock>
+        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="3" Grid.ColumnSpan="3" Text="Password" Name="Password" 
+      FontFamily="Resources/#Charlemagne Std" FontSize="30" Margin="20,100,20,20">
+
+        </TextBlock>
+        <TextBox Grid.Column="3" Grid.Row="2" Width="300" Height="40" Margin="40,100,20,20" FontSize="20" TextAlignment="Left"/>
+        <PasswordBox Grid.Column="3" Grid.Row="3" HorizontalAlignment="Left" Margin="40,100,20,20" Width="300" Height="40" VerticalAlignment="Center" FontSize="20"/>
+        <Button Name="LoginButton" Grid.Column="1" Grid.Row="5" Content ="Login" HorizontalAlignment="Left" Margin="20,40,20,20" VerticalAlignment="Top" Width="100" Height="60" FontSize="16" Click="myLoginButton"/>
+        <Button Name="ExitButton" Grid.Column="4" Grid.Row="6" Content ="Quit" HorizontalAlignment="Left" Margin="300,130,20,20" VerticalAlignment="Top" Width="100" Height="60" FontSize="16" Click="MainWindow_Closed"/>
+        
+
+    </Grid>
+        <!--Grid>
         <StackPanel>
             <Button Content="Go to Make a Room" MinWidth="100" Click="RoomClick"/>
             <Button Content="Check in Customer Window" Click="CustomerClick" />
-            <!--Button Content="Check in Customer Page" Click="CheckinPageClick"/>
-            <Button Content="Check Out Customer Page" Click="CheckoutWindowClick"/-->
+            <Button Content="Check in Customer Page" Click="CheckinPageClick"/>
+            <Button Content="Check Out Customer Page" Click="CheckoutWindowClick"/>
         </StackPanel>
         <Frame x:Name="Main" Margin="0,35,0,0" NavigationUIVisibility="Hidden" />
 
 
-    </Grid>
+    </Grid-->
 </Window>

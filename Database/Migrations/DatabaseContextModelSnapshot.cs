@@ -50,7 +50,7 @@ namespace Database.Migrations
 
             modelBuilder.Entity("Database.Employee", b =>
                 {
-                    b.Property<int>("EmployeeID")
+                    b.Property<string>("Username")
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("EmpType");
@@ -61,9 +61,7 @@ namespace Database.Migrations
 
                     b.Property<string>("Password");
 
-                    b.Property<string>("Username");
-
-                    b.HasKey("EmployeeID");
+                    b.HasKey("Username");
 
                     b.ToTable("Employees");
                 });
