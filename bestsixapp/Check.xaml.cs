@@ -21,7 +21,7 @@ namespace bestsixapp
         DateTime checkin, checkout;
         Room roomQuery = new Room();
         Customer customerQuery = new Customer();
-        CustomerData custData;
+        
 
         public Check()
         {
