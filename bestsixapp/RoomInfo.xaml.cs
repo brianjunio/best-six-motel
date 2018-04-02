@@ -27,13 +27,14 @@ namespace bestsixapp
     {
         RoomData room;
         private int _roomNo, _price, _noOfBeds;
-        private string _bedType, _smoking;
+        private string _bedType, _smoking, _legend;
         private int _noOfErrorsOnScreen;
         public int RoomNo { get => _roomNo; set => _roomNo = value; }
         public int Price { get => _price; set => _price = value; }
         public int NoOfBeds { get => _noOfBeds; set => _noOfBeds = value; }
         public string BedType { get => _bedType; set => _bedType = value; }
         public string Smoking { get => _smoking; set => _smoking = value; }
+        public string Legend { get => _legend; set => _legend = "Vacant"; }
         
 
         public event EventHandler SaveRoom = delegate { };
@@ -74,7 +75,7 @@ namespace bestsixapp
                 room.NoOfBeds = Int32.Parse(TextBoxNoOfBeds.Text);
                 room.Price = Double.Parse(TextBoxPrice.Text);
                 room.Smoking = ComboBoxSmoking.Text;
-                
+                room.Legend = "Vacant";
                
                 //create new entity
                 var modifiedRoom = new Room()
