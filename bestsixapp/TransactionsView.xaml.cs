@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Database;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,7 +24,33 @@ namespace bestsixapp
         public TransactionsView()
         {
             InitializeComponent();
-            
+        }
+
+        // This will be used for testing purposes.
+        private void InsertTR_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Test button, ignore.");
+            /*
+            using (DatabaseContext dbContext = new DatabaseContext())
+            {
+                dbContext.Transactions.Add(new Transactions
+                {   // Add Transaction info into customer table
+                    ID = "343321",
+                    Customer = null,
+                    RoomNo = '5',
+                });
+
+                dbContext.SaveChanges();
+                Close();
+               
+            }
+            */
+        }
+
+        // Used to load the Transaction table data
+        private void TransactionsView_Load(object sender, EventArgs e)
+        {
+
         }
 
 
