@@ -190,18 +190,6 @@ namespace bestsixapp
 
     }
 
-
-
-    //private void RefreshList()
-    //{
-    //    using (DatabaseContext dbContext = new DatabaseContext())
-    //    {
-    //        ListViewNames.ItemsSource = dbContext.Customers
-    //            .OrderBy(m => m.FirstName)
-    //            .Select(m => m.FirstName)
-    //            .ToList();
-    //    }
-    //}
 }
     
 
