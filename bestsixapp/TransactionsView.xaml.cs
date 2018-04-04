@@ -38,24 +38,9 @@ namespace bestsixapp
         }
 
         // This will be used for testing purposes.
-        private void InsertTR_Click(object sender, RoutedEventArgs e)
+        private void TRClose_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Test button, ignore.");
-            /*
-            using (DatabaseContext dbContext = new DatabaseContext())
-            {
-                dbContext.Transactions.Add(new Transactions
-                {   // Add Transaction info into customer table
-                    ID = "343321",
-                    Customer = null,
-                    RoomNo = '5',
-                });
-
-                dbContext.SaveChanges();
-                Close();
-               
-            }
-            */
+            this.Close();
         }
 
         // Used to load the Transaction table data
