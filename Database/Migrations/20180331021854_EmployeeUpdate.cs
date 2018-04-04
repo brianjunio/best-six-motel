@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Database.Migrations
 {
-    public partial class InitialCreate : Migration
+    public partial class EmployeeUpdate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -12,17 +12,15 @@ namespace Database.Migrations
                 name: "Employees",
                 columns: table => new
                 {
-                    EmployeeID = table.Column<int>(nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
+                    Username = table.Column<string>(nullable: false),
                     EmpType = table.Column<string>(nullable: true),
                     FirstName = table.Column<string>(nullable: true),
                     LastName = table.Column<string>(nullable: true),
-                    Password = table.Column<string>(nullable: true),
-                    Username = table.Column<string>(nullable: true)
+                    Password = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Employees", x => x.EmployeeID);
+                    table.PrimaryKey("PK_Employees", x => x.Username);
                 });
 
             migrationBuilder.CreateTable(

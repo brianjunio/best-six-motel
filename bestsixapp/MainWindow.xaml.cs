@@ -1,6 +1,7 @@
 ﻿using Database;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,28 +20,34 @@ namespace bestsixapp
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow : Window, INotifyPropertyChanged
     {
+        public event PropertyChangedEventHandler PropertyChanged;
         // Creates a Frame For Pages
         public object Frame { get; private set; }
         public static object NavigationService { get; internal set; }
+        private string _name;
+        private Employee employeeQuery;
 
         public MainWindow()
         {
+            CompanyName = "Room Management System";
             InitializeComponent();
             this.Closed += new EventHandler(MainWindow_Closed);
+           
         }
 
 
         // Goes to Make Rooms Editor in NEW WINDOW
-        private void RoomClick(object sender, RoutedEventArgs e)
+       /* private void RoomClick(object sender, RoutedEventArgs e)
         {
             RoomMake roomWindow = new RoomMake();
             roomWindow.ShowDialog();
         }
+
         
-        // Goes to Customer Check in window
-        private void CustomerClick(object sender, RoutedEventArgs e)
+        // Goes to employee Check in window
+        private void employeeClick(object sender, RoutedEventArgs e)
         {
             Check checkWindow = new Check();
             checkWindow.ShowDialog();
@@ -51,6 +58,14 @@ namespace bestsixapp
         {
             TransactionsView transactionsWindow = new TransactionsView();
             transactionsWindow.ShowDialog();
+        }
+
+
+        // Goes to Tranasactions table view
+        private void TransactionViewClick(object sender, RoutedEventArgs e)
+        {
+            TransactionsView Tr = new TransactionsView();
+            Tr.ShowDialog();
         }
 
 
@@ -69,7 +84,44 @@ namespace bestsixapp
         {
 
         }
-    }
+
+        public string CompanyName
+        {
+            get { return _name; }
+            set
+            {
+                _name = value;
+                OnPropertyChanged("CompanyName");
+            }
+            
+        }
+        private void OnPropertyChanged(String property)
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(property));
+            }
+        }
+
+        private void myLoginButton(object sender, RoutedEventArgs e)
+        {
+            using (DatabaseContext dbContext = new DatabaseContext())
+            {
+                if(String.IsNullOrEmpty(User.Text))
+                {
+                    MessageBox.Show("Please input field.");
+                }
+                else
+                {
+                    RoomMake roomWindow = new RoomMake();
+                    roomWindow.ShowDialog();
+                    roomWindow.Close();
+                }
+               
+                }
+            }
+        }
+    
 
 }
 

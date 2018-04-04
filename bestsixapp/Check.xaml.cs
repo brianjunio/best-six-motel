@@ -11,6 +11,10 @@ using System.Windows;
 // using System.Windows.Media.Imaging;
 // using System.Windows.Navigation;
 // using System.Windows.Shapes;
+using System.Windows.Controls;
+
+
+
 
 namespace bestsixapp
 {
@@ -21,11 +25,13 @@ namespace bestsixapp
     {
         int roomNum;
         string localID;
+        DateTime checkin, checkout;
         Room roomQuery = new Room();
         Customer customerQuery = new Customer();
         Transactions transactionQuery = new Transactions();
         Random rand = new Random();
         int randValue;
+
 
         public Check()
         {
@@ -83,7 +89,7 @@ namespace bestsixapp
                 }
                 while (transactionQuery != null);
                 
-                
+            
                 dbContext.SaveChanges();
                 localID = TBID.Text;
                 Close();
@@ -91,10 +97,24 @@ namespace bestsixapp
             }
         }
 
+        // Checkin and Checkout DatePicker event handlers
+        private void CheckinDateChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        {
+            // From the datepicker selected date turn into DateTime object
+            checkin = (DateTime)checkinValue.SelectedDate;
+        }
+
+        private void CheckoutDateChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        {
+            // From the datepicker selected date turn into DateTime object
+            checkout = (DateTime)checkoutValue.SelectedDate;
+        }
+
         /*
          *  Selects entity based on ID, then removes from database.
          *  Must add DataValidation.
          */
+
         public void ButtonCheckout_Click(object sender, RoutedEventArgs e)
         {
             var checkOut = DateTime.Now;
@@ -134,12 +154,16 @@ namespace bestsixapp
             {
 
                 roomQuery = dbContext.Rooms.Find(roomNum);
-                roomValue.Content = roomQuery.RoomNo.ToString();
-                bedValue.Content = roomQuery.BedType;
-                smokingValue.Content = roomQuery.Smoking;
-                priceValue.Content = roomQuery.Price;
-               // System.Diagnostics.Debug.Write(roomEntry.ToString());
-               // roomValue.Content = roomEntry.ToString();
+                roomValue.Text = roomQuery.RoomNo.ToString();
+                bedValue.Text = roomQuery.BedType;
+                smokingValue.Text = roomQuery.Smoking;
+                priceValue.Text = roomQuery.Price.ToString();
+
+                roomValue.IsEnabled = false;
+                bedValue.IsEnabled = false;
+                smokingValue.IsEnabled = false;
+                priceValue.IsEnabled = false;
+                
             }
         }
 
@@ -157,8 +181,8 @@ namespace bestsixapp
                 TBState.Text = customerQuery.State;
                 TBZip.Text = customerQuery.Zip;
                 TBPayment.Text = customerQuery.PaymentInfo;
-
-
+                TBcheckin.Text = roomQuery.Checkin.ToLongDateString().ToString(); 
+                TBcheckout.Text = roomQuery.Checkout.ToLongDateString().ToString();
             }
         }
 
@@ -173,6 +197,8 @@ namespace bestsixapp
             TBState.IsEnabled = false;
             TBZip.IsEnabled = false;
             TBPayment.IsEnabled = false;
+            TBcheckin.IsEnabled = false;
+            TBcheckout.IsEnabled = false;
         }
 
         public void CheckInEnable()
@@ -186,9 +212,7 @@ namespace bestsixapp
             BTRegister.IsEnabled = false;
             BTCheckout.IsEnabled = true;
         }
-
     }
-
 }
     
 
