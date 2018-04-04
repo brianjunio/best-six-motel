@@ -1,4 +1,4 @@
-﻿<Window x:Class="bestsixapp.MainWindow"
+<Window x:Class="bestsixapp.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -56,6 +56,10 @@
         <StackPanel>
             <Button Content="Go to Make a Room" MinWidth="100" Click="RoomClick"/>
             <Button Content="Check in Customer Window" Click="CustomerClick" />
+            <Button Content="Transaction Window" Click="TransactionViewClick" />
+            <!--Button Content="Check in Customer Page" Click="CheckinPageClick"/>
+            <Button Content="Check Out Customer Page" Click="CheckoutWindowClick"/-->
+
         </StackPanel>
         <Frame x:Name="Main" Margin="0,35,0,0" NavigationUIVisibility="Hidden" />
 

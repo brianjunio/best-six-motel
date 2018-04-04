@@ -296,16 +296,16 @@ namespace bestsixapp
               using(DatabaseContext dbContext = new DatabaseContext())
                 {
                     roomQuery = dbContext.Rooms.Find(room.RoomNo);
-                    if (roomQuery.Legend == "Vacant")
-                    {
-                        checkWindow.CheckInEnable();
-                        checkWindow.ShowDialog();
-                    }
-                    else
+                    if (roomQuery.Legend == "Occupied")
                     {
                         checkWindow.PopulateTextBoxes();
                         checkWindow.DisableTextBoxes();
                         checkWindow.CheckOutEnable();
+                        checkWindow.ShowDialog();
+                    }
+                    else
+                    {
+                        checkWindow.CheckInEnable();
                         checkWindow.ShowDialog();
                     }
                 }

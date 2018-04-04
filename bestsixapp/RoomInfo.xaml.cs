@@ -106,8 +106,11 @@ namespace bestsixapp
                         /* Quick hacks to make a newly created room vacant. Hard coded "Vacant" to Legend property. Change this later. */
                         dbContext.Rooms.Add(new Room { RoomNo = Int32.Parse(TextBoxRoomNo.Text), BedType = TextBoxBedType.Text,
                         NoOfBeds = Int32.Parse(TextBoxNoOfBeds.Text), Price = Double.Parse(TextBoxPrice.Text), Smoking = ComboBoxSmoking.Text, Left = room.Left, Top = room.Top, Legend = "Vacant"});
-                    }else
+                    }
+
+                    else
                     {
+                        //If a tempRoom is generated,
                         //grab all data that could be updated through ui
                         tempRoom.BedType = room.BedType;
                         tempRoom.NoOfBeds = room.NoOfBeds;
@@ -117,6 +120,7 @@ namespace bestsixapp
                         dbContext.Update<Room>(tempRoom); //update database
                     
                     }
+
                     dbContext.SaveChanges();        //save changes
                 }
 

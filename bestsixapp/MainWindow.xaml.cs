@@ -43,8 +43,8 @@ namespace bestsixapp
         {
             RoomMake roomWindow = new RoomMake();
             roomWindow.ShowDialog();
-            roomWindow.Close();
-        }*/
+        }
+
         
         // Goes to employee Check in window
         private void employeeClick(object sender, RoutedEventArgs e)
@@ -53,12 +53,13 @@ namespace bestsixapp
             checkWindow.ShowDialog();
         }
 
-        // Goes to employee Check in Page
-     /*   private void CheckinPageClick(object sender, RoutedEventArgs e) {
-            //NavigationService.Navigate(new Uri("CheckinPage.xaml", UriKind.RelativeOrAbsolute));
-            Check cp = new Check(); // Changed from 'CheckinPage' -> Check
-            Main.NavigationService.Navigate(new Uri("CheckinPage.xaml", UriKind.RelativeOrAbsolute));   
-        }*/
+        // Goes to Tranasactions table view
+        private void TransactionViewClick(object sender, RoutedEventArgs e)
+        {
+            TransactionsView transactionsWindow = new TransactionsView();
+            transactionsWindow.ShowDialog();
+        }
+
 
         // Goes to Tranasactions table view
         private void TransactionViewClick(object sender, RoutedEventArgs e)
