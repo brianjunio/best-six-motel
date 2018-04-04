@@ -67,14 +67,14 @@ namespace bestsixapp
             TransactionsView Tr = new TransactionsView();
             Tr.ShowDialog();
         }
-
+        */
 
         // Closes the application
         protected void MainWindow_Closed(object sender, EventArgs args)
         {
             App.Current.Shutdown();
         }
-    /*   private void CheckoutWindowClick(object sender, RoutedEventArgs e)
+        /*private void CheckoutWindowClick(object sender, RoutedEventArgs e)
         {
             Check cw = new Check();
             cw.ShowDialog();
