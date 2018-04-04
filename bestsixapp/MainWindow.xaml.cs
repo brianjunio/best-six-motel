@@ -37,7 +37,6 @@ namespace bestsixapp
         {
             RoomMake roomWindow = new RoomMake();
             roomWindow.ShowDialog();
-            roomWindow.Close();
         }
         
         // Goes to Customer Check in window
@@ -47,18 +46,11 @@ namespace bestsixapp
             checkWindow.ShowDialog();
         }
 
-        // Goes to Customer Check in Page
-     /*   private void CheckinPageClick(object sender, RoutedEventArgs e) {
-            //NavigationService.Navigate(new Uri("CheckinPage.xaml", UriKind.RelativeOrAbsolute));
-            Check cp = new Check(); // Changed from 'CheckinPage' -> Check
-            Main.NavigationService.Navigate(new Uri("CheckinPage.xaml", UriKind.RelativeOrAbsolute));   
-        }*/
-
         // Goes to Tranasactions table view
         private void TransactionViewClick(object sender, RoutedEventArgs e)
         {
-            TransactionsView Tr = new TransactionsView();
-            Tr.ShowDialog();
+            TransactionsView transactionsWindow = new TransactionsView();
+            transactionsWindow.ShowDialog();
         }
 
 

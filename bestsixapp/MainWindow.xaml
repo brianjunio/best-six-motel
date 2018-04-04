@@ -13,6 +13,7 @@
         <StackPanel>
             <Button Content="Go to Make a Room" MinWidth="100" Click="RoomClick"/>
             <Button Content="Check in Customer Window" Click="CustomerClick" />
+            <Button Content="Transaction Window" Click="TransactionViewClick" />
             <!--Button Content="Check in Customer Page" Click="CheckinPageClick"/>
             <Button Content="Check Out Customer Page" Click="CheckoutWindowClick"/-->
         </StackPanel>

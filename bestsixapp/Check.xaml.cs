@@ -31,7 +31,6 @@ namespace bestsixapp
         {
             InitializeComponent();
             
-            // RefreshList();  Update Room Page with Customer Information when seleceted
         }
 
         public Check(int roomNum)

@@ -1,17 +1,10 @@
 ﻿using Database;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+using System.Linq;
+using System.Collections;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
 
 namespace bestsixapp
 {
@@ -24,6 +17,24 @@ namespace bestsixapp
         public TransactionsView()
         {
             InitializeComponent();
+            trDataGrid.ItemsSource = LoadTransactions();
+        }
+
+        /*
+         *  Transforms transaction table into a list. 
+         *  List of Transactions become the data source of the data grid.
+         */
+
+        private List<Transactions> LoadTransactions()
+        {
+            List<Transactions> transactionList = new List<Transactions>();
+
+            using (DatabaseContext dbContext = new DatabaseContext())
+            {
+                transactionList = dbContext.Transactions.ToList();
+            }
+
+            return transactionList;
         }
 
         // This will be used for testing purposes.
