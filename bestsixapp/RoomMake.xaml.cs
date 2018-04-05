@@ -29,6 +29,10 @@ namespace bestsixapp
         private bool moveButton = false;
         private bool isEdit = false;
         private bool deleteButton = false;
+
+        public object Frame { get; private set; }
+        public static object NavigationService { get; internal set; }
+
         public RoomMake(string empType)
         {
             InitializeComponent();
