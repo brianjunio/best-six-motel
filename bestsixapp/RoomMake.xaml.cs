@@ -29,6 +29,10 @@ namespace bestsixapp
         private bool moveButton = false;
         private bool isEdit = false;
         private bool deleteButton = false;
+
+        public object Frame { get; private set; }
+        public static object NavigationService { get; internal set; }
+
         public RoomMake(string empType)
         {
             InitializeComponent();
@@ -48,19 +52,6 @@ namespace bestsixapp
             }
         }
 
-        private void CreateRoomClick(object sender, RoutedEventArgs e)
-        {
-            //create room object
-            if (isEdit)
-            {
-                room = new RoomData();
-                newRoomInfo = new RoomInfo(ref room);
-             //   newRoomInfo.SaveButton.Click += SaveClickEventHandler;
-                newRoomInfo.SaveRoom += new EventHandler(SaveClickEventHandler);
-                newRoomInfo.ShowDialog();
-
-            }
-        }
         private void Rect_MouseLeftButtonDown(object sender, MouseEventArgs e)
         {
             //capture click of mouseleft butotn
@@ -71,7 +62,6 @@ namespace bestsixapp
             } 
 
         }
-
 
         private void Rect_MouseLeftButtonUp(object sender, MouseEventArgs e)
         {
@@ -202,35 +192,6 @@ namespace bestsixapp
 
         }
 
-
-
-        private void EditRoomClick(object sender, RoutedEventArgs e)
-        {
-            if (EditRoomButton.Content.ToString() == "Edit Rooms")
-            {
-                //Change button to finish and enable edit
-                EditRoomButton.Padding = new Thickness(16.7);
-                EditRoomButton.Content = "Finish";
-                isEdit = true;
-                AddRoomButton.IsEnabled = true;
-                MoveRoomButton.IsEnabled = true;
-                DeleteRoomButton.IsEnabled = true;
-
-            }
-            else
-            {
-                //change button to edit rooms and disable edit
-                EditRoomButton.Content = "Edit Rooms";
-                EditRoomButton.Padding = new Thickness(2);
-                isEdit = false;
-                AddRoomButton.IsEnabled = false;
-                MoveRoomButton.IsEnabled = false;
-                DeleteRoomButton.IsEnabled = false;
-
-            }
-        }
-
-
         private void SaveClickEventHandler(object sender, EventArgs e) => CreateRoom(); //call cancel method
 
         private void CreateRoom()
@@ -282,47 +243,7 @@ namespace bestsixapp
                 {
                     roomList.Add(new RoomData(obj.roomNo, obj.bedType, obj.noOfBed, obj.price, obj.smoking, obj.left, obj.top,obj.legend ));
                 }           
-                
             }
-        }
-        
-        void CheckButton_Click(object sender, RoutedEventArgs e)
-        {
-            //checking in customer window
-            rect = (Button)sender;
-
-            if (!isEdit)
-            {
-
-                foreach (var e1 in roomList)
-                {
-                    //check room list to see if object selected is any of the room
-                    if (rect == e1.RoomButton)
-                        room = e1; // grabs room object if the rect is selected
-                } //this loop is to find the room object that is attached to rect
-                Check checkWindow = new Check(room.RoomNo);
-              //  checkWindow.TextBofRoom.Text = Convert.ToString(room.RoomNo);
-              using(DatabaseContext dbContext = new DatabaseContext())
-                {
-                    roomQuery = dbContext.Rooms.Find(room.RoomNo);
-                    if (roomQuery.Legend == "Occupied")
-                    {
-                        checkWindow.PopulateTextBoxes();
-                        checkWindow.DisableTextBoxes();
-                        checkWindow.CheckOutEnable();
-                        checkWindow.ShowDialog();
-                    }
-                    else
-                    {
-                        checkWindow.CheckInEnable();
-                        checkWindow.ShowDialog();
-                    }
-                }
-                
-                
-                
-            }
-            
         }
 
         private void DrawAllRoom()
@@ -343,6 +264,80 @@ namespace bestsixapp
                 Canvas.SetTop(rect, obj.Top);
                 //add object to canvas
                 RoomCanvas.Children.Add(rect);
+            }
+        }
+
+        // R O O M   E D I T O R   B U T T O N S 
+        private void CreateRoomClick(object sender, RoutedEventArgs e)
+        {
+            //create room object
+            if (isEdit)
+            {
+                room = new RoomData();
+                newRoomInfo = new RoomInfo(ref room);
+                //   newRoomInfo.SaveButton.Click += SaveClickEventHandler;
+                newRoomInfo.SaveRoom += new EventHandler(SaveClickEventHandler);
+                newRoomInfo.ShowDialog();
+
+            }
+        }
+
+        void CheckButton_Click(object sender, RoutedEventArgs e)
+        {
+            //checking in customer window
+            rect = (Button)sender;
+
+            if (!isEdit)
+            {
+
+                foreach (var e1 in roomList)
+                {
+                    //check room list to see if object selected is any of the room
+                    if (rect == e1.RoomButton)
+                        room = e1; // grabs room object if the rect is selected
+                } //this loop is to find the room object that is attached to rect
+                Check checkWindow = new Check(room.RoomNo);
+                //  checkWindow.TextBofRoom.Text = Convert.ToString(room.RoomNo);
+                using (DatabaseContext dbContext = new DatabaseContext())
+                {
+                    roomQuery = dbContext.Rooms.Find(room.RoomNo);
+                    if (roomQuery.Legend == "Occupied")
+                    {
+                        checkWindow.PopulateTextBoxes();
+                        checkWindow.DisableTextBoxes();
+                        checkWindow.CheckOutEnable();
+                        checkWindow.ShowDialog();
+                    }
+                    else
+                    {
+                        checkWindow.CheckInEnable();
+                        checkWindow.ShowDialog();
+                    }
+                }
+            }
+        }
+
+        private void EditRoomClick(object sender, RoutedEventArgs e)
+        {
+            if (EditRoomButton.Content.ToString() == "Edit Rooms")
+            {
+                //Change button to finish and enable edit
+                EditRoomButton.Padding = new Thickness(16.7);
+                EditRoomButton.Content = "Finish";
+                isEdit = true;
+                AddRoomButton.IsEnabled = true;
+                MoveRoomButton.IsEnabled = true;
+                DeleteRoomButton.IsEnabled = true;
+            }
+            else
+            {
+                //change button to edit rooms and disable edit
+                EditRoomButton.Content = "Edit Rooms";
+                EditRoomButton.Padding = new Thickness(2);
+                isEdit = false;
+                AddRoomButton.IsEnabled = false;
+                MoveRoomButton.IsEnabled = false;
+                DeleteRoomButton.IsEnabled = false;
             }
         }
 
@@ -375,7 +370,21 @@ namespace bestsixapp
                 deleteButton = false;
                 DeleteRoomButton.ClearValue(Button.BackgroundProperty); 
             }
-        }        
+        }
+
+        // M E N U   B U T T O N S 
+        private void TrasactionButton_Click(object sender, RoutedEventArgs e) {
+
+        }
+        private void SettingsButton_Click(object sender, RoutedEventArgs e)
+        {
+            Settings sw = new Settings(this);
+            sw.ShowDialog();
+        }
+        private void ExitButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
 

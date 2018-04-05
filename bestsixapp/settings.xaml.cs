@@ -10,19 +10,42 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace bestsixapp
 {
     /// <summary>
-    /// Interaction logic for settings.xaml
+    /// Interaction logic for Settings.xaml
     /// </summary>
-    public partial class settings : Page
+    public partial class Settings : Window
     {
-        public settings()
+        RoomMake rm;
+        public object Frame { get; private set; }
+        public static object NavigationService { get; internal set; }
+
+        public Settings(RoomMake rm)
         {
+            this.rm = rm;
             InitializeComponent();
+        }
+
+        private void RoomMakeButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+        private void TransactionButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+            TransactionsView tv = new TransactionsView();
+            rm.NavigationService.Navigate(new Uri("TransactionView.xaml", UriKind.RelativeOrAbsolute));
+        }
+        private void OtherButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+        private void CancelButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }
