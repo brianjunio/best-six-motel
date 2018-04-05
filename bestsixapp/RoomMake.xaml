@@ -8,72 +8,32 @@
         Name="RoomWindow"
         Title="Managing Rooms" Height="710" Width="1156.4">
     <Grid>
+
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="20" />
-            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="auto" />
+            <ColumnDefinition Width="auto" />
+            <ColumnDefinition Width="auto" />
+            <ColumnDefinition Width="auto" />
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="20" />
         </Grid.ColumnDefinitions>
-        
         <Grid.RowDefinitions>
+            
             <RowDefinition Height="*"/>
             <RowDefinition Height="60"/>
+
         </Grid.RowDefinitions>
-        
+        <Button Name="EditRoomButton" Grid.Row ="5" Grid.Column="1"  Content ="Edit Rooms" Margin="5,5,10,5" Click="EditRoomClick" Padding="2"/>
+        <Button Name="AddRoomButton" Grid.Row ="5" Grid.Column="2"  Content ="Add Rooms" Margin="5,5,10,5" Click="CreateRoomClick" Padding="2"/>
+        <Button Name="MoveRoomButton" Grid.Row ="5" Grid.Column="3"  Content ="Move Rooms" Margin="5,5,10,5" Click="MoveRoomButton_Click" Padding="2"/>
+        <Button Name="DeleteRoomButton" Grid.Row ="5" Grid.Column="4"  Content ="Delete Rooms" Margin="5,5,10,5" Click="DeleteRoomButton_Click" Padding="2"/>
+
         <Border Name="CanvasBorder" Grid.ColumnSpan="7" Grid.Row="0" BorderThickness="2"  BorderBrush="Black">
+
             <Canvas Name="RoomCanvas" Background="AliceBlue" ClipToBounds="True"  >
+               
             </Canvas>
         </Border>
-
-        <Grid x:Name="RoomEditor" Grid.Row="1" Grid.ColumnSpan="3" Visibility="Hidden">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="20" />
-                <ColumnDefinition Width="auto" />
-                <ColumnDefinition Width="auto" />
-                <ColumnDefinition Width="auto" />
-                <ColumnDefinition Width="auto" />
-                <ColumnDefinition Width="auto" />
-                <ColumnDefinition Width="20" />
-            </Grid.ColumnDefinitions>
-            
-            <Button Name="EditRoomButton"   Grid.Column="1"  Content ="Edit Rooms" Width ="100" Margin="5,5,10,5" Click="EditRoomClick" Padding="2"/>
-            <Button Name="AddRoomButton"    Grid.Column="2"  Content ="Add Rooms"  Width ="100" Margin="5,5,10,5" Click="CreateRoomClick" Padding="2"/>
-            <Button Name="MoveRoomButton"   Grid.Column="3"  Content ="Move Rooms" Width ="100" Margin="5,5,10,5" Click="MoveRoomButton_Click" Padding="2"/>
-            <Button Name="DeleteRoomButton" Grid.Column="4"  Content ="Delete Rooms" Width ="100" Margin="5,5,10,5" Click="DeleteRoomButton_Click" Padding="2"/>
-        </Grid>
-        <Grid x:Name="MenuButtons" Grid.Row="1" Grid.ColumnSpan="3" Visibility="Visible">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="20" />
-                <ColumnDefinition Width="auto" />
-                <ColumnDefinition Width="auto" />
-                <ColumnDefinition Width="auto" />
-                <ColumnDefinition Width="auto" />
-                <ColumnDefinition Width="auto" />
-                <ColumnDefinition Width="20" />
-            </Grid.ColumnDefinitions>
-
-            <Button Name="TransactionButton" Grid.Column="1" Content ="Transactions" Width ="100" Margin="5,5,10,5" Click="TrasactionButton_Click" Padding="2"/>
-            <Button Name="SettingsButton"    Grid.Column="2" Content ="Settings" Width ="100" Margin="5,5,10,5" Click="SettingsButton_Click" Padding="2"/>
-            <Button Name="ExitButton"        Grid.Column="3" Content ="Exit" Width ="100" Margin="5,5,10,5" Click="ExitButton_Click" Padding="2"/>
-        </Grid>
-        
-        <!-- Settings Buttons
-        <Grid x:Name="SettingsButtons" Grid.Row="1" Grid.ColumnSpan="3" Visibility="">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="20" />
-                <ColumnDefinition Width="auto" />
-                <ColumnDefinition Width="auto" />
-                <ColumnDefinition Width="auto" />
-                <ColumnDefinition Width="auto" />
-                <ColumnDefinition Width="auto" />
-                <ColumnDefinition Width="20" />
-            </Grid.ColumnDefinitions>
-
-            <Button Name="TransactionButton" Grid.Column="1" Content ="Transactions" Width ="100" Margin="5,5,10,5" Click="TrasactionButtonClick" Padding="2"/>
-            <Button Name="SettingsButton"    Grid.Column="2" Content ="Settings" Width ="100" Margin="5,5,10,5" Click="SettingsButtonClick" Padding="2"/>
-            <Button Name="ExitButton"        Grid.Column="3" Content ="Exit" Width ="100" Margin="5,5,10,5" Click="ExitButton_Click" Padding="2"/>
-        </Grid>*/
-        -->
     </Grid>
-    
 </Window>
