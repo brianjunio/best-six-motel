@@ -143,7 +143,7 @@ namespace bestsixapp
 
                 if(columnName == "Smoking")
                 {
-                    Console.WriteLine("yolo");
+                    
                     if (this.Smoking == null || this.Smoking == "0" )
                         return "Field Input is required";
                    
