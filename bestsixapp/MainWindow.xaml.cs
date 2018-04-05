@@ -31,8 +31,9 @@ namespace bestsixapp
 
         public MainWindow()
         {
-            CompanyName = "Room Management System";
+            checkDB();
             InitializeComponent();
+            CompanyName = "Room Management System";
             this.Closed += new EventHandler(MainWindow_Closed);
            
         }
@@ -85,7 +86,6 @@ namespace bestsixapp
 
         }
 
-        // To Change Display name in settings page
         public string CompanyName
         {
             get { return _name; }
@@ -108,24 +108,45 @@ namespace bestsixapp
         {
             using (DatabaseContext dbContext = new DatabaseContext())
             {
-                if(String.IsNullOrEmpty(User.Text))
+                if (String.IsNullOrEmpty(UserText.Text))
                 {
                     MessageBox.Show("Please input field.");
                 }
                 else
                 {
-                    ////// Add Page Navigation
-                    //////
-                    //NavigationService.Navigate(new Uri("CheckinPage.xaml", UriKind.RelativeOrAbsolute));
-                    Menu = new Menu();
-                    Main.NavigationService.Navigate(new Uri("Menu.xaml", UriKind.RelativeOrAbsolute));
-                    //RoomMake roomWindow = new RoomMake();
-                    //roomWindow.ShowDialog();
-                    //roomWindow.Close();
+                    var employeeLogin = dbContext.Employees
+                                      .SingleOrDefault(s => s.Username == UserText.Text && s.Password == UserPassword.Password.ToString());
+                    if (employeeLogin != null)
+                    {
+                        RoomMake roomWindow = new RoomMake(employeeLogin.EmpType);
+                        roomWindow.ShowDialog();
+                       // roomWindow.Close();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Login Invalid.");
+                    }
+                
                 }
                
                 }
             }
+        private void checkDB()
+        {
+            using (DatabaseContext dbContext = new DatabaseContext())
+            {
+                if (!dbContext.Employees.Any())
+                {
+                    var DefaultRoot = new Employee() { Username = "Root",EmpType = "Admin" ,Password = "Password" };
+                    dbContext.Add<Employee>(DefaultRoot);
+                    dbContext.SaveChanges();
+                }
+                
+            }
         }
+
+        }
+    
+
 }
 
