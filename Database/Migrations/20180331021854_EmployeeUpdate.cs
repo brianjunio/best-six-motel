@@ -77,11 +77,9 @@ namespace Database.Migrations
                 {
                     TrNumber = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    Checkin = table.Column<DateTime>(nullable: false),
-                    Checkout = table.Column<DateTime>(nullable: false),
+                    RoomNo = table.Column<int>(nullable: false),
                     DateModified = table.Column<DateTime>(nullable: false),
-                    ID = table.Column<string>(nullable: true),
-                    RoomNo = table.Column<int>(nullable: false)
+                    ID = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {

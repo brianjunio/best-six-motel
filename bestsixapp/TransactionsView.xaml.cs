@@ -36,17 +36,10 @@ namespace bestsixapp
 
             return transactionList;
         }
-
-        // This will be used for testing purposes.
+        
         private void TRClose_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
-        }
-
-        // Used to load the Transaction table data
-        private void TransactionsView_Load(object sender, EventArgs e)
-        {
-
         }
 
 

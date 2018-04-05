@@ -99,15 +99,11 @@ namespace Database.Migrations
                     b.Property<int>("TrNumber")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<DateTime>("Checkin");
-
-                    b.Property<DateTime>("Checkout");
+                    b.Property<int>("RoomNo");
 
                     b.Property<DateTime>("DateModified");
 
                     b.Property<string>("ID");
-
-                    b.Property<int>("RoomNo");
 
                     b.HasKey("TrNumber");
 
