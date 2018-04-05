@@ -21,7 +21,5 @@ namespace Database
         public DateTime Checkout { get; set; }
         public virtual Customer Customer { get; set; }
 
-     
-        
     }
 }

@@ -95,7 +95,6 @@
             <TextBox Grid.Column="5" Grid.Row="11" x:Name="TBPayment" HorizontalAlignment="Center" VerticalAlignment="Center" Height="24" Width="200"/>
             <Button Grid.Column="5" Grid.Row="15" Content="Register"  HorizontalAlignment="Right"  VerticalAlignment="Center" Height="24" Width="76" 
                     x:Name="BTRegister" Click="ButtonRegister_Click" Margin="0"/>
-
         </Grid>
     </StackPanel>
 </Window>

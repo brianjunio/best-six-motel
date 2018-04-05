@@ -85,6 +85,7 @@ namespace bestsixapp
 
         }
 
+        // To Change Display name in settings page
         public string CompanyName
         {
             get { return _name; }
@@ -113,15 +114,18 @@ namespace bestsixapp
                 }
                 else
                 {
-                    RoomMake roomWindow = new RoomMake();
-                    roomWindow.ShowDialog();
-                    roomWindow.Close();
+                    ////// Add Page Navigation
+                    //////
+                    //NavigationService.Navigate(new Uri("CheckinPage.xaml", UriKind.RelativeOrAbsolute));
+                    Menu = new Menu();
+                    Main.NavigationService.Navigate(new Uri("Menu.xaml", UriKind.RelativeOrAbsolute));
+                    //RoomMake roomWindow = new RoomMake();
+                    //roomWindow.ShowDialog();
+                    //roomWindow.Close();
                 }
                
                 }
             }
         }
-    
-
 }
 
