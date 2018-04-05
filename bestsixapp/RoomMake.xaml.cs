@@ -29,14 +29,23 @@ namespace bestsixapp
         private bool moveButton = false;
         private bool isEdit = false;
         private bool deleteButton = false;
-        public RoomMake()
+        public RoomMake(string empType)
         {
             InitializeComponent();
             FillList();
             DrawAllRoom();
-            AddRoomButton.IsEnabled = false;
-            MoveRoomButton.IsEnabled = false;
-            DeleteRoomButton.IsEnabled = false;
+            if (empType == "Admin")
+            {
+                AddRoomButton.IsEnabled = false;
+                MoveRoomButton.IsEnabled = false;
+                DeleteRoomButton.IsEnabled = false;
+            }else if(empType == "Employee")
+            {
+                EditRoomButton.IsEnabled = false;
+                AddRoomButton.IsEnabled = false;
+                MoveRoomButton.IsEnabled = false;
+                DeleteRoomButton.IsEnabled = false;
+            }
         }
 
         private void CreateRoomClick(object sender, RoutedEventArgs e)
@@ -366,8 +375,7 @@ namespace bestsixapp
                 deleteButton = false;
                 DeleteRoomButton.ClearValue(Button.BackgroundProperty); 
             }
-        }
-        
+        }        
     }
 }
 
