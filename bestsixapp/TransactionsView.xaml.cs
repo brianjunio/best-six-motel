@@ -2,7 +2,9 @@
 using System;
 using System.Collections.Generic;
 using System.Windows;
+using System.Windows.Controls;
 using System.Linq;
+
 using System.Collections;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 
@@ -12,7 +14,7 @@ namespace bestsixapp
     /// Interaction logic for TransactionsView.xaml
     /// 
     /// </summary>
-    public partial class TransactionsView : Window
+    public partial class TransactionsView : Page
     {
         public TransactionsView()
         {
@@ -40,7 +42,7 @@ namespace bestsixapp
         // This will be used for testing purposes.
         private void TRClose_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            this.NavigationService.Navigate(this.Parent);
         }
 
         // Used to load the Transaction table data

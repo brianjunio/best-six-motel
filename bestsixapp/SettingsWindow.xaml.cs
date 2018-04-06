@@ -19,10 +19,10 @@ namespace bestsixapp
     /// </summary>
     public partial class SettingsWindow : Window
     {
-        RoomMake rm;
+        RoomMake rmw;
         public SettingsWindow(RoomMake rm)
         {
-            this.rm = rm;
+            this.rmw = rm;
             InitializeComponent();
         }
 
@@ -37,7 +37,7 @@ namespace bestsixapp
         {
             this.Close();
             TransactionsView tv = new TransactionsView();
-            rm.NavigationService.Navigate(new Uri("TransactionView.xaml", UriKind.RelativeOrAbsolute));
+            //rmw.NavigationService.Navigate(new Uri("TransactionView.xaml", UriKind.RelativeOrAbsolute));
         }
         private void OtherButton_Click(object sender, RoutedEventArgs e)
         {
