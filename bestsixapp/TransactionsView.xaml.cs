@@ -42,7 +42,7 @@ namespace bestsixapp
         // This will be used for testing purposes.
         private void TRClose_Click(object sender, RoutedEventArgs e)
         {
-            Close();
+            this.Close();
         }
 
         // Used to load the Transaction table data
