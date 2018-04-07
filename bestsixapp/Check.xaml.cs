@@ -80,7 +80,7 @@ namespace bestsixapp
                         dbContext.Transactions.Add(new Transactions
                         {
                             TrNumber = randValue,
-                            DateModified = DateTime.Now,
+                            DateModified = DateTime.Today,
                             ID = TBID.Text,
                             RoomNo = roomNum
                         });
