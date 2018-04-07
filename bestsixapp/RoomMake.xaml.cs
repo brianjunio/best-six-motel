@@ -397,7 +397,8 @@ namespace bestsixapp
         }
         private void SettingsButton_Click(object sender, RoutedEventArgs e)
         {
-
+            SettingsWindow sw = new SettingsWindow();
+            sw.ShowDialog();
         }
         private void ExitButton_Click(object sender, RoutedEventArgs e)
         {
