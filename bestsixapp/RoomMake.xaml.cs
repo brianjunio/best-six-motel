@@ -402,7 +402,9 @@ namespace bestsixapp
         }
         private void ExitButton_Click(object sender, RoutedEventArgs e)
         {
-
+            MainWindow mw = new MainWindow();
+            this.Close();
+            mw.ShowDialog();
         }
     }
 }

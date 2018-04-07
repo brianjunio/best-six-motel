@@ -118,8 +118,9 @@ namespace bestsixapp
                     if (employeeLogin != null)
                     {
                         RoomMake roomWindow = new RoomMake(employeeLogin.EmpType);
+                        this.Hide();
                         roomWindow.ShowDialog();
-                       // roomWindow.Close();
+                        
                     }
                     else
                     {
@@ -144,7 +145,7 @@ namespace bestsixapp
             }
         }
 
-        }
+    }
     
 
 }
