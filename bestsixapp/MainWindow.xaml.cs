@@ -27,7 +27,6 @@ namespace bestsixapp
         public object Frame { get; private set; }
         public static object NavigationService { get; internal set; }
         private string _name;
-        private Employee employeeQuery;
 
         public MainWindow()
         {

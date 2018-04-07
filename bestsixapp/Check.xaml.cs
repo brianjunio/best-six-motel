@@ -119,14 +119,7 @@ namespace bestsixapp
         {
             var checkOut = DateTime.Now;
             using(DatabaseContext dbContext = new DatabaseContext())
-            {
-                customerQuery = dbContext.Customers.Find(TBID.Text);
-                if (customerQuery != null)
-                {
-
-                    dbContext.Remove(customerQuery);
-                }
-
+            {               
                 roomQuery = dbContext.Rooms.Find(roomNum);
                 roomQuery.Legend = "Vacant";
                 roomQuery.Checkin = checkOut;

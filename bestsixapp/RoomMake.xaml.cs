@@ -386,7 +386,8 @@ namespace bestsixapp
         private void TrasactionButton_Click(object sender, RoutedEventArgs e)
         {
             TransactionsView tv = new TransactionsView();
-            this.NavigationService.Navigate(new Uri("TransactionView.xaml", UriKind.RelativeOrAbsolute));
+            tv.InitializeComponent();
+            tv.ShowDialog();
         }
         private void RoomEditButton_Click(object sender, RoutedEventArgs e)
         {

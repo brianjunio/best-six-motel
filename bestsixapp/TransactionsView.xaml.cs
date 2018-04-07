@@ -14,7 +14,7 @@ namespace bestsixapp
     /// Interaction logic for TransactionsView.xaml
     /// 
     /// </summary>
-    public partial class TransactionsView : Page
+    public partial class TransactionsView : Window
     {
         public TransactionsView()
         {
@@ -42,7 +42,7 @@ namespace bestsixapp
         // This will be used for testing purposes.
         private void TRClose_Click(object sender, RoutedEventArgs e)
         {
-            this.NavigationService.Navigate(this.Parent);
+            Close();
         }
 
         // Used to load the Transaction table data
