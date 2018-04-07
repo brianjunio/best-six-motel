@@ -29,8 +29,7 @@ namespace bestsixapp
         Room roomQuery = new Room();
         Customer customerQuery = new Customer();
         Transactions transactionQuery = new Transactions();
-        Random rand = new Random();
-        int randValue;
+        int trValue = 1;
 
 
         public Check()
@@ -71,19 +70,24 @@ namespace bestsixapp
                     roomQuery.Legend = "Occupied";
                 }
 
+                /* Adds new Transaction to transaction table in sequential order */
                 do
                 {
-                    randValue = rand.Next(10000000, 99999999);
-                    transactionQuery = dbContext.Transactions.SingleOrDefault(t => t.TrNumber == randValue);
+                    transactionQuery = dbContext.Transactions.SingleOrDefault(t => t.TrNumber == trValue);
                     if (transactionQuery == null)
                     {
                         dbContext.Transactions.Add(new Transactions
                         {
-                            TrNumber = randValue,
+                            TrNumber = trValue,
+                            Checkin = DateTime.Today,
                             DateModified = DateTime.Today,
                             ID = TBID.Text,
                             RoomNo = roomNum
                         });
+                    }
+                    else
+                    {
+                        trValue += 1;
                     }
                 }
                 while (transactionQuery != null);
@@ -118,14 +122,7 @@ namespace bestsixapp
         {
             var checkOut = DateTime.Now;
             using(DatabaseContext dbContext = new DatabaseContext())
-            {
-                customerQuery = dbContext.Customers.Find(TBID.Text);
-                if (customerQuery != null)
-                {
-
-                    dbContext.Remove(customerQuery);
-                }
-
+            {               
                 roomQuery = dbContext.Rooms.Find(roomNum);
                 roomQuery.Legend = "Vacant";
                 roomQuery.Checkin = checkOut;
@@ -133,6 +130,7 @@ namespace bestsixapp
                 transactionQuery = dbContext.Transactions.SingleOrDefault(t => t.RoomNo == roomNum);
                 if(transactionQuery != null)
                 {
+                    transactionQuery.Checkout = checkOut;
                     transactionQuery.DateModified = checkOut;
                 }
 
