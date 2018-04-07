@@ -79,7 +79,6 @@ namespace bestsixapp
                         dbContext.Transactions.Add(new Transactions
                         {
                             TrNumber = trValue,
-                            Checkin = DateTime.Today,
                             DateModified = DateTime.Today,
                             ID = TBID.Text,
                             RoomNo = roomNum
@@ -130,7 +129,6 @@ namespace bestsixapp
                 transactionQuery = dbContext.Transactions.SingleOrDefault(t => t.RoomNo == roomNum);
                 if(transactionQuery != null)
                 {
-                    transactionQuery.Checkout = checkOut;
                     transactionQuery.DateModified = checkOut;
                 }
 
