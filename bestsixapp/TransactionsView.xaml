@@ -8,9 +8,24 @@
         Title="Transactions - Best Six" Height="357.784" Width="710">
 
     <Grid>
-        <DataGrid AutoGenerateColumns="True" Name="trDataGrid" Margin="0,10,-0.333,74.667"/>
-        <Button Content="Close window." HorizontalAlignment="Left" Margin="10,280,0,0" 
-                VerticalAlignment="Top" Width="75" Click="TRClose_Click"/>
+        <DataGrid AutoGenerateColumns="True" Name="trDataGrid" Margin="0,89,0,44"/>
+        <Button Content="Close Window" HorizontalAlignment="Left" Margin="10,297,0,0" 
+                VerticalAlignment="Top" Width="94" Click="TRClose_Click"/>
+        <DatePicker HorizontalAlignment="Left" Margin="48,52,0,0" VerticalAlignment="Top"/>
+        <DatePicker HorizontalAlignment="Left" Margin="187,52,0,0" VerticalAlignment="Top"/>
+        <Label Content="From: " HorizontalAlignment="Left" Margin="6,50,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.541,0.154"/>
+        <Label Content="To: " HorizontalAlignment="Left" Margin="159,50,0,0" VerticalAlignment="Top"/>
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="74" Margin="5,10,0,0" VerticalAlignment="Top" Width="356">
+            <Label Content="Search Customer by Date Range"/>
+        </Border>
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="74" Margin="370,10,0,0" VerticalAlignment="Top" Width="328">
+            <Label Content="Search Customer by Driver's License"/>
+        </Border>
+        <TextBox HorizontalAlignment="Left" Height="24" Margin="463,52,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="169" AutomationProperties.HelpText="Type a customer's driver's license here."/>
+        <Label Content="Search License: " HorizontalAlignment="Left" Margin="370,50,0,0" VerticalAlignment="Top"/>
+        <Button Content="Load" HorizontalAlignment="Left" Margin="294,52,0,0" VerticalAlignment="Top" Width="55" Height="24"/>
+        <Button Content="Search" HorizontalAlignment="Left" Margin="637,52,0,0" VerticalAlignment="Top" Width="55" Height="24"/>
+
     </Grid>
-    
+
 </Window>
