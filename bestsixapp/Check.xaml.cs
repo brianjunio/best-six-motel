@@ -3,15 +3,14 @@ using System;
 using System.Linq;
 using System.Windows;
 
-// using System.Windows.Controls;
-// using System.Windows.Data;
-// using System.Windows.Documents;
-// using System.Windows.Input;
-// using System.Windows.Media;
-// using System.Windows.Media.Imaging;
-// using System.Windows.Navigation;
-// using System.Windows.Shapes;
 using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
 
 
 
@@ -21,7 +20,7 @@ namespace bestsixapp
     /// <summary>
     /// Interaction logic for Page1.xaml
     /// </summary>
-    public partial class Check : Window
+    public partial class Check : Page
     {
         int roomNum;
         string localID;
@@ -95,7 +94,8 @@ namespace bestsixapp
             
                 dbContext.SaveChanges();
                 localID = TBID.Text;
-                Close();
+                this.NavigationService.Navigate(this.Parent);
+                //Close();
 
             }
         }
@@ -105,12 +105,16 @@ namespace bestsixapp
         {
             // From the datepicker selected date turn into DateTime object
             checkin = (DateTime)checkinValue.SelectedDate;
+            TBcheckin.Text = checkin.ToLongDateString().ToString();
+            TBcheckin.IsEnabled = false;
         }
 
         private void CheckoutDateChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {
             // From the datepicker selected date turn into DateTime object
             checkout = (DateTime)checkoutValue.SelectedDate;
+            TBcheckout.Text = checkout.ToLongDateString().ToString();
+            TBcheckout.IsEnabled = false;
         }
 
         /*
@@ -120,29 +124,30 @@ namespace bestsixapp
 
         public void ButtonCheckout_Click(object sender, RoutedEventArgs e)
         {
-            var checkOut = DateTime.Now;
+            checkout = DateTime.Now;
             using(DatabaseContext dbContext = new DatabaseContext())
-            {               
+            {
+                // Code to Clear out Room Table for the 
                 roomQuery = dbContext.Rooms.Find(roomNum);
+                // Code to Clear out Room Table for next customer to checkin
                 roomQuery.Legend = "Vacant";
-                roomQuery.Checkin = checkOut;
+                roomQuery.Checkin = checkin; // shouldn't this be set back to null/default empty?
 
-                transactionQuery = dbContext.Transactions.SingleOrDefault(t => t.RoomNo == roomNum);
+                transactionQuery = dbContext.Transactions.FirstOrDefault(t => t.RoomNo == roomNum);
                 if(transactionQuery != null)
                 {
-                    transactionQuery.Checkout = checkOut;
-                    transactionQuery.DateModified = checkOut;
+                    transactionQuery.Checkout = checkout;
+                    transactionQuery.DateModified = checkout;
                 }
 
                 dbContext.SaveChanges();
-                Close();
+                this.NavigationService.Navigate(this.Parent);
+                //Close();
             }
         }
 
-        //method for cancel
-        public void ButtonCancel_Click(object sender, RoutedEventArgs e) { this.Close(); }
-
-
+        //Button to cancel, abort and go back to home menu
+        public void ButtonCancel_Click(object sender, RoutedEventArgs e) { this.NavigationService.Navigate(this.Parent); }// this.Close(); }
 
         private void UpdateLabels()
         {
