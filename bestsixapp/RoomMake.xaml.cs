@@ -2,16 +2,14 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
+using System.Windows.Navigation;
+//using System.Windows.Navigation.NavigationWindow;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+
 
 namespace bestsixapp
 {
@@ -32,6 +30,8 @@ namespace bestsixapp
 
         public object Frame { get; private set; }
         public static RoomMake NavigationService { get; internal set; }
+
+       // NavigationService navService = NavigationService.GetNavigationService(this);
 
         public RoomMake(string empType)
         {
@@ -311,12 +311,23 @@ namespace bestsixapp
                         checkWindow.PopulateTextBoxes();
                         checkWindow.DisableTextBoxes();
                         checkWindow.CheckOutEnable();
-                        checkWindow.ShowDialog();
+                        //checkWindow.ShowDialog();
+                        //this.NavigationService.navService.Navigate(checkWindow);
+                        //NavigationService nav = NavigationService.GetNavigationService(this);
+                        //nav.Navigate(new Uri("Page.xaml", UriKind.RelativeOrAbsolute));
+                        //Main.Frame.Navigate(checkWindow());
+                        Main.NavigationService.Navigate(checkWindow);
                     }
                     else
                     {
                         checkWindow.CheckInEnable();
-                        checkWindow.ShowDialog();
+                        //checkWindow.ShowDialog();
+                        //navService.NavigationService.Navigate(new Uri("Check.xaml", UriKind.RelativeOrAbsolute));
+                        //NavigationService nav = NavigationService.GetNavigationService(this);
+                        //nav.Navigate(new Uri("Page.xaml", UriKind.RelativeOrAbsolute));
+                        //Main.Frame.Navigate(checkWindow());
+                        //Check checkpage = new Check();
+                        Main.NavigationService.Navigate(checkWindow);
                     }
                 }
             }

@@ -58,6 +58,7 @@
 
             </Canvas>
         </Border>
+        <Frame x:Name="Main" Grid.ColumnSpan ="7" Grid.Row="0" BorderThickness="2" BorderBrush="Black" NavigationUIVisibility="Hidden" />
 
         <!-- Settings Buttons
         <Grid x:Name="SettingsButtons" Grid.Row="1" Grid.ColumnSpan="3" Visibility="">

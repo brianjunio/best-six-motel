@@ -24,8 +24,8 @@ namespace bestsixapp
     {
         public event PropertyChangedEventHandler PropertyChanged;
         // Creates a Frame For Pages
-        public object Frame { get; private set; }
-        public static object NavigationService { get; internal set; }
+        //public object Frame { get; private set; }
+        //public static object NavigationService { get; internal set; }
         private string _name;
 
         public MainWindow()
