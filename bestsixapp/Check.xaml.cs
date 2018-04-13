@@ -147,7 +147,7 @@ namespace bestsixapp
         }
 
         //Button to cancel, abort and go back to home menu
-        public void ButtonCancel_Click(object sender, RoutedEventArgs e) { this.NavigationService.Navigate(this.Parent); }// this.Close(); }
+        public void ButtonCancel_Click(object sender, RoutedEventArgs e){ this.NavigationService.Navigate(this.Parent); }// this.Close(); }
 
         private void UpdateLabels()
         {

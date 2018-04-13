@@ -31,10 +31,12 @@ namespace bestsixapp
         public object Frame { get; private set; }
         public static RoomMake NavigationService { get; internal set; }
 
-       // NavigationService navService = NavigationService.GetNavigationService(this);
+        //NavigationService navService = NavigationService.GetNavigationService(this);
 
         public RoomMake(string empType)
         {
+            
+
             InitializeComponent();
             FillList();
             DrawAllRoom();
@@ -54,6 +56,9 @@ namespace bestsixapp
             // Changes to Menu Grid Button Panel
             RoomEditor.Visibility = Visibility.Hidden;
             MenuButtons.Visibility = Visibility.Visible;
+            TransactionsButton.Visibility = Visibility.Hidden;
+
+            this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
         }
 
         private void Rect_MouseLeftButtonDown(object sender, MouseEventArgs e)
@@ -312,21 +317,12 @@ namespace bestsixapp
                         checkWindow.DisableTextBoxes();
                         checkWindow.CheckOutEnable();
                         //checkWindow.ShowDialog();
-                        //this.NavigationService.navService.Navigate(checkWindow);
-                        //NavigationService nav = NavigationService.GetNavigationService(this);
-                        //nav.Navigate(new Uri("Page.xaml", UriKind.RelativeOrAbsolute));
-                        //Main.Frame.Navigate(checkWindow());
                         Main.NavigationService.Navigate(checkWindow);
                     }
                     else
-                    {
+                    {   // N a v i g a t e   b  a c k  h o m e 
                         checkWindow.CheckInEnable();
                         //checkWindow.ShowDialog();
-                        //navService.NavigationService.Navigate(new Uri("Check.xaml", UriKind.RelativeOrAbsolute));
-                        //NavigationService nav = NavigationService.GetNavigationService(this);
-                        //nav.Navigate(new Uri("Page.xaml", UriKind.RelativeOrAbsolute));
-                        //Main.Frame.Navigate(checkWindow());
-                        //Check checkpage = new Check();
                         Main.NavigationService.Navigate(checkWindow);
                     }
                 }
@@ -390,21 +386,31 @@ namespace bestsixapp
         private void BackMenuButton_Click(object sender, RoutedEventArgs e)
         {
             // Changes to Menu Grid Button Panel
+            this.Main.NavigationService.Navigate(this.Parent);
             RoomEditor.Visibility = Visibility.Hidden;
+            TransactionsButton.Visibility = Visibility.Hidden;
             MenuButtons.Visibility = Visibility.Visible;
         }
+
+
         // M E N U   B U T T O N S 
         private void TrasactionButton_Click(object sender, RoutedEventArgs e)
         {
-            TransactionsView tv = new TransactionsView();
-            tv.InitializeComponent();
-            tv.ShowDialog();
+            TransactionsView transactionWindow = new TransactionsView();
+            this.Main.NavigationService.Navigate(transactionWindow);
+            //tv.InitializeComponent();
+            //tv.ShowDialog();
+            TransactionsButton.Visibility = Visibility.Visible;
+            RoomEditor.Visibility = Visibility.Hidden;
+            MenuButtons.Visibility = Visibility.Hidden;
         }
         private void RoomEditButton_Click(object sender, RoutedEventArgs e)
         {
             // Changes to Menu Grid Button Panel
             RoomEditor.Visibility = Visibility.Visible;
             MenuButtons.Visibility = Visibility.Hidden;
+            TransactionsButton.Visibility = Visibility.Hidden;
+
         }
         private void SettingsButton_Click(object sender, RoutedEventArgs e)
         {
@@ -416,6 +422,7 @@ namespace bestsixapp
             MainWindow mw = new MainWindow();
             this.Close();
             mw.ShowDialog();
+            //this.Hide();
         }
     }
 }

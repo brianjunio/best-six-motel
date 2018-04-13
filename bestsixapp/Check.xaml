@@ -12,7 +12,7 @@
     <StackPanel>
         <Grid Height="461">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition MaxWidth="40"/>
+                <ColumnDefinition MaxWidth="*"/>
                 <!-- Col 0 Border 20 Pixels -->
                 <ColumnDefinition Width="100"/>
                 <!-- Col 1 -->
@@ -24,11 +24,11 @@
                 <!-- Col 4 -->
                 <ColumnDefinition Width="200"/>
                 <!-- Col 5 -->
-                <ColumnDefinition MaxWidth="40"/>
+                <ColumnDefinition MaxWidth="*"/>
             </Grid.ColumnDefinitions>
 
             <Grid.RowDefinitions>
-                <RowDefinition Height="20"  />
+                <RowDefinition Height="*"  />
                 <RowDefinition Height="25"/>
                 <RowDefinition Height="25"/>
                 <RowDefinition Height="25"/>
@@ -45,7 +45,7 @@
                 <RowDefinition Height="25"/>
                 <RowDefinition Height="25"/>
                 <RowDefinition Height="25"/>
-                <RowDefinition Height="185" />
+                <RowDefinition Height="*" />
             </Grid.RowDefinitions>
 
             <!--COL 1-->

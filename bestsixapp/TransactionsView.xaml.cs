@@ -14,7 +14,7 @@ namespace bestsixapp
     /// Interaction logic for TransactionsView.xaml
     /// 
     /// </summary>
-    public partial class TransactionsView : Window
+    public partial class TransactionsView : Page
     {
         public TransactionsView()
         {
@@ -41,7 +41,9 @@ namespace bestsixapp
         
         private void TRClose_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            //this.Close();
+            //Main.NavigationService.Navigate(roomWindow);
+            this.NavigationService.Navigate(this.Parent);
         }
 
 

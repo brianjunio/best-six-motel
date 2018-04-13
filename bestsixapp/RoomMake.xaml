@@ -6,7 +6,8 @@
         xmlns:local="clr-namespace:bestsixapp"
         mc:Ignorable="d"
         Name="RoomWindow"
-        Title="Managing Rooms" Height="710" Width="1156.4">
+        WindowState="Maximized"
+        Title="Managing Rooms" >
     <Grid>
 
         <Grid.RowDefinitions>
@@ -18,50 +19,50 @@
         <!-- Room Editor Butons  -->
         <Grid x:Name="RoomEditor" Grid.Row="1" Grid.ColumnSpan="3" Visibility="Hidden">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="20" />
+                <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="auto" />
                 <ColumnDefinition Width="auto" />
                 <ColumnDefinition Width="auto" />
                 <ColumnDefinition Width="auto" />
                 <ColumnDefinition Width="auto" />
-                <ColumnDefinition Width="20" />
+                <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
 
             <Button Name="EditRoomButton"   Grid.Column="1"  Content ="Edit Rooms" Width ="100" Margin="5,5,10,5" Click="EditRoomClick" Padding="2"/>
             <Button Name="AddRoomButton"    Grid.Column="2"  Content ="Add Rooms"  Width ="100" Margin="5,5,10,5" Click="CreateRoomClick" Padding="2"/>
             <Button Name="MoveRoomButton"   Grid.Column="3"  Content ="Move Rooms" Width ="100" Margin="5,5,10,5" Click="MoveRoomButton_Click" Padding="2"/>
             <Button Name="DeleteRoomButton" Grid.Column="4"  Content ="Delete Rooms" Width ="100" Margin="5,5,10,5" Click="DeleteRoomButton_Click" Padding="2"/>
-            <Button Name="BackMenu"         Grid.Column="4"  Content ="Back To Menu" Width ="100" Margin="5,5,10,5" Click="BackMenuButton_Click" Padding="2"/>
+            <Button Name="BackMenu"         Grid.Column="5"  Content ="Back To Menu" Width ="100" Margin="5,5,10,5" Click="BackMenuButton_Click" Padding="2"/>
         </Grid>
 
         <!-- Menu Butons  -->
         <Grid x:Name="MenuButtons" Grid.Row="1" Grid.ColumnSpan="3" Visibility="Visible">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="20" />
+                <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="auto" />
                 <ColumnDefinition Width="auto" />
                 <ColumnDefinition Width="auto" />
                 <ColumnDefinition Width="auto" />
                 <ColumnDefinition Width="auto" />
-                <ColumnDefinition Width="20" />
+                <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
 
             <Button Name="TransactionButton" Grid.Column="1" Content ="Transactions" Width ="100" Margin="5,5,10,5" Click="TrasactionButton_Click" Padding="2"/>
             <Button Name="RoomEditButton"    Grid.Column="2" Content ="Room Editor" Width ="100" Margin="5,5,10,5" Click="RoomEditButton_Click" Padding="2"/>
             <Button Name="SettingsButton"    Grid.Column="3" Content ="Settings" Width ="100" Margin="5,5,10,5" Click="SettingsButton_Click" Padding="2"/>
-            <Button Name="ExitButton"        Grid.Column="4" Content ="Exit" Width ="100" Margin="5,5,10,5" Click="ExitButton_Click" Padding="2"/>
+            <Button Name="ExitButton"        Grid.Column="4" Content ="Logout" Width ="100" Margin="5,5,10,5" Click="ExitButton_Click" Padding="2"/>
         </Grid>
-
+        
+        
         <Border Name="CanvasBorder" Grid.ColumnSpan="7" Grid.Row="0" BorderThickness="2"  BorderBrush="Black">
-
-            <Canvas Name="RoomCanvas" Background="AliceBlue" ClipToBounds="True"  >
-
-            </Canvas>
+            <Canvas Name="RoomCanvas" Background="AliceBlue" ClipToBounds="True" />
         </Border>
-        <Frame x:Name="Main" Grid.ColumnSpan ="7" Grid.Row="0" BorderThickness="2" BorderBrush="Black" NavigationUIVisibility="Hidden" />
+        
+        <Frame x:Name="Main" Grid.ColumnSpan="7" Grid.Row="0" BorderThickness="2" BorderBrush="Black" NavigationUIVisibility="Hidden"/>
 
-        <!-- Settings Buttons
-        <Grid x:Name="SettingsButtons" Grid.Row="1" Grid.ColumnSpan="3" Visibility="">
+        <!--
+         Check Buttons
+        <Grid x:Name="CheckButtons" Grid.Row="1" Grid.ColumnSpan="3" Visibility="">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="20" />
                 <ColumnDefinition Width="auto" />
@@ -71,11 +72,32 @@
                 <ColumnDefinition Width="auto" />
                 <ColumnDefinition Width="20" />
             </Grid.ColumnDefinitions>
-
+        
+            <Button Grid.Column="5" Grid.Row="15" Content="Register"  HorizontalAlignment="Right"  VerticalAlignment="Center" Height="24" Width="76" 
+                    x:Name="BTRegister" Click="ButtonRegister_Click" Margin="0"/>
             <Button Name="TransactionButton" Grid.Column="1" Content ="Transactions" Width ="100" Margin="5,5,10,5" Click="TrasactionButtonClick" Padding="2"/>
-            <Button Name="SettingsButton"    Grid.Column="2" Content ="Settings" Width ="100" Margin="5,5,10,5" Click="SettingsButtonClick" Padding="2"/>
-            <Button Name="ExitButton"        Grid.Column="3" Content ="Exit" Width ="100" Margin="5,5,10,5" Click="ExitButton_Click" Padding="2"/>
+            <Button Grid.Column="3" Grid.Row="15" Content="Check Out" HorizontalAlignment="Center" VerticalAlignment="Center" Height="24" Width="76" x:Name="BTCheckout" Click="ButtonCheckout_Click" Grid.ColumnSpan="2"/>
+            <Button Name="BackMenu"         Grid.Column="4"  Content ="Back To Menu" Width ="100" Margin="5,5,10,5" Click="BackMenuButton_Click" Padding="2"/>
         </Grid>*/
         -->
+
+
+        <!-- Transactions Button s-->
+        <Grid x:Name="TransactionsButton" Grid.Row="1" Grid.ColumnSpan="3" Visibility="Hidden">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Button Name="other1Button" Grid.Column="1" Content ="Move" Width ="100" Margin="5,5,10,5" Click="BackMenuButton_Click" Padding="2"/>
+            <Button Name="other2Button"    Grid.Column="2" Content ="Buttons" Width ="100" Margin="5,5,10,5" Click="BackMenuButton_Click" Padding="2"/>
+            <Button Name="BackMenu2"         Grid.Column="4"  Content ="Here (Back to Menu" Width ="100" Margin="5,5,10,5" Click="BackMenuButton_Click" Padding="2"/>
+        </Grid>
+
     </Grid>
 </Window>
