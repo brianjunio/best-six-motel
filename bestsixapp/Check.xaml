@@ -12,23 +12,25 @@
     <StackPanel>
         <Grid Height="461">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition MaxWidth="*"/>
-                <!-- Col 0 Border 20 Pixels -->
-                <ColumnDefinition Width="100"/>
+                <!-- Col 0 -->
+                <ColumnDefinition Width="*"/>
                 <!-- Col 1 -->
-                <ColumnDefinition Width="150"/>
-                <!-- Col 2 -->
                 <ColumnDefinition Width="100"/>
-                <!-- Col 3 Space 100 Pixels -->
+                <!-- Col 2 -->
+                <ColumnDefinition Width="150"/>
+                <!-- Col 3 -->
+                <ColumnDefinition MaxWidth="200" Width="*"/>
+                <!-- Col 4 Space 100 Pixels -->
                 <ColumnDefinition Width="125"/>
-                <!-- Col 4 -->
-                <ColumnDefinition Width="200"/>
                 <!-- Col 5 -->
-                <ColumnDefinition MaxWidth="*"/>
+                <ColumnDefinition Width="200"/>
+                <!-- Col 6 -->
+                <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
             <Grid.RowDefinitions>
-                <RowDefinition Height="*"  />
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
                 <RowDefinition Height="25"/>
                 <RowDefinition Height="25"/>
                 <RowDefinition Height="25"/>
@@ -43,8 +45,7 @@
                 <RowDefinition Height="25"/>
                 <RowDefinition Height="25"/>
                 <RowDefinition Height="25"/>
-                <RowDefinition Height="25"/>
-                <RowDefinition Height="25"/>
+                <RowDefinition Height="*"/>
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
 
@@ -93,7 +94,7 @@
             <TextBox Grid.Column="5" Grid.Row="9" x:Name="TBState"  HorizontalAlignment="Center" VerticalAlignment="Center" Height="24" Width="200" />
             <TextBox Grid.Column="5" Grid.Row="10" x:Name="TBZip"    HorizontalAlignment="Center" VerticalAlignment="Center" Height="24" Width="200" />
             <TextBox Grid.Column="5" Grid.Row="11" x:Name="TBPayment" HorizontalAlignment="Center" VerticalAlignment="Center" Height="24" Width="200"/>
-            <Button Grid.Column="5" Grid.Row="15" Content="Register"  HorizontalAlignment="Right"  VerticalAlignment="Center" Height="24" Width="76" 
+            <Button Grid.Column="5" Grid.Row="17" Content="Register"  HorizontalAlignment="Right"  VerticalAlignment="Center" Height="24" Width="76" 
                     x:Name="BTRegister" Click="ButtonRegister_Click" Margin="0"/>
         </Grid>
     </StackPanel>
