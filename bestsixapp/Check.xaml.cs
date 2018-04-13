@@ -22,9 +22,9 @@ namespace bestsixapp
     /// </summary>
     public partial class Check : Page
     {
-        int roomNum;
         string localID;
         DateTime checkin, checkout;
+        RoomData room;
         Room roomQuery = new Room();
         Customer customerQuery = new Customer();
         Transactions transactionQuery = new Transactions();
@@ -37,9 +37,9 @@ namespace bestsixapp
             
         }
 
-        public Check(int roomNum)
+        public Check(RoomData room)
         {
-            this.roomNum = roomNum;
+            this.room = room;
             InitializeComponent();
             UpdateLabels();
         }
@@ -59,37 +59,39 @@ namespace bestsixapp
                     State = TBState.Text,
                     Zip = TBZip.Text,
                     PaymentInfo = TBPayment.Text,
-                    RoomNo = roomNum,
+                    RoomNo = room.RoomNo,
                 });
 
-                roomQuery = dbContext.Rooms.SingleOrDefault(rm => rm.RoomNo == roomNum);
+                roomQuery = dbContext.Rooms.SingleOrDefault(rm => rm.RoomNo == room.RoomNo);
                 if(roomQuery != null)
                 {
                     roomQuery.Checkin = DateTime.Now;
                     roomQuery.Legend = "Occupied";
+                    room.Legend = "Occupied";
+                    room.Occupied();
+                    InvalidateVisual();
                 }
 
-                /* Adds new Transaction to transaction table in sequential order */
+                /* Adds new Transaction to transaction table in sequential order 
                 do
                 {
-                    transactionQuery = dbContext.Transactions.SingleOrDefault(t => t.TrNumber == trValue);
+                   /* transactionQuery = dbContext.Transactions.SingleOrDefault(t => t.TrNumber == trValue);
                     if (transactionQuery == null)
-                    {
+                    {*/
                         dbContext.Transactions.Add(new Transactions
                         {
-                            TrNumber = trValue,
-                            //Checkin = DateTime.Today,
+                          
                             DateModified = DateTime.Today,
                             ID = TBID.Text,
-                            RoomNo = roomNum
+                            RoomNo = room.RoomNo
                         });
-                    }
+                  /*  }
                     else
                     {
                         trValue += 1;
                     }
                 }
-                while (transactionQuery != null);
+                while (transactionQuery != null);*/
                 
             
                 dbContext.SaveChanges();
@@ -128,12 +130,19 @@ namespace bestsixapp
             using(DatabaseContext dbContext = new DatabaseContext())
             {
                 // Code to Clear out Room Table for the 
-                roomQuery = dbContext.Rooms.Find(roomNum);
+                roomQuery = dbContext.Rooms.Find(room.RoomNo);
                 // Code to Clear out Room Table for next customer to checkin
-                roomQuery.Legend = "Vacant";
+                roomQuery.Legend = "Dirty";
+                room.Legend = "Dirty";
+                room.NeedCleaning();
                 roomQuery.Checkin = checkin; // shouldn't this be set back to null/default empty?
 
-                transactionQuery = dbContext.Transactions.FirstOrDefault(t => t.RoomNo == roomNum);
+                //Customer Query
+                customerQuery = dbContext.Customers.Find(TBID.Text);
+                customerQuery.lastRoom = customerQuery.RoomNo.Value;
+                customerQuery.RoomNo = null;
+
+                transactionQuery = dbContext.Transactions.FirstOrDefault(t => t.RoomNo == room.RoomNo);
                 if(transactionQuery != null)
                 {
                     //transactionQuery.Checkout = checkout;
@@ -154,7 +163,7 @@ namespace bestsixapp
             using(DatabaseContext dbContext = new DatabaseContext())
             {
 
-                roomQuery = dbContext.Rooms.Find(roomNum);
+                roomQuery = dbContext.Rooms.Find(room.RoomNo);
                 roomValue.Text = roomQuery.RoomNo.ToString();
                 bedValue.Text = roomQuery.BedType;
                 smokingValue.Text = roomQuery.Smoking;
@@ -172,7 +181,7 @@ namespace bestsixapp
         {
             using (DatabaseContext dbContext = new DatabaseContext())
             {
-                customerQuery = dbContext.Customers.SingleOrDefault(c => c.RoomNo == roomNum);
+                customerQuery = dbContext.Customers.SingleOrDefault(c => c.RoomNo == room.RoomNo);
                 TBID.Text = customerQuery.ID;
                 TBFName.Text = customerQuery.FirstName;
                 TBLName.Text = customerQuery.LastName;

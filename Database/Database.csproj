@@ -129,9 +129,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Migrations\20180331021854_EmployeeUpdate.cs" />
-    <Compile Include="Migrations\20180331021854_EmployeeUpdate.designer.cs">
-      <DependentUpon>20180331021854_EmployeeUpdate.cs</DependentUpon>
+    <Compile Include="Migrations\20180413000327_Updates.cs" />
+    <Compile Include="Migrations\20180413000327_Updates.designer.cs">
+      <DependentUpon>20180413000327_Updates.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\DatabaseContextModelSnapshot.cs" />
     <Compile Include="Transactions.cs" />

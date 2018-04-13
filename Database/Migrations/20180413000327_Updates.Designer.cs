@@ -8,8 +8,8 @@ using Database;
 namespace Database.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    [Migration("20180331021854_EmployeeUpdate")]
-    partial class EmployeeUpdate
+    [Migration("20180413000327_Updates")]
+    partial class Updates
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -33,13 +33,15 @@ namespace Database.Migrations
 
                     b.Property<string>("PhoneNo");
 
-                    b.Property<int>("RoomNo");
+                    b.Property<int?>("RoomNo");
 
                     b.Property<string>("State");
 
                     b.Property<string>("Street");
 
                     b.Property<string>("Zip");
+
+                    b.Property<int>("lastRoom");
 
                     b.HasKey("ID");
 
@@ -100,10 +102,6 @@ namespace Database.Migrations
                     b.Property<int>("TrNumber")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<DateTime>("Checkin");
-
-                    b.Property<DateTime>("Checkout");
-
                     b.Property<DateTime>("DateModified");
 
                     b.Property<string>("ID");
@@ -123,8 +121,7 @@ namespace Database.Migrations
                 {
                     b.HasOne("Database.Room", "Room")
                         .WithOne("Customer")
-                        .HasForeignKey("Database.Customer", "RoomNo")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("Database.Customer", "RoomNo");
                 });
 
             modelBuilder.Entity("Database.Transactions", b =>

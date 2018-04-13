@@ -9,6 +9,7 @@ namespace Database
 {
     public class Customer
     {
+        
         public string ID { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
@@ -19,8 +20,9 @@ namespace Database
         public string PaymentInfo { get; set; }
         public string PhoneNo { get; set; }
         [ForeignKey("Room")]
-        public int RoomNo { get; set;}
+        public int? RoomNo { get; set;}
         public virtual Room Room { get; set; }
+        public int lastRoom { get; set; }
         public string LastEdit { get; set; }
     }
 }

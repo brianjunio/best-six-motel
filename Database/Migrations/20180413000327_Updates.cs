@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Database.Migrations
 {
-    public partial class EmployeeUpdate : Migration
+    public partial class Updates : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -55,10 +55,11 @@ namespace Database.Migrations
                     LastName = table.Column<string>(nullable: true),
                     PaymentInfo = table.Column<string>(nullable: true),
                     PhoneNo = table.Column<string>(nullable: true),
-                    RoomNo = table.Column<int>(nullable: false),
+                    RoomNo = table.Column<int>(nullable: true),
                     State = table.Column<string>(nullable: true),
                     Street = table.Column<string>(nullable: true),
-                    Zip = table.Column<string>(nullable: true)
+                    Zip = table.Column<string>(nullable: true),
+                    lastRoom = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -68,7 +69,7 @@ namespace Database.Migrations
                         column: x => x.RoomNo,
                         principalTable: "Rooms",
                         principalColumn: "RoomNo",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -77,9 +78,9 @@ namespace Database.Migrations
                 {
                     TrNumber = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    RoomNo = table.Column<int>(nullable: false),
                     DateModified = table.Column<DateTime>(nullable: false),
-                    ID = table.Column<string>(nullable: true)
+                    ID = table.Column<string>(nullable: true),
+                    RoomNo = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
