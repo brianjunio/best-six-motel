@@ -140,14 +140,15 @@ namespace bestsixapp
             }
             else
             {
+                foreach (var e1 in roomList)
+                {
+                    //check room list to see if object selected is any of the room
+                    if (rect == e1.RoomButton)
+                        room = e1; // grabs room object if the rect is selected
+                } //this loop is to find the room object that is attached to rect
                 if (isEdit && !deleteButton) //edit room info
                 {
-                    foreach (var e1 in roomList)
-                    {
-                        //check room list to see if object selected is any of the room
-                        if (rect == e1.RoomButton)
-                            room = e1; // grabs room object if the rect is selected
-                    } //this loop is to find the room object that is attached to rect
+                    
 
                     RoomInfo editRoom = new RoomInfo(ref room);
                     //fill out textbox with room data
@@ -172,13 +173,7 @@ namespace bestsixapp
 
                     switch (rsltMessageBox)
                     {
-                        case MessageBoxResult.Yes:
-                            foreach (var e1 in roomList)
-                            {
-                                //check room list to see if object selected is any of the room
-                                if (rect == e1.RoomButton)
-                                    room = e1;
-                            } //this loop is to find the room object that is attached to rect
+                        case MessageBoxResult.Yes:                           
                             roomList.Remove(room);
                             RoomCanvas.Children.Remove(rect);
                             var deletedRoom = new Room()
@@ -294,19 +289,46 @@ namespace bestsixapp
 
         void CheckButton_Click(object sender, RoutedEventArgs e)
         {
+            foreach (var e1 in roomList)
+            {
+                //check room list to see if object selected is any of the room
+                if (rect == e1.RoomButton)
+                    room = e1; // grabs room object if the rect is selected
+            } //this loop is to find the room object that is attached to rect
+           
             //checking in customer window
             rect = (Button)sender;
+            if (room.Legend.Equals("Dirty"))
+            {
+                //Room delete dailog
+                string sMessageBoxText = "Has this room been cleaned?";
+                string sCaption = "Room Clean and Vacant";
+                MessageBoxButton btnMessageBox = MessageBoxButton.YesNo;
+                MessageBoxImage icnMessageBox = MessageBoxImage.Warning;
 
-            if (!isEdit)
+                MessageBoxResult rsltMessageBox = MessageBox.Show(sMessageBoxText, sCaption, btnMessageBox, icnMessageBox);
+
+                switch (rsltMessageBox)
+                {
+                    case MessageBoxResult.Yes:
+                        room.Empty();
+                        room.Legend = "Vacant";
+
+                        using (DatabaseContext dbContext = new DatabaseContext())
+                        {
+                            roomQuery = dbContext.Rooms.Find(room.RoomNo);
+                            roomQuery.Legend = "Vacant";
+                        }
+                        break;
+                    case MessageBoxResult.No:
+                        break;
+                }
+            }
+            else if (!isEdit)
             {
 
-                foreach (var e1 in roomList)
-                {
-                    //check room list to see if object selected is any of the room
-                    if (rect == e1.RoomButton)
-                        room = e1; // grabs room object if the rect is selected
-                } //this loop is to find the room object that is attached to rect
-                Check checkWindow = new Check(room.RoomNo);
+                
+                Check checkWindow = new Check(room);
                 //  checkWindow.TextBofRoom.Text = Convert.ToString(room.RoomNo);
                 using (DatabaseContext dbContext = new DatabaseContext())
                 {

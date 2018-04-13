@@ -22,7 +22,7 @@ namespace Database
         public string ID { get; set; }
         public virtual Customer Customer { get; set; }
 
-        [ForeignKey("Room")]
+        
         public int RoomNo { get; set; }
         public virtual Room Room { get; set; }
         

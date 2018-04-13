@@ -86,7 +86,18 @@ namespace bestsixapp
         public object DrawRoom()
         {
             myRoom = new Button();
-            myRoom.Background = new SolidColorBrush(Color.FromArgb(255, 50, 245, 88));
+            if (legend.Equals("Vacant"))
+            {
+                Empty();
+            }
+            else if(legend.Equals("Occupied"))
+            {
+                Occupied();
+            }else if (legend.Equals("Dirty"))
+            {
+                NeedCleaning();
+            }
+            
             myRoom.Content = RoomNo;
             myRoom.Width = width;
             myRoom.Height = height;
@@ -95,17 +106,17 @@ namespace bestsixapp
         
         public void Occupied()
         {    
-            rect.Fill = new SolidColorBrush(Colors.Red);
+            myRoom.Background = new SolidColorBrush(Colors.Red);
         }
 
         public void Empty()
         {
-            rect.Fill = new SolidColorBrush(Colors.LightGreen);
+            myRoom.Background = new SolidColorBrush(Color.FromArgb(255, 50, 245, 88));
         }
         
         public void NeedCleaning()
         {
-            rect.Fill = new SolidColorBrush(Colors.Yellow);
+            myRoom.Background = new SolidColorBrush(Colors.Yellow);
         }
 
         public string Error
