@@ -10,7 +10,7 @@
       
       Title="Best Six" Background="#FF6A6A6A">
     <StackPanel>
-        <Grid Height="461">
+        <Grid Height="Auto">
             <Grid.ColumnDefinitions>
                 <!-- Col 0 -->
                 <ColumnDefinition Width="*"/>
@@ -29,7 +29,7 @@
             </Grid.ColumnDefinitions>
 
             <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
+                <RowDefinition Height="*" MinHeight="40"/>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="25"/>
                 <RowDefinition Height="25"/>
