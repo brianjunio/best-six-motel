@@ -44,7 +44,7 @@ namespace bestsixapp
             UpdateLabels();
         }
 
-        private void ButtonRegister_Click(object sender, RoutedEventArgs e)
+        public void ButtonRegister_Click(object sender, RoutedEventArgs e)
         {
             using (DatabaseContext dbContext = new DatabaseContext())
             {
@@ -210,7 +210,7 @@ namespace bestsixapp
             TBcheckin.IsEnabled = false;
             TBcheckout.IsEnabled = false;
         }
-
+        /*
         public void CheckInEnable()
         {
             BTRegister.IsEnabled = true;
@@ -221,7 +221,7 @@ namespace bestsixapp
         {
             BTRegister.IsEnabled = false;
             BTCheckout.IsEnabled = true;
-        }
+        }*/
     }
 }
     

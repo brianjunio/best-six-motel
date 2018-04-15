@@ -7,7 +7,8 @@
         mc:Ignorable="d"
         Name="RoomWindow"
         WindowState="Maximized"
-        Title="Managing Rooms" >
+        Title="Managing Rooms" 
+        Closed="RoomMakeWindow_Closed">
     <Grid>
 
         <Grid.RowDefinitions>
@@ -60,27 +61,23 @@
         
         <Frame x:Name="Main" Grid.ColumnSpan="7" Grid.Row="0" BorderThickness="2" BorderBrush="Black" NavigationUIVisibility="Hidden"/>
 
-        <!--
-         Check Buttons
-        <Grid x:Name="CheckButtons" Grid.Row="1" Grid.ColumnSpan="3" Visibility="">
+        <!-- Check Buttons -->
+        <Grid x:Name="CheckButtons" Grid.Row="1" Grid.ColumnSpan="3" Visibility="Hidden">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="20" />
+                <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="auto" />
                 <ColumnDefinition Width="auto" />
                 <ColumnDefinition Width="auto" />
                 <ColumnDefinition Width="auto" />
                 <ColumnDefinition Width="auto" />
-                <ColumnDefinition Width="20" />
+                <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-        
-            <Button Grid.Column="5" Grid.Row="15" Content="Register"  HorizontalAlignment="Right"  VerticalAlignment="Center" Height="24" Width="76" 
-                    x:Name="BTRegister" Click="ButtonRegister_Click" Margin="0"/>
-            <Button Name="TransactionButton" Grid.Column="1" Content ="Transactions" Width ="100" Margin="5,5,10,5" Click="TrasactionButtonClick" Padding="2"/>
-            <Button Grid.Column="3" Grid.Row="15" Content="Check Out" HorizontalAlignment="Center" VerticalAlignment="Center" Height="24" Width="76" x:Name="BTCheckout" Click="ButtonCheckout_Click" Grid.ColumnSpan="2"/>
-            <Button Name="BackMenu"         Grid.Column="4"  Content ="Back To Menu" Width ="100" Margin="5,5,10,5" Click="BackMenuButton_Click" Padding="2"/>
-        </Grid>*/
-        -->
 
+            <Button Grid.Column="2" x:Name="BTCheckout" Content="Check Out"   Width ="100"  Margin="5,5,10,5" Click="ButtonCheckout_Click"/>
+            <Button Grid.Column="3" x:Name="BTRegister" Content="Register"     Width ="100" Margin="5,5,10,5" Click="ButtonRegister_Click"/>
+            <Button Grid.Column="5" x:Name="BackMenu2"  Content="Back To Menu" Width ="100" Margin="5,5,10,5" Click="BackMenuButton_Click"/>
+            
+        </Grid>
 
         <!-- Transactions Button s-->
         <Grid x:Name="TransactionsButton" Grid.Row="1" Grid.ColumnSpan="3" Visibility="Hidden">
@@ -96,7 +93,7 @@
 
             <Button Name="other1Button" Grid.Column="1" Content ="Move" Width ="100" Margin="5,5,10,5" Click="BackMenuButton_Click" Padding="2"/>
             <Button Name="other2Button"    Grid.Column="2" Content ="Buttons" Width ="100" Margin="5,5,10,5" Click="BackMenuButton_Click" Padding="2"/>
-            <Button Name="BackMenu2"         Grid.Column="4"  Content ="Here (Back to Menu" Width ="100" Margin="5,5,10,5" Click="BackMenuButton_Click" Padding="2"/>
+            <Button Name="BackMenu3"         Grid.Column="4"  Content ="Here (Back to Menu" Width ="100" Margin="5,5,10,5" Click="BackMenuButton_Click" Padding="2"/>
         </Grid>
 
     </Grid>

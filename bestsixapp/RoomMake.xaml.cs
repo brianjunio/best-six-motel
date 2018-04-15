@@ -60,6 +60,10 @@ namespace bestsixapp
 
             this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
         }
+        protected void MainWindow_Closed(object sender, EventArgs args)
+        {
+            App.Current.Shutdown();
+        }
 
         private void Rect_MouseLeftButtonDown(object sender, MouseEventArgs e)
         {
@@ -272,7 +276,7 @@ namespace bestsixapp
             }
         }
 
-        // R O O M   E D I T O R   B U T T O N S 
+        ////////////////////////////////////////////////////////////////////////////////// R O O M   E D I T O R   B U T T O N S 
         private void CreateRoomClick(object sender, RoutedEventArgs e)
         {
             //create room object
@@ -326,8 +330,12 @@ namespace bestsixapp
             }
             else if (!isEdit)
             {
+                RoomEditor.Visibility = Visibility.Hidden;
+                TransactionsButton.Visibility = Visibility.Hidden;
+                CheckButtons.Visibility = Visibility.Visible;
+                MenuButtons.Visibility = Visibility.Hidden
+                    ;
 
-                
                 Check checkWindow = new Check(room);
                 //  checkWindow.TextBofRoom.Text = Convert.ToString(room.RoomNo);
                 using (DatabaseContext dbContext = new DatabaseContext())
@@ -337,18 +345,29 @@ namespace bestsixapp
                     {
                         checkWindow.PopulateTextBoxes();
                         checkWindow.DisableTextBoxes();
-                        checkWindow.CheckOutEnable();
+                        CheckOutEnable();
                         //checkWindow.ShowDialog();
                         Main.NavigationService.Navigate(checkWindow);
                     }
                     else
-                    {   // N a v i g a t e   b  a c k  h o m e 
-                        checkWindow.CheckInEnable();
+                    {   
+                        CheckInEnable();
                         //checkWindow.ShowDialog();
                         Main.NavigationService.Navigate(checkWindow);
                     }
                 }
             }
+        }
+        public void CheckInEnable()
+        {
+            BTRegister.IsEnabled = true;
+            BTCheckout.IsEnabled = false;
+        }
+
+        public void CheckOutEnable()
+        {
+            BTRegister.IsEnabled = false;
+            BTCheckout.IsEnabled = true;
         }
 
         private void EditRoomClick(object sender, RoutedEventArgs e)
@@ -409,13 +428,14 @@ namespace bestsixapp
         {
             // Changes to Menu Grid Button Panel
             this.Main.NavigationService.Navigate(this.Parent);
-            RoomEditor.Visibility = Visibility.Hidden;
-            TransactionsButton.Visibility = Visibility.Hidden;
-            MenuButtons.Visibility = Visibility.Visible;
+            RoomEditor.Visibility           = Visibility.Hidden;
+            TransactionsButton.Visibility   = Visibility.Hidden;
+            CheckButtons.Visibility         = Visibility.Hidden;
+            MenuButtons.Visibility          = Visibility.Visible;
         }
 
 
-        // M E N U   B U T T O N S 
+        //////////////////////////////////////////////////////////////////////////////// T R A N S A C T I O N   B U T T O N S 
         private void TrasactionButton_Click(object sender, RoutedEventArgs e)
         {
             TransactionsView transactionWindow = new TransactionsView();
@@ -424,13 +444,16 @@ namespace bestsixapp
             //tv.ShowDialog();
             TransactionsButton.Visibility = Visibility.Visible;
             RoomEditor.Visibility = Visibility.Hidden;
+            CheckButtons.Visibility = Visibility.Hidden;
             MenuButtons.Visibility = Visibility.Hidden;
         }
+        ////////////////////////////////////////////////////////////////////////////////  M E N U   B U T T O N S
         private void RoomEditButton_Click(object sender, RoutedEventArgs e)
         {
             // Changes to Menu Grid Button Panel
             RoomEditor.Visibility = Visibility.Visible;
             MenuButtons.Visibility = Visibility.Hidden;
+            CheckButtons.Visibility = Visibility.Hidden;
             TransactionsButton.Visibility = Visibility.Hidden;
 
         }
@@ -445,6 +468,23 @@ namespace bestsixapp
             this.Close();
             mw.ShowDialog();
             //this.Hide();
+        }
+        protected void RoomMakeWindow_Closed(object sender, EventArgs args)
+        {
+            MainWindow mw = new MainWindow();
+            this.Close();
+            mw.ShowDialog();
+        }
+        //////////////////////////////////////////////////////////////////////////////// C H E C K   B U T T O N S 
+        private void ButtonCheckout_Click(object sender, RoutedEventArgs e)
+        {
+            Check checkwindow = new Check(room);
+            checkwindow.ButtonRegister_Click(sender, e);
+        }
+        private void ButtonRegister_Click(object sender, RoutedEventArgs e)
+        {
+            Check checkwindow = new Check(room);
+            checkwindow.ButtonRegister_Click(sender, e);
         }
     }
 }
