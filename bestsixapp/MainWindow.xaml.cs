@@ -1,19 +1,11 @@
 ﻿using Database;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Runtime.Remoting.Messaging;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
+using System.Windows.Forms;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace bestsixapp
 {
@@ -26,13 +18,12 @@ namespace bestsixapp
         // Creates a Frame For Pages
         //public object Frame { get; private set; }
         //public static object NavigationService { get; internal set; }
-        private string _name;
+        private string _name;   
         public MainWindow()
         {
             this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             checkDB();
             InitializeComponent();
-            CompanyName = "Room Management System";
             this.Closed += new EventHandler(MainWindow_Closed);           
         }
 
@@ -95,12 +86,11 @@ namespace bestsixapp
             }
             
         }
-        private void OnPropertyChanged(String property)
+        protected virtual void OnPropertyChanged(string propertyName)
         {
-            if (PropertyChanged != null)
-            {
-                PropertyChanged(this, new PropertyChangedEventArgs(property));
-            }
+            var handler = PropertyChanged;
+            if (handler != null)
+                handler(this, new PropertyChangedEventArgs(propertyName));
         }
 
         private void myLoginButton(object sender, RoutedEventArgs e)
@@ -109,7 +99,7 @@ namespace bestsixapp
             {
                 if (String.IsNullOrEmpty(UserText.Text))
                 {
-                    MessageBox.Show("Please input field.");
+                    System.Windows.Forms.MessageBox.Show("Please input field.");
                 }
                 else
                 {
@@ -124,7 +114,7 @@ namespace bestsixapp
                     }
                     else
                     {
-                        MessageBox.Show("Login Invalid.");
+                        System.Windows.Forms.MessageBox.Show("Login Invalid.");
                     }    
                 }
             }
@@ -140,8 +130,19 @@ namespace bestsixapp
                     dbContext.Add<Employee>(DefaultRoot);
                     dbContext.SaveChanges();
                 }
+                if(!dbContext.Companies.Any())
+                {
+                    CompanyName = "Room Management System";
+                }
+                else
+                {
+                    var company = dbContext.Companies.First();
+                    CompanyName = company.CompanyName;
+                }
             }
         }
+
+    
     }
 }
 

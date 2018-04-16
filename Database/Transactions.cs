@@ -19,7 +19,7 @@ namespace Database
         public int TrNumber { get; set; } 
 
         [ForeignKey("ID")]
-        public string ID { get; set; }
+        public int ID { get; set; }
         public virtual Customer Customer { get; set; }
 
         

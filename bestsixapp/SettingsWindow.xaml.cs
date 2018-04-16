@@ -26,9 +26,10 @@ namespace bestsixapp
             TransactionsView tv = new TransactionsView();
             //rmw.NavigationService.Navigate(new Uri("TransactionView.xaml", UriKind.RelativeOrAbsolute));
         }
-        private void OtherButton_Click(object sender, RoutedEventArgs e)
+        private void CompanyButton_Click(object sender, RoutedEventArgs e)
         {
-
+            CompanyInfo cm = new CompanyInfo();
+            cm.Show();
         }
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {

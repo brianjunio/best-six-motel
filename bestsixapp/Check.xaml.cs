@@ -52,7 +52,7 @@ namespace bestsixapp
                 {   // Add Customer info into customer table
                     FirstName = TBFName.Text,
                     LastName = TBLName.Text,
-                    ID = TBID.Text,
+                    ID = Int32.Parse(TBID.Text),
                     PhoneNo = TBPhone.Text,
                     Street = TBStreet.Text,
                     City = TBCity.Text,
@@ -82,7 +82,7 @@ namespace bestsixapp
                         {
                           
                             DateModified = DateTime.Today,
-                            ID = TBID.Text,
+                            ID = Int32.Parse(TBID.Text),
                             RoomNo = room.RoomNo
                         });
                   /*  }
@@ -182,7 +182,7 @@ namespace bestsixapp
             using (DatabaseContext dbContext = new DatabaseContext())
             {
                 customerQuery = dbContext.Customers.SingleOrDefault(c => c.RoomNo == room.RoomNo);
-                TBID.Text = customerQuery.ID;
+                TBID.Text = customerQuery.ID.ToString();
                 TBFName.Text = customerQuery.FirstName;
                 TBLName.Text = customerQuery.LastName;
                 TBPhone.Text = customerQuery.PhoneNo;

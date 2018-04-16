@@ -13,6 +13,7 @@ namespace Database
         public DbSet<Room> Rooms { get; set; }
         public DbSet<Employee> Employees { get; set; }
         public DbSet<Transactions> Transactions { get; set; }
+        public DbSet<Company> Companies { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
