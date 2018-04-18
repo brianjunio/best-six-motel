@@ -56,9 +56,9 @@ namespace bestsixapp
                     PhoneNo = TBPhone.Text,
                     Street = TBStreet.Text,
                     City = TBCity.Text,
-                    State = TBState.Text,
+                    State = CBState.Text,
                     Zip = TBZip.Text,
-                    PaymentInfo = TBPayment.Text,
+                    PaymentInfo = CBPayment.Text,
                     RoomNo = room.RoomNo,
                 });
 
@@ -188,9 +188,9 @@ namespace bestsixapp
                 TBPhone.Text = customerQuery.PhoneNo;
                 TBStreet.Text = customerQuery.Street;
                 TBCity.Text = customerQuery.City;
-                TBState.Text = customerQuery.State;
+                CBState.Text = customerQuery.State;
                 TBZip.Text = customerQuery.Zip;
-                TBPayment.Text = customerQuery.PaymentInfo;
+                CBPayment.Text = customerQuery.PaymentInfo;
                 TBcheckin.Text = roomQuery.Checkin.ToLongDateString().ToString(); 
                 TBcheckout.Text = roomQuery.Checkout.ToLongDateString().ToString();
             }
@@ -204,9 +204,9 @@ namespace bestsixapp
             TBPhone.IsEnabled = false;
             TBStreet.IsEnabled = false;
             TBCity.IsEnabled = false;
-            TBState.IsEnabled = false;
+            CBState.IsEnabled = false;
             TBZip.IsEnabled = false;
-            TBPayment.IsEnabled = false;
+            CBPayment.IsEnabled = false;
             TBcheckin.IsEnabled = false;
             TBcheckout.IsEnabled = false;
         }

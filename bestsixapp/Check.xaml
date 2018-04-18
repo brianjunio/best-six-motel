@@ -102,10 +102,77 @@
             <TextBox Grid.Column="5" Grid.Row="5" x:Name="TBPhone"  HorizontalAlignment="Center" VerticalAlignment="Center" Height="24" Width="200" />
             <TextBox Grid.Column="5" Grid.Row="7" x:Name="TBStreet" HorizontalAlignment="Center" VerticalAlignment="Center" Height="24" Width="200" />
             <TextBox Grid.Column="5" Grid.Row="8" x:Name="TBCity"   HorizontalAlignment="Center" VerticalAlignment="Center" Height="24" Width="200" />
-            <TextBox Grid.Column="5" Grid.Row="9" x:Name="TBState"  HorizontalAlignment="Center" VerticalAlignment="Center" Height="24" Width="200" />
+            <ComboBox Grid.Column="5" Grid.Row="9" x:Name="CBState" HorizontalAlignment="Center" VerticalAlignment="Center" Height="24" Width="200" IsSynchronizedWithCurrentItem="False">
+                <ComboBoxItem Content="OTHER"/>
+                <ComboBoxItem Content="AK"/><ComboBoxItem Content="AL"/><ComboBoxItem Content="AR"/><ComboBoxItem Content="AZ"/><ComboBoxItem Content="CA"/>
+                <ComboBoxItem Content="CO"/><ComboBoxItem Content="CT"/><ComboBoxItem Content="DE"/><ComboBoxItem Content="FL"/><ComboBoxItem Content="IN"/>
+                <ComboBoxItem Content="HI"/><ComboBoxItem Content="IA"/><ComboBoxItem Content="ID"/><ComboBoxItem Content="IL"/><ComboBoxItem Content="AK"/>
+                <ComboBoxItem Content="KS"/><ComboBoxItem Content="KY"/><ComboBoxItem Content="LA"/><ComboBoxItem Content="MA"/><ComboBoxItem Content="MD"/>
+                <ComboBoxItem Content="ME"/><ComboBoxItem Content="MI"/><ComboBoxItem Content="MN"/><ComboBoxItem Content="MO"/><ComboBoxItem Content="MS"/>
+                <ComboBoxItem Content="MT"/><ComboBoxItem Content="NC"/><ComboBoxItem Content="ND"/><ComboBoxItem Content="NE"/><ComboBoxItem Content="NH"/>
+                <ComboBoxItem Content="NJ"/><ComboBoxItem Content="NM"/><ComboBoxItem Content="NV"/><ComboBoxItem Content="NY"/><ComboBoxItem Content="OH"/>
+                <ComboBoxItem Content="OK"/><ComboBoxItem Content="OR"/><ComboBoxItem Content="PA"/><ComboBoxItem Content="RI"/><ComboBoxItem Content="SC"/>
+                <ComboBoxItem Content="SD"/><ComboBoxItem Content="TN"/><ComboBoxItem Content="TX"/><ComboBoxItem Content="UT"/><ComboBoxItem Content="VA"/>
+                <ComboBoxItem Content="VT"/><ComboBoxItem Content="WA"/><ComboBoxItem Content="WI"/><ComboBoxItem Content="WV"/><ComboBoxItem Content="WY"/>
+            </ComboBox>
+            <!--TextBox Grid.Column="5" Grid.Row="9" x:Name="TBState"  HorizontalAlignment="Center" VerticalAlignment="Center" Height="24" Width="200" /-->
             <TextBox Grid.Column="5" Grid.Row="10" x:Name="TBZip"    HorizontalAlignment="Center" VerticalAlignment="Center" Height="24" Width="200" />
-            <TextBox Grid.Column="5" Grid.Row="11" x:Name="TBPayment" HorizontalAlignment="Center" VerticalAlignment="Center" Height="24" Width="200"/>
-            <!--<Button Grid.Column="5" Grid.Row="17" Content="Register"  HorizontalAlignment="Right"  VerticalAlignment="Center" Height="24" Width="76" 
+            <ComboBox Grid.Column="5" Grid.Row="11" x:Name="CBPayment" HorizontalAlignment="Center" VerticalAlignment="Center" Height="24" Width="200">
+                <ComboBoxItem Content="Cash"/>
+                <ComboBoxItem Content="Credit"/>
+            </ComboBox>
+            <!--AK
+AL
+AR
+AZ
+CA
+CO
+CT
+DE
+FL
+GA
+HI
+IA
+ID
+IL
+IN
+KS
+KY
+LA
+MA
+MD
+ME
+MI
+MN
+MO
+MS
+MT
+NC
+ND
+NE
+NH
+NJ
+NM
+NV
+NY
+OH
+OK
+OR
+PA
+RI
+SC
+SD
+TN
+TX
+UT
+VA
+VT
+WA
+WI
+WV
+WY
+                        <TextBox Grid.Column="5" Grid.Row="11" x:Name="TBPayment" HorizontalAlignment="Center" VerticalAlignment="Center" Height="24" Width="200"/>
+            <Button Grid.Column="5" Grid.Row="17" Content="Register"  HorizontalAlignment="Right"  VerticalAlignment="Center" Height="24" Width="76" 
                     x:Name="BTRegister" Click="ButtonRegister_Click" Margin="0"/>
             -->
         </Grid>
