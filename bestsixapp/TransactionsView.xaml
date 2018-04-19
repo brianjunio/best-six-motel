@@ -5,45 +5,26 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:bestsixapp"
         mc:Ignorable="d"
-      
-        Title="Transactions - Best Six" Width="889" >
+        Title="Transactions - Best Six" >
 
-    <Grid Height="967">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition Width="0*"/>
-        </Grid.ColumnDefinitions>
-        <!--Borders and labels at top of page-->
-        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="92" Margin="0,10,0,0" VerticalAlignment="Top" Width="534">
+    <Grid>
+        <DataGrid AutoGenerateColumns="True" Name="trDataGrid" Margin="0,89,0,44"/>
+        <Button Content="Close Window" HorizontalAlignment="Left" Margin="10,297,0,0" 
+                VerticalAlignment="Top" Width="94" Click="TRClose_Click"/>
+        <DatePicker HorizontalAlignment="Left" Margin="48,52,0,0" VerticalAlignment="Top"/>
+        <DatePicker HorizontalAlignment="Left" Margin="187,52,0,0" VerticalAlignment="Top"/>
+        <Label Content="From: " HorizontalAlignment="Left" Margin="6,50,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.541,0.154"/>
+        <Label Content="To: " HorizontalAlignment="Left" Margin="159,50,0,0" VerticalAlignment="Top"/>
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="74" Margin="5,10,0,0" VerticalAlignment="Top" Width="356">
             <Label Content="Search Customer by Date Range"/>
         </Border>
-        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="92" Margin="548,10,0,0" VerticalAlignment="Top" Width="341">
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="74" Margin="370,10,0,0" VerticalAlignment="Top" Width="328">
             <Label Content="Search Customer by Driver's License"/>
         </Border>
-
-        <DataGrid AutoGenerateColumns="True" x:Name="trDataGrid" Margin="0,107,0,49" IsReadOnly="True"/>
-        
-        <Button Content="Back to Home" HorizontalAlignment="Left" Margin="0,926,0,0" 
-                VerticalAlignment="Top" Width="94" Click="TRClose_Click" Height="24"/>
-        <!--Date Pickers for choosing calendar dates-->
-        <DatePicker HorizontalAlignment="Left" x:Name="Start" SelectedDateChanged="StartDateChanged" Margin="53,38,0,0" VerticalAlignment="Top" DataContext="{Binding Checkin.Date, Mode=OneWay}" SelectedDateFormat="Long" Width="190" Height="24"/>
-        <DatePicker HorizontalAlignment="Left" x:Name="End" SelectedDateChanged="EndDateChanged" Margin="273,38,0,0" VerticalAlignment="Top" DataContext="{Binding Checkout.Date, Mode=OneWay}" SelectedDateFormat="Long" Width="190" Height="24"/>
-        <!--From and To labels for date pickers-->
-        <Label Content="From: " HorizontalAlignment="Left" Margin="11,36,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.541,0.154" Height="26" Width="43"/>
-        <Label Content="To: " HorizontalAlignment="Left" Margin="245,36,0,0" VerticalAlignment="Top" Height="26" Width="28"/>
-        <!--Search box and label for Driver's License searching-->
-        <TextBox x:Name="CustomerLicense" HorizontalAlignment="Left" Height="24" Margin="650,38,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="169" AutomationProperties.HelpText="Type a customer's driver's license here."/>
-        <Label Content="Search License: " HorizontalAlignment="Left" Margin="557,36,0,0" VerticalAlignment="Top" Height="26" Width="93"/>
-        <!--Search and Load buttons-->
-        <Button Content="Load" Click="Load_button_click" HorizontalAlignment="Left" Margin="468,38,0,0" VerticalAlignment="Top" Width="55" Height="24"/>
-        <Button Content="Search" Click="Search_button_click" Margin="824,38,0,0" VerticalAlignment="Top" Height="24" HorizontalAlignment="Left" Width="55"/>
-        
-        <!--Date boxes below date pickers.-->
-        <TextBox x:Name="startingDate" HorizontalAlignment="Left" Height="23" Margin="53,62,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="190" DataContext="{Binding Text, ElementName=Start}"/>
-        <TextBox x:Name="endingDate" HorizontalAlignment="Left" Height="23" Margin="273,62,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="190" DataContext="{Binding Text, ElementName=End}"/>
-        <!--Printing Buttons at the bottom of page-->
-        <Button Content="Print Records" HorizontalAlignment="Left" Margin="798,926,0,0" VerticalAlignment="Top" Width="91" Height="24"/>
-        <Button Content="Print Receipt" HorizontalAlignment="Left" Margin="680,926,0,0" VerticalAlignment="Top" Width="91" Height="24"/>
+        <TextBox HorizontalAlignment="Left" Height="24" Margin="463,52,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="169" AutomationProperties.HelpText="Type a customer's driver's license here."/>
+        <Label Content="Search License: " HorizontalAlignment="Left" Margin="370,50,0,0" VerticalAlignment="Top"/>
+        <Button Content="Load" HorizontalAlignment="Left" Margin="294,52,0,0" VerticalAlignment="Top" Width="55" Height="24"/>
+        <Button Content="Search" HorizontalAlignment="Left" Margin="637,52,0,0" VerticalAlignment="Top" Width="55" Height="24"/>
 
     </Grid>
 
