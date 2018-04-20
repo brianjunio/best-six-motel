@@ -130,9 +130,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Company.cs" />
-    <Compile Include="Migrations\20180415235219_Initial_Create.cs" />
-    <Compile Include="Migrations\20180415235219_Initial_Create.designer.cs">
-      <DependentUpon>20180415235219_Initial_Create.cs</DependentUpon>
+    <Compile Include="Migrations\20180420015922_update.cs" />
+    <Compile Include="Migrations\20180420015922_update.designer.cs">
+      <DependentUpon>20180420015922_update.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\DatabaseContextModelSnapshot.cs" />
     <Compile Include="Transactions.cs" />

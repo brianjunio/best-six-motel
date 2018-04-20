@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Database.Migrations
 {
-    public partial class Initial_Create : Migration
+    public partial class update : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -64,8 +64,7 @@ namespace Database.Migrations
                 name: "Customers",
                 columns: table => new
                 {
-                    ID = table.Column<int>(nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
+                    ID = table.Column<string>(nullable: false),
                     City = table.Column<string>(nullable: true),
                     FirstName = table.Column<string>(nullable: true),
                     LastEdit = table.Column<string>(nullable: true),
@@ -96,7 +95,7 @@ namespace Database.Migrations
                     TrNumber = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     DateModified = table.Column<DateTime>(nullable: false),
-                    ID = table.Column<int>(nullable: false),
+                    ID = table.Column<string>(nullable: true),
                     RoomNo = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
@@ -107,7 +106,7 @@ namespace Database.Migrations
                         column: x => x.ID,
                         principalTable: "Customers",
                         principalColumn: "ID",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Transactions_Rooms_RoomNo",
                         column: x => x.RoomNo,

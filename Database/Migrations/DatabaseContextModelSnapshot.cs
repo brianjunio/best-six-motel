@@ -35,7 +35,7 @@ namespace Database.Migrations
 
             modelBuilder.Entity("Database.Customer", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<string>("ID")
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("City");
@@ -121,7 +121,7 @@ namespace Database.Migrations
 
                     b.Property<DateTime>("DateModified");
 
-                    b.Property<int>("ID");
+                    b.Property<string>("ID");
 
                     b.Property<int>("RoomNo");
 
@@ -145,8 +145,7 @@ namespace Database.Migrations
                 {
                     b.HasOne("Database.Customer", "Customer")
                         .WithMany()
-                        .HasForeignKey("ID")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("ID");
 
                     b.HasOne("Database.Room", "Room")
                         .WithMany()

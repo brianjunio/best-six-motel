@@ -52,13 +52,13 @@ namespace bestsixapp
                 {   // Add Customer info into customer table
                     FirstName = TBFName.Text,
                     LastName = TBLName.Text,
-                    ID = Int32.Parse(TBID.Text),
+                    ID = TBID.Text,
                     PhoneNo = TBPhone.Text,
                     Street = TBStreet.Text,
                     City = TBCity.Text,
-                    State = CBState.Text,
+                    State = TBState.Text,
                     Zip = TBZip.Text,
-                    PaymentInfo = CBPayment.Text,
+                    PaymentInfo = TBPayment.Text,
                     RoomNo = room.RoomNo,
                 });
 
@@ -82,7 +82,7 @@ namespace bestsixapp
                         {
                           
                             DateModified = DateTime.Today,
-                            ID = Int32.Parse(TBID.Text),
+                            ID = TBID.Text,
                             RoomNo = room.RoomNo
                         });
                   /*  }
@@ -188,9 +188,9 @@ namespace bestsixapp
                 TBPhone.Text = customerQuery.PhoneNo;
                 TBStreet.Text = customerQuery.Street;
                 TBCity.Text = customerQuery.City;
-                CBState.Text = customerQuery.State;
+                TBState.Text = customerQuery.State;
                 TBZip.Text = customerQuery.Zip;
-                CBPayment.Text = customerQuery.PaymentInfo;
+                TBPayment.Text = customerQuery.PaymentInfo;
                 TBcheckin.Text = roomQuery.Checkin.ToLongDateString().ToString(); 
                 TBcheckout.Text = roomQuery.Checkout.ToLongDateString().ToString();
             }
@@ -204,9 +204,9 @@ namespace bestsixapp
             TBPhone.IsEnabled = false;
             TBStreet.IsEnabled = false;
             TBCity.IsEnabled = false;
-            CBState.IsEnabled = false;
+            TBState.IsEnabled = false;
             TBZip.IsEnabled = false;
-            CBPayment.IsEnabled = false;
+            TBPayment.IsEnabled = false;
             TBcheckin.IsEnabled = false;
             TBcheckout.IsEnabled = false;
         }
