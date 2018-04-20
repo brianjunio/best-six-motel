@@ -50,11 +50,11 @@ namespace bestsixapp
             using (DatabaseContext dbContext = new DatabaseContext())
             {
                 var customer = dbContext.Customers;
-               /* customerQuery = customer.Find(TBID.Text);
+                customerQuery = customer.Find(TBID.Text);
                 if(customerQuery == null)
-                {*/
+                {
                     customer.Add(new Customer
-                    {   // Add Customer info into customer table
+                    {   
                         FirstName = TBFName.Text,
                         LastName = TBLName.Text,
                         ID = TBID.Text,
@@ -66,7 +66,7 @@ namespace bestsixapp
                         PaymentInfo = CBPayment.Text,
                         RoomNo = room.RoomNo,
                     });
-               /* }
+                }
 
                 else
                 {
@@ -75,11 +75,11 @@ namespace bestsixapp
                     customerQuery.PhoneNo = TBPhone.Text;
                     customerQuery.Street = TBStreet.Text;
                     customerQuery.City = TBCity.Text;
-                    customerQuery.State = TBState.Text;
+                    customerQuery.State = CBState.Text;
                     customerQuery.Zip = TBZip.Text;
-                    customerQuery.PaymentInfo = TBPayment.Text;
+                    customerQuery.PaymentInfo = CBPayment.Text;
                     customerQuery.RoomNo = room.RoomNo;
-                }*/
+                }
 
                 roomQuery = dbContext.Rooms.SingleOrDefault(rm => rm.RoomNo == room.RoomNo);
                 if(roomQuery != null)
@@ -91,26 +91,15 @@ namespace bestsixapp
                     InvalidateVisual();
                 }
 
-                /* Adds new Transaction to transaction table in sequential order 
-                do
+               
+                dbContext.Transactions.Add(new Transactions
                 {
-                   /* transactionQuery = dbContext.Transactions.SingleOrDefault(t => t.TrNumber == trValue);
-                    if (transactionQuery == null)
-                    {*/
-                        dbContext.Transactions.Add(new Transactions
-                        {
                           
-                            DateModified = DateTime.Today,
-                            ID = TBID.Text,
-                            RoomNo = room.RoomNo
-                        });
-                  /*  }
-                    else
-                    {
-                        trValue += 1;
-                    }
-                }
-                while (transactionQuery != null);*/
+                    DateModified = DateTime.Today,
+                    ID = TBID.Text,
+                    RoomNo = room.RoomNo
+                });
+              
                 
             
                 dbContext.SaveChanges();
