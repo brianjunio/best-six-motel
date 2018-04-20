@@ -350,13 +350,13 @@ namespace bestsixapp
                     {
                         checkWindow.PopulateTextBoxes();
                         checkWindow.DisableTextBoxes();
-                        checkWindow.CheckOutEnable();
+                        //checkWindow.CheckOutEnable();
                         //checkWindow.ShowDialog();
                         Main.NavigationService.Navigate(checkWindow);
                     }
                     else
                     {   // N a v i g a t e   b  a c k  h o m e 
-                        checkWindow.CheckInEnable();
+                        //checkWindow.CheckInEnable();
                         //checkWindow.ShowDialog();
                         Main.NavigationService.Navigate(checkWindow);
                     }

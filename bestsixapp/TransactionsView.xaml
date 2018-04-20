@@ -6,11 +6,12 @@
         xmlns:local="clr-namespace:bestsixapp"
         mc:Ignorable="d"
         Title="Transactions - Best Six" >
-
-    <Grid>
+    
+    <Grid Background="AliceBlue">
+        
         <DataGrid AutoGenerateColumns="True" Name="trDataGrid" Margin="0,89,0,44"/>
         <Button Content="Close Window" HorizontalAlignment="Left" Margin="10,297,0,0" 
-                VerticalAlignment="Top" Width="94" Click="TRClose_Click"/>
+                VerticalAlignment="Top" Width="94" Click="TRClose_Click" RenderTransformOrigin="0.504,-0.862"/>
         <DatePicker HorizontalAlignment="Left" Margin="48,52,0,0" VerticalAlignment="Top"/>
         <DatePicker HorizontalAlignment="Left" Margin="187,52,0,0" VerticalAlignment="Top"/>
         <Label Content="From: " HorizontalAlignment="Left" Margin="6,50,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.541,0.154"/>
@@ -25,7 +26,8 @@
         <Label Content="Search License: " HorizontalAlignment="Left" Margin="370,50,0,0" VerticalAlignment="Top"/>
         <Button Content="Load" HorizontalAlignment="Left" Margin="294,52,0,0" VerticalAlignment="Top" Width="55" Height="24"/>
         <Button Content="Search" HorizontalAlignment="Left" Margin="637,52,0,0" VerticalAlignment="Top" Width="55" Height="24"/>
-
     </Grid>
+
+    
 
 </Page>
