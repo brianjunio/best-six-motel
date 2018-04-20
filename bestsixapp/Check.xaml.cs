@@ -28,7 +28,8 @@ namespace bestsixapp
         Room roomQuery = new Room();
         Customer customerQuery = new Customer();
         Transactions transactionQuery = new Transactions();
-        int trValue = 1;
+
+        //int trValue = 1;
 
 
         public Check()
@@ -48,19 +49,37 @@ namespace bestsixapp
         {
             using (DatabaseContext dbContext = new DatabaseContext())
             {
-                dbContext.Customers.Add(new Customer
-                {   // Add Customer info into customer table
-                    FirstName = TBFName.Text,
-                    LastName = TBLName.Text,
-                    ID = TBID.Text,
-                    PhoneNo = TBPhone.Text,
-                    Street = TBStreet.Text,
-                    City = TBCity.Text,
-                    State = TBState.Text,
-                    Zip = TBZip.Text,
-                    PaymentInfo = TBPayment.Text,
-                    RoomNo = room.RoomNo,
-                });
+                var customer = dbContext.Customers;
+               /* customerQuery = customer.Find(TBID.Text);
+                if(customerQuery == null)
+                {*/
+                    customer.Add(new Customer
+                    {   // Add Customer info into customer table
+                        FirstName = TBFName.Text,
+                        LastName = TBLName.Text,
+                        ID = TBID.Text,
+                        PhoneNo = TBPhone.Text,
+                        Street = TBStreet.Text,
+                        City = TBCity.Text,
+                        State = CBState.Text,
+                        Zip = TBZip.Text,
+                        PaymentInfo = CBPayment.Text,
+                        RoomNo = room.RoomNo,
+                    });
+               /* }
+
+                else
+                {
+                    customerQuery.FirstName = TBFName.Text;
+                    customerQuery.LastName = TBLName.Text;
+                    customerQuery.PhoneNo = TBPhone.Text;
+                    customerQuery.Street = TBStreet.Text;
+                    customerQuery.City = TBCity.Text;
+                    customerQuery.State = TBState.Text;
+                    customerQuery.Zip = TBZip.Text;
+                    customerQuery.PaymentInfo = TBPayment.Text;
+                    customerQuery.RoomNo = room.RoomNo;
+                }*/
 
                 roomQuery = dbContext.Rooms.SingleOrDefault(rm => rm.RoomNo == room.RoomNo);
                 if(roomQuery != null)
@@ -139,7 +158,7 @@ namespace bestsixapp
 
                 //Customer Query
                 customerQuery = dbContext.Customers.Find(TBID.Text);
-                customerQuery.lastRoom = customerQuery.RoomNo.Value;
+                customerQuery.LastRoom = customerQuery.RoomNo.Value;
                 customerQuery.RoomNo = null;
 
                 transactionQuery = dbContext.Transactions.FirstOrDefault(t => t.RoomNo == room.RoomNo);
@@ -188,9 +207,9 @@ namespace bestsixapp
                 TBPhone.Text = customerQuery.PhoneNo;
                 TBStreet.Text = customerQuery.Street;
                 TBCity.Text = customerQuery.City;
-                TBState.Text = customerQuery.State;
+                CBState.Text = customerQuery.State;
                 TBZip.Text = customerQuery.Zip;
-                TBPayment.Text = customerQuery.PaymentInfo;
+                CBPayment.Text = customerQuery.PaymentInfo;
                 TBcheckin.Text = roomQuery.Checkin.ToLongDateString().ToString(); 
                 TBcheckout.Text = roomQuery.Checkout.ToLongDateString().ToString();
             }
@@ -204,24 +223,24 @@ namespace bestsixapp
             TBPhone.IsEnabled = false;
             TBStreet.IsEnabled = false;
             TBCity.IsEnabled = false;
-            TBState.IsEnabled = false;
+            CBState.IsEnabled = false;
             TBZip.IsEnabled = false;
-            TBPayment.IsEnabled = false;
+            CBPayment.IsEnabled = false;
             TBcheckin.IsEnabled = false;
             TBcheckout.IsEnabled = false;
         }
 
-        public void CheckInEnable()
+      /*  public void CheckInEnable()
         {
             BTRegister.IsEnabled = true;
             BTCheckout.IsEnabled = false;
-        }
+        }*/
 
-        public void CheckOutEnable()
+     /*   public void CheckOutEnable()
         {
             BTRegister.IsEnabled = false;
             BTCheckout.IsEnabled = true;
-        }
+        }*/
     }
 }
     

@@ -35,7 +35,7 @@
             <Button Name="BackMenu"         Grid.Column="5"  Content ="Back To Menu" Width ="100" Margin="5,5,10,5" Click="BackMenuButton_Click" Padding="2"/>
         </Grid>
 
-        <!-- Menu Butons  -->
+        <!-- Menu Buttons  -->
         <Grid x:Name="MenuButtons" Grid.Row="1" Grid.ColumnSpan="3" Visibility="Visible">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />

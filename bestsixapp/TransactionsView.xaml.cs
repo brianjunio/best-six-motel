@@ -20,6 +20,7 @@ namespace bestsixapp
         {
             InitializeComponent();
             trDataGrid.ItemsSource = LoadTransactions();
+            
         }
 
         /*
