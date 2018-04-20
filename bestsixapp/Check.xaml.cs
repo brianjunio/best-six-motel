@@ -84,7 +84,8 @@ namespace bestsixapp
                 roomQuery = dbContext.Rooms.SingleOrDefault(rm => rm.RoomNo == room.RoomNo);
                 if(roomQuery != null)
                 {
-                    roomQuery.Checkin = DateTime.Now;
+                    roomQuery.Checkin = DateTime.Parse(TBcheckin.Text);
+                    roomQuery.Checkout = DateTime.Parse(TBcheckout.Text);
                     roomQuery.Legend = "Occupied";
                     room.Legend = "Occupied";
                     room.Occupied();
