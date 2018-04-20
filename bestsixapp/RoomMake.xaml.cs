@@ -412,6 +412,18 @@ namespace bestsixapp
             RoomEditor.Visibility = Visibility.Hidden;
             TransactionsButton.Visibility = Visibility.Hidden;
             MenuButtons.Visibility = Visibility.Visible;
+
+            EditRoomButton.Content = "Edit Rooms";
+            EditRoomButton.Padding = new Thickness(2);
+            isEdit = false;
+            AddRoomButton.IsEnabled = false;
+            MoveRoomButton.IsEnabled = false;
+            DeleteRoomButton.IsEnabled = false;
+
+            moveButton = false;
+            MoveRoomButton.ClearValue(Button.BackgroundProperty);
+            deleteButton = false;
+            DeleteRoomButton.ClearValue(Button.BackgroundProperty);
         }
 
 
@@ -446,6 +458,7 @@ namespace bestsixapp
             mw.ShowDialog();
             //this.Hide();
         }
+
     }
 }
 
