@@ -38,7 +38,7 @@ namespace bestsixapp
 
             return transactionList;
         }
-        
+
         private void TRClose_Click(object sender, RoutedEventArgs e)
         {
             //this.Close();

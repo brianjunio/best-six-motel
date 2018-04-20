@@ -163,6 +163,12 @@ namespace bestsixapp
                 }
                 else if (deleteButton)
                 {
+                    foreach (var e1 in roomList)
+                    {
+                        //check room list to see if object selected is any of the room
+                        if (rect == e1.RoomButton)
+                            room = e1; // grabs room object if the rect is selected
+                    } //this loop is to find the room object that is attached to rect
                     //Room delete dailog
                     string sMessageBoxText = "Do you want to delete this room?";
                     string sCaption = "Delete Room";
@@ -174,18 +180,25 @@ namespace bestsixapp
                     switch (rsltMessageBox)
                     {
                         case MessageBoxResult.Yes:                           
-                            roomList.Remove(room);
-                            RoomCanvas.Children.Remove(rect);
-                            var deletedRoom = new Room()
-                            {
-                                RoomNo = room.RoomNo
-                            };
-                            using (var context = new DatabaseContext())
-                            {
-                                context.Remove<Room>(deletedRoom);
-                                context.SaveChanges();
+
+                            if (room.Legend.Equals("Vacant") || room.Legend.Equals("Dirty")) {
+                                roomList.Remove(room);
+                                RoomCanvas.Children.Remove(rect);
+                                var deletedRoom = new Room()
+                                {
+                                    RoomNo = room.RoomNo
+                                };
+                                using (var context = new DatabaseContext())
+                                {
+                                    context.Remove<Room>(deletedRoom);
+                                    context.SaveChanges();
+                                }
+                                InvalidateVisual();
                             }
-                            InvalidateVisual();
+                            else
+                            {
+                                System.Windows.Forms.MessageBox.Show("There is a customer in the current room.");
+                            }
                             break;
 
                         case MessageBoxResult.No:
@@ -458,7 +471,12 @@ namespace bestsixapp
             mw.ShowDialog();
             //this.Hide();
         }
-
+        protected void RoomMakeWindow_Closed(object sender, EventArgs args)
+        {
+            MainWindow mw = new MainWindow();
+            this.Close();
+            mw.ShowDialog();
+        }
     }
 }
 

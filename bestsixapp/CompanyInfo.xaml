@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:bestsixapp"
         mc:Ignorable="d"
-        Title="CompanyInfo" Height="300" Width="300">
+        Title="CompanyInfo" Height="350" Width="300">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="20" />

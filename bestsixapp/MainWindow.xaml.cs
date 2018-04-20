@@ -107,9 +107,11 @@ namespace bestsixapp
                                       .SingleOrDefault(s => s.Username == UserText.Text && s.Password == UserPassword.Password.ToString());
                     if (employeeLogin != null)
                     {
+                        
                         RoomMake roomWindow = new RoomMake(employeeLogin.EmpType);
-                        this.Hide();
+                        
                         roomWindow.ShowDialog();
+                        this.Close();
                         //Main.NavigationService.Navigate(roomWindow);
                     }
                     else
