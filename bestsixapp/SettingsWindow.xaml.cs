@@ -35,6 +35,12 @@ namespace bestsixapp
         {
             this.Close();
         }
+
+        private void EmployeeButton_Click(object sender, RoutedEventArgs e)
+        {
+            EmployeeList em = new EmployeeList();
+            em.Show();
+        }
     }
 
 }

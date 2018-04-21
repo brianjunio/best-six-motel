@@ -33,6 +33,7 @@
             <Button Grid.Column="2" Grid.Row="1" Content="Transaction" Width="100" Height="25" HorizontalAlignment="Center" Click="TransactionButton_Click" />
             <Button Grid.Column="2" Grid.Row="2" Content="Company Info" Width="100" Height="25" HorizontalAlignment="Center" Click="CompanyButton_Click"/>
             <Button Grid.Column="2" Grid.Row="4" Content="Exit" Width="100" Height="25" HorizontalAlignment="Center" Click="CancelButton_Click"/>
+            <Button Grid.Column="2" Grid.Row="3" Content="Users" Width="100" Height="25" HorizontalAlignment="Center" Click="EmployeeButton_Click"/>
 
         </Grid>
     </Grid>

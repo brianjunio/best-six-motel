@@ -48,10 +48,9 @@ namespace bestsixapp
             }
             else if (empType == "Employee")
             {
-                EditRoomButton.IsEnabled = false;
-                AddRoomButton.IsEnabled = false;
-                MoveRoomButton.IsEnabled = false;
-                DeleteRoomButton.IsEnabled = false;
+                SettingsButton.IsEnabled = false;
+                RoomEditButton.IsEnabled = false;
+
             }
             // Changes to Menu Grid Button Panel
             RoomEditor.Visibility = Visibility.Hidden;
