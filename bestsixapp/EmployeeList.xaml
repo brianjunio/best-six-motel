@@ -47,17 +47,35 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-
-        <DataGrid ColumnWidth="80" x:Name="EmployeeData" AutoGenerateColumns="True" Grid.Column="3" HorizontalAlignment="Center" Height="355" Margin="10,0" Grid.Row="1" Grid.RowSpan="15" VerticalAlignment="Top" Width="397" Grid.ColumnSpan="4" SelectionChanged="EmployeeSelected">
+    
+        
+        <DataGrid ColumnWidth="80" x:Name="EmployeeData" AutoGenerateColumns="True" Grid.Column="3" HorizontalAlignment="Center" Height="355" Margin="10,0" Grid.Row="1" Grid.RowSpan="15" VerticalAlignment="Top" Width="397" Grid.ColumnSpan="4" IsReadOnly="True" >
         </DataGrid>
-        <Button Content="Save" Grid.Column="1" HorizontalAlignment="Left" Margin="15,6,0,0" Grid.Row="16" VerticalAlignment="Top" Width="75"/>
-        <Button Content="Delete" Grid.Column="2" HorizontalAlignment="Left" Margin="26,6,0,0" Grid.Row="16" VerticalAlignment="Top" Width="75"/>
-        <Button Grid.ColumnSpan="3" Content="Cancel" Grid.Column="2" HorizontalAlignment="Left" Margin="138,6,0,0" Grid.Row="16" VerticalAlignment="Top" Width="75" Click="ExitButton"/>
-        <TextBox x:Name="UsernameTxtbox"  Grid.Column="2" HorizontalAlignment="Left" Height="23" Margin="0,2,0,0" Grid.Row="2" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="PositionTxtbox" Grid.Column="2" HorizontalAlignment="Left" Height="23" Margin="0,2,0,0" Grid.Row="4" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="FirstNameTxtbox" Grid.Column="2" HorizontalAlignment="Left" Height="23" Grid.Row="6" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="LastNameTxtbox" Grid.Column="2" HorizontalAlignment="Left" Height="23" Grid.Row="8" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="PasswordTxtbox" Grid.Column="2" HorizontalAlignment="Left" Height="23" Margin="0,2,0,0" Grid.Row="10" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Button Content="Update" Grid.Column="1" HorizontalAlignment="Left" Margin="15,5,0,0" Grid.Row="13" VerticalAlignment="Top" Width="75" Command="Save">
+            <Button.CommandBindings>
+                <CommandBinding Command="Save" 
+                        Executed="Save_Executed" CanExecute="Save_CanExecute"/>
+            </Button.CommandBindings>
+        </Button>
+        <Button Content="Add" Grid.Column="2" HorizontalAlignment="Left" Margin="45,5,0,0" Grid.Row="13" VerticalAlignment="Top" Width="75"  Command="New">
+            <Button.CommandBindings>
+                <CommandBinding Command="New" 
+                        Executed="New_Executed" CanExecute="New_CanExecute"/>
+            </Button.CommandBindings>
+        </Button>
+
+        <Button Content="Delete" Grid.Column="1" HorizontalAlignment="Left" Margin="15,5,0,0" Grid.Row="15" VerticalAlignment="Top" Width="75" Command="Delete">
+            <Button.CommandBindings>
+                <CommandBinding Command="Delete" 
+                        Executed="Delete_Executed" CanExecute="Delete_CanExecute"/>
+            </Button.CommandBindings>
+        </Button>
+        <Button Content="Cancel" Grid.Column="2" HorizontalAlignment="Left" Margin="45,5,0,0" Grid.Row="15" VerticalAlignment="Top" Width="75" Click="ExitButton"/>
+        <TextBox x:Name="UsernameTxtbox"  Grid.Column="2" HorizontalAlignment="Left" Height="23" Margin="0,2,0,0" Grid.Row="2" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120" Text="{Binding ElementName=EmployeeData,Path=SelectedItem.Username,UpdateSourceTrigger=PropertyChanged}" />
+        <TextBox x:Name="PositionTxtbox" Grid.Column="2" HorizontalAlignment="Left" Height="23" Margin="0,2,0,0" Grid.Row="4" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120" Text="{Binding ElementName=EmployeeData,Path=SelectedItem.EmpType,UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox x:Name="FirstNameTxtbox" Grid.Column="2" HorizontalAlignment="Left" Height="23" Grid.Row="6" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120" Text="{Binding ElementName=EmployeeData,Path=SelectedItem.FirstName,UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox x:Name="LastNameTxtbox" Grid.Column="2" HorizontalAlignment="Left" Height="23" Grid.Row="8" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120" Text="{Binding ElementName=EmployeeData,Path=SelectedItem.LastName,UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox x:Name="PasswordTxtbox" Grid.Column="2" HorizontalAlignment="Left" Height="23" Margin="0,2,0,0" Grid.Row="10" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Text="{Binding ElementName=EmployeeData,Path=SelectedItem.Password,UpdateSourceTrigger=PropertyChanged}"/>
         <Label Name="Username" Content="Username" Grid.Column="1" HorizontalAlignment="Left" Grid.Row="2" VerticalAlignment="Top"/>
         <Label Name="Position" Content="Position" Grid.Column="1" HorizontalAlignment="Left" Margin="1,2,0,0" Grid.Row="4" VerticalAlignment="Top"/>
         <Label Name="FirstName" Content="First Name" Grid.Column="1" HorizontalAlignment="Left" Grid.Row="6" VerticalAlignment="Top"/>

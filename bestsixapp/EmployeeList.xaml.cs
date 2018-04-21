@@ -33,27 +33,112 @@ namespace bestsixapp
             {
                 EmployeeData.ItemsSource = dbContext.Employees.ToList();
             }
-        }
-
-        private void EmployeeSelected(object sender, SelectionChangedEventArgs e)
-        {
-            DataGrid gd = (DataGrid)sender;
-            DataRowView row_selected = gd.SelectedItem as DataRowView;
-            if(row_selected != null)
-            {
-                UsernameTxtbox.Text = row_selected["Username"].ToString();
-                PositionTxtbox.Text = row_selected["EmpType"].ToString();
-                FirstNameTxtbox.Text = row_selected["FirstName"].ToString();
-                LastNameTxtbox.Text = row_selected["LastName"].ToString();
-                PasswordTxtbox.Text = row_selected["Password"].ToString();
-                
-            }
-            UsernameTxtbox.Text = "Hi";
-        }
+        } 
 
         private void ExitButton(object sender, RoutedEventArgs e)
         {
             this.Close();
+        }
+
+        private void Save_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            using (DatabaseContext dbContext = new DatabaseContext())
+            {
+                //create updated entity
+                var modifiedEmployee = new Employee()
+                {
+                    Username = UsernameTxtbox.Text,
+                    EmpType = PositionTxtbox.Text,
+                    FirstName = FirstNameTxtbox.Text,
+                    LastName = LastNameTxtbox.Text,
+                    Password = PasswordTxtbox.Text
+                };
+                
+               
+                dbContext.Update<Employee>(modifiedEmployee); //update database
+                dbContext.SaveChanges();        //save changes
+                fillEmployeee();
+            }
+        }
+
+        private void Save_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            using (DatabaseContext dbContext = new DatabaseContext())
+            {
+                var hit = dbContext.Employees.FirstOrDefault(f => f.Username == UsernameTxtbox.Text);
+                if (hit != null)
+                {
+                    e.CanExecute = true;
+                    e.Handled = true;
+                    UsernameTxtbox.IsReadOnly = true;
+                    UsernameTxtbox.IsEnabled = false;
+                }
+            }
+        }
+        private void New_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            using (DatabaseContext dbContext = new DatabaseContext())
+            {
+                //create updated entity
+                var newEmployee = new Employee()
+                {
+                    Username = UsernameTxtbox.Text,
+                    EmpType = PositionTxtbox.Text,
+                    FirstName = FirstNameTxtbox.Text,
+                    LastName = LastNameTxtbox.Text,
+                    Password = PasswordTxtbox.Text
+                };
+
+
+                dbContext.Employees.Add(newEmployee); //update database
+                dbContext.SaveChanges();        //save changes
+                fillEmployeee();
+            }
+        }
+
+        private void New_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            using (DatabaseContext dbContext = new DatabaseContext())
+            {
+                var hit = dbContext.Employees.FirstOrDefault(f => f.Username == UsernameTxtbox.Text);
+                if (hit == null)
+                {
+                    e.CanExecute = true;
+                    e.Handled = true;
+                    UsernameTxtbox.IsReadOnly = false;
+                    UsernameTxtbox.IsEnabled = true;
+                }
+            }
+        }
+
+        private void Delete_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            using (DatabaseContext dbContext = new DatabaseContext())
+            {
+                var hit = dbContext.Employees.FirstOrDefault(f => f.Username == UsernameTxtbox.Text);
+                if (hit != null)
+                {
+                    e.CanExecute = true;
+                    e.Handled = true;
+                    UsernameTxtbox.IsReadOnly = true;
+                    UsernameTxtbox.IsEnabled = false;
+                }
+            }
+        }
+
+        private void Delete_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            using (DatabaseContext dbContext = new DatabaseContext())
+            {
+                //create updated entity
+                var deletedEmployee = new Employee()
+                {
+                    Username = UsernameTxtbox.Text
+                };
+                dbContext.Remove<Employee>(deletedEmployee); //update database
+                dbContext.SaveChanges();        //save changes
+                fillEmployeee();
+            }
         }
     }
 }
