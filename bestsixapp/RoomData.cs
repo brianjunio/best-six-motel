@@ -1,4 +1,5 @@
 ﻿using System;
+using Database;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -131,13 +132,17 @@ namespace bestsixapp
         {
             get
             {
-                if(columnName == "RoomNo")
-                {
-                    if(roomNo < 1)
+                using (DatabaseContext dbContext = new DatabaseContext()) {
+                    var hit = dbContext.Rooms.FirstOrDefault(f => f.RoomNo == roomNo);
+                    if (columnName == "RoomNo")
                     {
-                        return "Please input new room number.";
+                        if (roomNo < 1 || hit != null)
+                        {
+                            return "Please input new room number.";
+                        }
                     }
                 }
+
                 
                 if (columnName == "BedType")
                 {

@@ -22,7 +22,7 @@ namespace Database
         [ForeignKey("Room")]
         public int? RoomNo { get; set;}
         public virtual Room Room { get; set; }
-        public int lastRoom { get; set; }
+        public int LastRoom { get; set; }
         public string LastEdit { get; set; }
     }
 }
