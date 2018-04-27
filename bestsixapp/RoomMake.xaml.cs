@@ -392,6 +392,11 @@ namespace bestsixapp
             //moving rooms
             if (!moveButton)
             {
+                if (deleteButton)
+                {
+                    moveButton = false;
+                    DeleteRoomButton.ClearValue(Button.BackgroundProperty);
+                }
                 moveButton = true;
                 MoveRoomButton.Background = new SolidColorBrush(Color.FromArgb(255, 57, 255, 20));
             }
@@ -407,6 +412,11 @@ namespace bestsixapp
         {
             if (!deleteButton)
             {
+                if (moveButton)
+                {
+                    moveButton = false;
+                    MoveRoomButton.ClearValue(Button.BackgroundProperty);
+                }
                 deleteButton = true;
                 DeleteRoomButton.Background = new SolidColorBrush(Color.FromArgb(255, 57, 255, 20));
             }
