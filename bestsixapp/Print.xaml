@@ -11,7 +11,7 @@
         xmlns:local="clr-namespace:bestsixapp"
 
         mc:Ignorable="d"
-        Title="PrintReceipt" Height="450" Width="800">
+        Title="PrintReceipt" Height="auto" Width="auto">
 
     <Page.Background>
         <ImageBrush Stretch="Fill" ImageSource="/bestsixapp;component\Images\background.jpg"          
