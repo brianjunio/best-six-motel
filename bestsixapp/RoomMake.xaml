@@ -94,10 +94,10 @@
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
 
-            <Button Name="other1Button" Grid.Column="1" Content ="Move" Width ="100" Margin="5,5,10,5" Click="BackMenuButton_Click" Padding="2"/>
-            <Button Name="other2Button"    Grid.Column="2" Content ="Buttons" Width ="100" Margin="5,5,10,5" Click="BackMenuButton_Click" Padding="2"/>
+            <Button Name="other1Button" Grid.Column="1" Content ="Back" Width ="100" Margin="5,5,10,5" Click="BackMenuButton_Click" Padding="2"/>
+           <!--<Button Name="other2Button"    Grid.Column="2" Content ="Buttons" Width ="100" Margin="5,5,10,5" Click="BackMenuButton_Click" Padding="2"/>
             <Button Name="BackMenu2"         Grid.Column="4"  Content ="Here (Back to Menu" Width ="100" Margin="5,5,10,5" Click="BackMenuButton_Click" Padding="2"/>
-        </Grid>
+        --></Grid>
 
     </Grid>
 </Window>
