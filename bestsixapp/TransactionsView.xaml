@@ -44,8 +44,7 @@
         <TextBox x:Name="startingDate" HorizontalAlignment="Left" Height="23" Margin="53,70,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="190" DataContext="{Binding Text, ElementName=Start}"/>
         <TextBox x:Name="endingDate" HorizontalAlignment="Left" Height="23" Margin="273,70,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="190" DataContext="{Binding Text, ElementName=End}"/>
         <Button Content="Print Current View" HorizontalAlignment="Left" Margin="902,46,0,0" VerticalAlignment="Top" Width="138" Height="24"/>
-        <Button Content="Print Customer Receipt" HorizontalAlignment="Left" Margin="1044,46,0,0" VerticalAlignment="Top" Width="138" Height="24"/>
-
+        <Button Content="Print Customer Receipt" HorizontalAlignment="Left" Click="Print_Customer_click" Margin="1044,46,0,0" VerticalAlignment="Top" Width="138" Height="24"/>
     </Grid>
 
 </Page>
