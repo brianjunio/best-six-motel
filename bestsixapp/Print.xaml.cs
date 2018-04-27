@@ -42,7 +42,7 @@ namespace bestsixapp
         {
             using(DatabaseContext dbContext = new DatabaseContext())
             {
-                dbContext.Customers.Find
+                //dbContext.Customers.Find
             }
         }
     }
