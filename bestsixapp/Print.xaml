@@ -5,12 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:bestsixapp"
         mc:Ignorable="d"
-        Title="PrintReceipt"  Height="auto" Width="auto" d:DesignHeight="480" d:DesignWidth="720">
+        Title="PrintReceipt" Background="AliceBlue" Height="auto" Width="auto" d:DesignHeight="480" d:DesignWidth="720">
 
-    <Page.Background>
-        <ImageBrush Stretch="Fill" ImageSource="/bestsixapp;component\Images\background.jpg"          
-            AlignmentY="Center" AlignmentX="Center"/>
-    </Page.Background>
 
     <Grid x:Name="PrintPage" HorizontalAlignment="Center" Width="862">
         <Grid.RowDefinitions>
@@ -22,35 +18,36 @@
             <RowDefinition Height="134*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="58*"/>
-            <ColumnDefinition Width="51*"/>
-            <ColumnDefinition Width="100*"/>
-            <ColumnDefinition Width="51*"/>
-            <ColumnDefinition Width="171*"/>
+            <ColumnDefinition Width="116*"/>
+            <ColumnDefinition Width="102*"/>
+            <ColumnDefinition Width="200*"/>
+            <ColumnDefinition Width="102*"/>
+            <ColumnDefinition Width="197*"/>
+            <ColumnDefinition Width="145*"/>
         </Grid.ColumnDefinitions>
-        
+
         <!--Col 1-->
         <Label Content="First Name:" HorizontalAlignment="Left" Margin="0,2,0,0" VerticalAlignment="Top" Width="79" FontWeight="Bold" Grid.Column="1" Grid.RowSpan="1" Grid.Row="1" Height="26"/>
         <Label Content="Last Name:" HorizontalAlignment="Left" Margin="0,2,0,0" VerticalAlignment="Top" Width="79" FontWeight="Bold" Grid.Column="1" Grid.Row="2" Height="26"/>
         <Label Content="Price:" HorizontalAlignment="Left" Margin="0,4.667,0,0" VerticalAlignment="Top" Width="79" FontWeight="Bold" Grid.Column="1" Grid.Row="3" Height="26"/>
         <Label Content="Payment Type:" HorizontalAlignment="Left" Margin="0,4.333,0,0" VerticalAlignment="Top" Width="93" FontWeight="Bold" Grid.Column="1" Grid.Row="4" Height="26"/>
-        
+
         <!-- Col 2 -->
-        <TextBox x:Name="FnameBox" HorizontalAlignment="Left" Height="22" Margin="0,4,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="175" BorderThickness="0" Grid.Column="2" Grid.Row="1"/>
-        <TextBox x:Name="LnameBox" HorizontalAlignment="Left" Height="23" Margin="0,5,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="175" BorderThickness="0" Grid.Column="2" Grid.Row="2"/>
+        <TextBox x:Name="FnameBox" HorizontalAlignment="Left" Height="22" Margin="0,4,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="175" BorderThickness="1" BorderBrush="Black" Grid.Column="2" Grid.Row="1"/>
+        <TextBox x:Name="LnameBox" HorizontalAlignment="Left" Height="23" Margin="0,5,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="175" BorderThickness="1" BorderBrush="Black" Grid.Column="2" Grid.Row="2"/>
         <TextBlock HorizontalAlignment="Left" Margin="110,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="55" Width="235" FontSize="36" Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="3" Text="Best Six Motel"></TextBlock>
-        <TextBox x:Name="PriceBox" HorizontalAlignment="Left" Height="23" Margin="0,7.667,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="175" BorderThickness="0" Grid.Column="2" Grid.Row="3"/>
-        <TextBox x:Name="PaymentTypeBox" HorizontalAlignment="Left" Height="23" Margin="0,8.333,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="175" BorderThickness="0" Grid.Column="2" Grid.Row="4"/>
-        
+        <TextBox x:Name="PriceBox" HorizontalAlignment="Left" Height="23" Margin="0,7.667,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="175" BorderThickness="1" BorderBrush="Black" Grid.Column="2" Grid.Row="3"/>
+        <TextBox x:Name="PaymentTypeBox"  HorizontalAlignment="Left" Height="23" Margin="0,7.333,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="175" BorderThickness="1" BorderBrush="Black" Grid.Column="2" Grid.Row="4"/>
+
         <!-- Col 3 -->
-        <Label Content="Room Number:" HorizontalAlignment="Left" Margin="5,2,0,0" VerticalAlignment="Top" Width="101" FontWeight="Bold" Grid.Column="3" Grid.Row="3" Height="26"/>
-        <Label Content="Check In Date:" HorizontalAlignment="Left" Margin="5,2,0,0" VerticalAlignment="Top" Width="101" FontWeight="Bold" Grid.Column="3" Grid.Row="1" Height="26"/>
-        <Label Content="Check Out Date:" HorizontalAlignment="Left" Margin="5,2,0,0" VerticalAlignment="Top" Width="101" FontWeight="Bold" Grid.Column="3" Grid.Row="2" Height="26"/>
-       
+        <Label Content="Room Number:" HorizontalAlignment="Left" Margin="5,1.667,0,0" VerticalAlignment="Top" Width="101" FontWeight="Bold" Grid.Column="3" Grid.Row="3" Height="26" Grid.ColumnSpan="2"/>
+        <Label Content="Check In Date:" HorizontalAlignment="Left" Margin="5,2,0,0" VerticalAlignment="Top" Width="101" FontWeight="Bold" Grid.Column="3" Grid.Row="1" Height="26" Grid.ColumnSpan="2"/>
+        <Label Content="Check Out Date:" HorizontalAlignment="Left" Margin="5,2,0,0" VerticalAlignment="Top" Width="101" FontWeight="Bold" Grid.Column="3" Grid.Row="2" Height="26" Grid.ColumnSpan="2"/>
+
         <!-- Col 4 -->
-        <TextBox x:Name="CheckInBox" HorizontalAlignment="Left" Height="23" Margin="10,4,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="175" BorderThickness="0" Grid.Column="4" Grid.Row="1"/>
-        <TextBox x:Name="CheckOutBox" HorizontalAlignment="Left" Height="23" Margin="10,4,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="175" BorderThickness="0" Grid.Column="4" Grid.Row="2"/>
-        <TextBox x:Name="RoomNumberBox" HorizontalAlignment="Left" Height="23" Margin="10,4,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="175" BorderThickness="0" Grid.Column="4" Grid.Row="3"/>
+        <TextBox x:Name="CheckInBox" HorizontalAlignment="Left" Height="23" Margin="9,4,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="175" BorderThickness="1" BorderBrush="Black" Grid.Column="4" Grid.Row="1"/>
+        <TextBox x:Name="CheckOutBox" HorizontalAlignment="Left" Height="23" Margin="9,4,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="175" BorderThickness="1" BorderBrush="Black" Grid.Column="4" Grid.Row="2"/>
+        <TextBox x:Name="RoomNumberBox" HorizontalAlignment="Left" Height="23" Margin="9,3.667,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="175" BorderThickness="1" BorderBrush="Black" Grid.Column="4" Grid.Row="3"/>
 
         <!-- Print Button -->
         <Button Content="Print" Click="PrintButtonClick" HorizontalAlignment="Left" Margin="141,115,0,0" VerticalAlignment="Top" Width="75" Grid.Column="2" Grid.Row="5" Grid.ColumnSpan="2" Height="20"/>
