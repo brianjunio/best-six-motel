@@ -20,7 +20,7 @@ namespace bestsixapp
         Room roomData = new Room();
         Customer custData = new Customer();
         Transactions tr = new Transactions();
-
+        Print p = new Print();
         public TransactionsView()
         {
             InitializeComponent();
@@ -129,6 +129,18 @@ namespace bestsixapp
         private void TRClose_Click(object sender, RoutedEventArgs e)
         {
             this.NavigationService.Navigate(this.Parent);
+        }
+
+        private void Print_Customer_click(object sender, RoutedEventArgs e)
+        {
+            var cells = trDataGrid.SelectedItems;
+            p.PopulateTextboxes(cells);
+            
+
+            
+           // var item1 = cells[0].GetType().GetProperty().GetValue();
+           // p.FnameBox.Text = item1;
+             this.NavigationService.Navigate(p);
         }
     }
 }
