@@ -133,7 +133,14 @@ namespace bestsixapp
 
         private void Print_Customer_click(object sender, RoutedEventArgs e)
         {
-            this.NavigationService.Navigate(p);
+            var cells = trDataGrid.SelectedItems;
+            p.PopulateTextboxes(cells);
+            
+
+            
+           // var item1 = cells[0].GetType().GetProperty().GetValue();
+           // p.FnameBox.Text = item1;
+             this.NavigationService.Navigate(p);
         }
     }
 }
