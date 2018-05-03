@@ -7,6 +7,7 @@ using System.Linq;
 
 using System.Collections;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
+using System.Windows.Input;
 
 namespace bestsixapp
 {
@@ -133,14 +134,22 @@ namespace bestsixapp
 
         private void Print_Customer_click(object sender, RoutedEventArgs e)
         {
-            var cells = trDataGrid.SelectedItems;
-            p.PopulateTextboxes(cells);
-            
+            // Error handling for not selecting a row and clicking the print button.
+            if (trDataGrid.SelectedIndex != -1)
+            {
+                var cells = trDataGrid.SelectedItems;
+                p.PopulateTextboxes(cells);
 
-            
-           // var item1 = cells[0].GetType().GetProperty().GetValue();
-           // p.FnameBox.Text = item1;
-             this.NavigationService.Navigate(p);
+
+
+                // var item1 = cells[0].GetType().GetProperty().GetValue();
+                // p.FnameBox.Text = item1;
+                this.NavigationService.Navigate(p);
+            }
+            else
+            {
+                System.Windows.Forms.MessageBox.Show("Please select a record (row) to be printed before proceeding.");
+            }
         }
     }
 }

@@ -14,8 +14,8 @@
             <ColumnDefinition Width="0*"/>
         </Grid.ColumnDefinitions>
         <!--Borders and labels at top of page-->
-        <Border BorderBrush="Black" BorderThickness="1" Height="92" Margin="894,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="302">
-            <Label Content="Printing Options"/>
+        <Border BorderBrush="Black" BorderThickness="1" Height="92" Margin="894,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="312">
+            <Label Content="Printing Options" Margin="0,-1,-1,0"/>
         </Border>
 
         <!--Borders and labels at top of page-->
@@ -43,8 +43,8 @@
         <!--Date boxes below date pickers.-->
         <TextBox x:Name="startingDate" HorizontalAlignment="Left" Height="23" Margin="53,70,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="190" DataContext="{Binding Text, ElementName=Start}"/>
         <TextBox x:Name="endingDate" HorizontalAlignment="Left" Height="23" Margin="273,70,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="190" DataContext="{Binding Text, ElementName=End}"/>
-        <Button Content="Print Current View" HorizontalAlignment="Left" Margin="902,46,0,0" VerticalAlignment="Top" Width="138" Height="24"/>
-        <Button Content="Print Customer Receipt" HorizontalAlignment="Left" Click="Print_Customer_click" Margin="1044,46,0,0" VerticalAlignment="Top" Width="138" Height="24"/>
+        <!--<Button Content="Print Current View" HorizontalAlignment="Left" Margin="902,46,0,0" VerticalAlignment="Top" Width="138" Height="24"/>-->
+        <Button Content="Print Customer Receipt" HorizontalAlignment="Left" Click="Print_Customer_click" Margin="907,46,0,0" VerticalAlignment="Top" Width="138" Height="24"/>
     </Grid>
 
 </Page>
