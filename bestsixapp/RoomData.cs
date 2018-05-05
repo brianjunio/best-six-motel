@@ -164,7 +164,24 @@ namespace bestsixapp
                         return "Field Input is required";
                    
                 }
-                
+
+                if(columnName == "Price")
+                {
+                    if (this.Price <= 0.0)
+                    {
+                        return "Invalid price";
+                    }
+                }
+
+                if (columnName == "NoOfBeds")
+                {
+                    if (this.NoOfBeds <= 0)
+                    {
+                        return "Invalid amount of beds";
+                    }
+                }
+
+
                 return null;
             }
         }
