@@ -26,8 +26,8 @@
                                                 <TranslateTransform X="0.02" Y="0.3"/>
                                             </TransformGroup>
                                         </RadialGradientBrush.RelativeTransform>
-                                        <GradientStop Offset="1" Color="#00000000"/>
-                                        <GradientStop Offset="0.3" Color="#FFFFFFFF"/>
+                                        <GradientStop Offset="1" Color="#FFFF9700"/>
+                                        <GradientStop Offset="2" Color="#FF5F5D5D"/>
                                     </RadialGradientBrush>
                                 </Border.Background>
                                 <ContentPresenter HorizontalAlignment="Center"
@@ -48,8 +48,8 @@
                                                     <TranslateTransform X="0.02" Y="0.3"/>
                                                 </TransformGroup>
                                             </RadialGradientBrush.RelativeTransform>
-                                            <GradientStop Color="#00000000" Offset="1"/>
-                                            <GradientStop Color="#FF303030" Offset="0.3"/>
+                                            <GradientStop Color="#FFE9FF0D" Offset="1"/>
+                                            <GradientStop Color="#FF686868" Offset="0.3"/>
                                         </RadialGradientBrush>
                                     </Setter.Value>
                                 </Setter>
@@ -117,8 +117,8 @@
 
         <TextBox Grid.Column="3" Grid.Row="2" Width="300" Height="40" Margin="40,100,20,20" FontSize="20" TextAlignment="Left" Name ="UserText"/>
         <PasswordBox Grid.Column="3" Grid.Row="3" HorizontalAlignment="Left" Margin="40,100,20,20" Width="300" Height="40" VerticalAlignment="Center" FontSize="20" Name="UserPassword"/>
-        <Button Name="LoginButton" Grid.Column="1" Grid.Row="5" Content ="Login" HorizontalAlignment="Left" Margin="20,40,20,20" VerticalAlignment="Top" Width="100" Height="60" FontSize="16" Command="{StaticResource MyLoginCommand}" Style="{StaticResource RoundCorner}"/>
-        <Button Name="ExitButton" Grid.Column="4" Grid.Row="6" Content ="Quit" HorizontalAlignment="Left" Margin="300,130,20,20" VerticalAlignment="Top" Width="100" Height="60" FontSize="16" Click="MainWindow_Closed" Style="{StaticResource RoundCorner}"/>
+        <Button Name="LoginButton" Grid.Column="1" Grid.Row="5" Content ="Login" HorizontalAlignment="Left" Margin="20,40,20,20" VerticalAlignment="Top" Width="100" Height="60" FontSize="16" Command="{StaticResource MyLoginCommand}" Style="{StaticResource RoundCorner}" Foreground="White"/>
+        <Button Name="ExitButton" Grid.Column="4" Grid.Row="6" Content ="Quit" HorizontalAlignment="Left" Margin="300,130,20,20" VerticalAlignment="Top" Width="100" Height="60" FontSize="16" Click="MainWindow_Closed" Style="{StaticResource RoundCorner}" Foreground="White"/>
 
     </Grid>
 </Window>
